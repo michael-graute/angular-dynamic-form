@@ -1,0 +1,15 @@
+<form class="form" [formGroup]="form">
+  <div class="form-body">
+    <ng-template fgFormElementHost></ng-template>
+  </div>
+  <div class="form-footer button-row d-flex gap-1 justify-content-end">
+    <button
+      *ngFor="let button of formConfig.buttons"
+      type="button" [class]="['btn', button.class ?? 'btn-primary']"
+      (click)="buttonClick(button.callback)"
+      [disabled]="button.settings?.disableIfFormInvalid && !form.valid"
+    >
+      <i *ngIf="button.icon" [class]="button.icon"></i> {{button.label}}
+    </button>
+  </div>
+</form>

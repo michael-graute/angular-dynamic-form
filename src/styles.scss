@@ -1,0 +1,38 @@
+@import "bootstrap/scss/bootstrap";/* You can add global styles to this file, and also import other style files */
+.form-control, .form-select {
+  &:active, &:focus {
+    box-shadow: none;
+    border-color: inherit;
+  }
+
+  &.required {
+    /*&.ng-pristine {
+      border-color: var(--bs-warning);
+    }*/
+  }
+}
+
+label {
+  &.required {
+    ::after {
+      content: '*';
+    }
+  }
+}
+
+.ng-invalid {
+  border-color: var(--bs-danger);
+}
+.ng-valid {
+  &.ng-dirty {
+    border-color: var(--bs-success);
+  }
+}
+
+.tab-pane {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

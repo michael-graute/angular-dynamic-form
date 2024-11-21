@@ -1,0 +1,4 @@
+<div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.floatingLabel}" class="mb-2">
+  <label *ngIf="config?.label">{{config?.label}}</label>
+  <fg-key-value-element [formControlName]="id" [settings]="config?.settings"></fg-key-value-element>
+</div>

@@ -1,0 +1,247 @@
+{
+  "buttons": [
+    {
+      "key": "submit",
+      "type": "submit",
+      "label": "Submit",
+      "icon": "bi-plus",
+      "class": "btn-success",
+      "settings": {
+        "disableIfFormInvalid": true
+      },
+      "callback": {
+        "function": "formSubmit",
+        "params": ["foo", "bar", 1234]
+      }
+    },
+    {
+      "key": "cancel",
+      "type": "submit",
+      "label": "Cancel",
+      "icon": "bi-plus",
+      "class": "btn-danger",
+      "settings": {
+        "disableIfFormInvalid": true
+      },
+      "callback": {
+        "function": "formCancel",
+        "params": ["foo", "bar", 1234]
+      }
+    },
+    {
+      "key": "reset",
+      "type": "submit",
+      "label": "Reset",
+      "icon": "bi-plus",
+      "class": "btn-warning",
+      "settings": {
+        "disableIfFormInvalid": true
+      },
+      "callback": {
+        "function": "formReset",
+        "params": ["foo", "bar", 1234]
+      }
+    },
+    {
+      "key": "customCallback",
+      "type": "submit",
+      "label": "Custom Callback",
+      "callback": {
+        "function": "customCallback",
+        "params": ["foo", "bar", 1234, false]
+      }
+    }
+  ],
+  "elements": [
+    {
+      "key": "email",
+      "label": "E-Mail",
+      "floatingLabel": true,
+      "type": "input",
+      "controlType": "email",
+      "value": "Foo@bar.baz",
+      "validators": [
+        {
+          "name": "email"
+        }
+      ]
+    },
+    {
+      "key": "fieldset1",
+      "label": "Fieldset 1",
+      "type": "fieldset",
+      "children": [
+        {
+          "type": "input",
+          "key": "name1",
+          "label": "Name",
+          "floatingLabel": true,
+          "value": "Text Input 1",
+          "validators": [
+            {
+              "name": "required"
+            },
+            {
+              "name": "maxLength",
+              "value": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "card",
+      "label": "Card Container",
+      "type": "card",
+      "children": [
+        {
+          "type": "input",
+          "key": "name2",
+          "controlType": "text",
+          "value": "Foo",
+          "validators": [
+            {
+              "name": "required"
+            },
+            {
+              "name": "maxLength",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "type": "tabContainer",
+          "key": "fieldset2TabContainer",
+          "label": "Tab Container",
+          "children": [
+            {
+              "type": "tabPane",
+              "key": "tabPane1",
+              "label": "Tab 1",
+              "children": [
+                {
+                  "type": "row",
+                  "key": "tabPane1row",
+                  "children": [
+                    {
+                      "type": "col",
+                      "key": "tabPane1rowCol1",
+                      "class": "col-3",
+                      "children": [
+                        {
+                          "type": "select",
+                          "key": "name4",
+                          "label": "Foo",
+                          "floatingLabel": true,
+                          "value": "two",
+                          "options": [
+                            {
+                              "label": "One",
+                              "value": "one"
+                            },
+                            {
+                              "label": "Two",
+                              "value": "two"
+                            }
+                          ],
+                          "validators": [
+                            {
+                              "name": "required"
+                            },
+                            {
+                              "name": "maxLength",
+                              "value": 12
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "col",
+                      "key": "tabPane1rowCol1",
+                      "class": "col-9",
+                      "children": [
+                        {
+                          "type": "input",
+                          "key": "name3",
+                          "controlType": "text",
+                          "value": "Text Input 2",
+                          "label": "Name 3",
+                          "floatingLabel": true,
+                          "validators": [
+                            {
+                              "name": "maxLength",
+                              "value": 12
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tabPane",
+              "key": "tabPane2",
+              "label": "Tab 2",
+              "children": [
+                {
+                  "type": "input",
+                  "key": "tabPane2name5",
+                  "controlType": "text",
+                  "value": "Foo",
+                  "validators": [
+                    {
+                      "name": "required"
+                    },
+                    {
+                      "name": "maxLength",
+                      "value": 12
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "key-value",
+      "type": "key-value",
+      "label": "Key-Value Input",
+      "settings": {
+        "colDefs": [
+          {
+            "header": "Some Foo",
+            "type": "text",
+            "varName": "foo"
+          },
+          {
+            "header": "Some Bar",
+            "type": "text",
+            "varName": "bar"
+          },
+          {
+            "header": "Some Baz",
+            "type": "text",
+            "varName": "baz"
+          }
+        ]
+      },
+      "value": [
+        {
+          "foo": "bar",
+          "bar": "baz",
+          "baz": "foo bar baz"
+        },
+        {
+          "foo": "ksldsadsa",
+          "bar": "sdkajdlsa",
+          "baz": "jsdj sjdak  sadjk sadkl"
+        }
+      ]
+    }
+  ]
+}

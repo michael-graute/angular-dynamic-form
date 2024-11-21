@@ -1,0 +1,13 @@
+<div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.floatingLabel}" class="mb-2">
+  <label [for]="id" *ngIf="config?.label && !config?.floatingLabel">{{config?.label}}</label>
+  <select [id]="id" class="form-select" [formControlName]="id">
+    <option *ngFor="let option of config?.options" [value]="option.value">{{option.label}}</option>
+  </select>
+  <label [for]="id" *ngIf="config?.label && config?.floatingLabel">{{config?.label}}</label>
+  <div *ngIf="control?.errors" class="form-text text-danger">
+    {{control?.errors | json}}
+  </div>
+  <div  *ngIf="debug" class="form-text">
+    <pre>{{config | json}}</pre>
+  </div>
+</div>

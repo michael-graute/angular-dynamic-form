@@ -1,0 +1,6 @@
+<div class="container">
+  <fg-dynamic-form id="dynamicForm" asyncUrl="/get-form" [debug]="false" (onCustomCallBack)="customCallBack($event)" (onFormSubmit)="formSubmit($event)" (onFormCancel)="formCancel($event)" (onFormReset)="formReset($event)"></fg-dynamic-form>
+  <button type="button" class="btn btn-primary" (click)="addElement()">Add Element</button>
+  <button *ngIf="counter > 0" type="button" class="btn btn-primary" (click)="deleteElement()">Remove last added Element</button>
+  <router-outlet />
+</div>
