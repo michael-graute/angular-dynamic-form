@@ -20,9 +20,6 @@
       "label": "Cancel",
       "icon": "bi-plus",
       "class": "btn-danger",
-      "settings": {
-        "disableIfFormInvalid": true
-      },
       "callback": {
         "function": "formCancel",
         "params": ["foo", "bar", 1234]
@@ -34,9 +31,6 @@
       "label": "Reset",
       "icon": "bi-plus",
       "class": "btn-warning",
-      "settings": {
-        "disableIfFormInvalid": true
-      },
       "callback": {
         "function": "formReset",
         "params": ["foo", "bar", 1234]
@@ -59,7 +53,6 @@
       "floatingLabel": true,
       "type": "input",
       "controlType": "email",
-      "value": "Foo@bar.baz",
       "validators": [
         {
           "name": "email"
@@ -76,7 +69,6 @@
           "key": "name1",
           "label": "Name",
           "floatingLabel": true,
-          "value": "Text Input 1",
           "validators": [
             {
               "name": "required"
@@ -98,7 +90,6 @@
           "type": "input",
           "key": "name2",
           "controlType": "text",
-          "value": "Foo",
           "validators": [
             {
               "name": "required"
@@ -133,7 +124,6 @@
                           "key": "name4",
                           "label": "Foo",
                           "floatingLabel": true,
-                          "value": "two",
                           "options": [
                             {
                               "label": "One",
@@ -165,7 +155,6 @@
                           "type": "input",
                           "key": "name3",
                           "controlType": "text",
-                          "value": "Text Input 2",
                           "label": "Name 3",
                           "floatingLabel": true,
                           "validators": [
@@ -190,7 +179,6 @@
                   "type": "input",
                   "key": "tabPane2name5",
                   "controlType": "text",
-                  "value": "Foo",
                   "validators": [
                     {
                       "name": "required"
@@ -232,14 +220,9 @@
       },
       "value": [
         {
-          "foo": "bar",
-          "bar": "baz",
-          "baz": "foo bar baz"
-        },
-        {
-          "foo": "ksldsadsa",
-          "bar": "sdkajdlsa",
-          "baz": "jsdj sjdak  sadjk sadkl"
+          "foo": null,
+          "bar": null,
+          "baz": null
         }
       ]
     }

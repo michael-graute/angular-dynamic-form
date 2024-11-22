@@ -100,4 +100,8 @@ export class AppComponent {
   formReset(form: FormGroup) {
     console.log('onFormReset', form.getRawValue());
   }
+
+  loadFormData() {
+    this.dynamicFormService.loadFormData('/get-form-data')
+  }
 }

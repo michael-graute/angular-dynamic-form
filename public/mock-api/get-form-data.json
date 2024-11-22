@@ -1,0 +1,25 @@
+{
+  "email": "Foo@bar invalid",
+  "name1": "Values from REST API, way too long",
+  "name2": "Foo changed",
+  "name4": "two",
+  "name3": "Text Input 2",
+  "tabPane2name5": "Foo",
+  "key-value": [
+    {
+      "foo": "bar",
+      "bar": "baz",
+      "baz": "changed on remote server"
+    },
+    {
+      "foo": null,
+      "bar": null,
+      "baz": null
+    },
+    {
+      "foo": null,
+      "bar": null,
+      "baz": null
+    }
+  ]
+}

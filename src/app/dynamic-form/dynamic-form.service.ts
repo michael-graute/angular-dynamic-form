@@ -22,6 +22,7 @@ export class DynamicFormService {
 
   elementAdded = new Subject<ElementAddedPayload>();
   elementRemoved = new Subject<ElementRemovedPayload>();
+  onPopulateFormData = new Subject<any>();
 
   constructor(private http: HttpClient) {}
 
@@ -44,5 +45,15 @@ export class DynamicFormService {
 
   removeComponentRef(id: string): void {
     this.componentRefs[id].destroy()
+  }
+
+  populateFormData(data: any) {
+    this.onPopulateFormData.next(data);
+  }
+
+  loadFormData(url: string): void {
+    this.http.get(url).subscribe((data: any) => {
+      this.onPopulateFormData.next(data);
+    })
   }
 }

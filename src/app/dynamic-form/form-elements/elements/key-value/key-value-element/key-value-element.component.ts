@@ -9,8 +9,6 @@ import {
 } from "@angular/forms";
 import {NgForOf} from "@angular/common";
 
-type KeyValueValue = any
-
 @Component({
   selector: 'fg-key-value-element',
   standalone: true,
@@ -39,9 +37,7 @@ export class KeyValueElementComponent implements ControlValueAccessor, Validator
 
   value: any[] = [];
 
-  onChange = (value: any) => {
-    console.log(value);
-  };
+  onChange = (value: any) => {};
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
@@ -67,7 +63,6 @@ export class KeyValueElementComponent implements ControlValueAccessor, Validator
   }
 
   writeValue(obj: any): void {
-    console.log('writeValue', obj);
     this.value = obj
   }
 
@@ -79,12 +74,10 @@ export class KeyValueElementComponent implements ControlValueAccessor, Validator
     this.value.push(
       newValueRow
     )
-    this.onChange(this.value)
   }
 
   removeRow(index: number): void {
     this.value.splice(index, 1)
-    this.onChange(this.value)
   }
 
 }
