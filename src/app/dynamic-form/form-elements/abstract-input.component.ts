@@ -1,5 +1,5 @@
 import {Component, HostBinding, OnDestroy, OnInit} from "@angular/core";
-import {FormControl, FormControlName, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {FormElement} from "../dynamic-form.types";
 import {DynamicFormElementInterface} from "../dynamic-form-element.interface";
 
