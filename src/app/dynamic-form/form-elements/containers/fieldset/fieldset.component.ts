@@ -8,8 +8,7 @@ import {AbstractFormElementHostComponent} from "../abstract-form-element-host.co
     selector: 'fg-fieldset',
     imports: [
         FormElementHostDirective,
-        NgIf,
-        JsonPipe
+        NgIf
     ],
     templateUrl: './fieldset.component.html',
     styleUrl: './fieldset.component.scss'

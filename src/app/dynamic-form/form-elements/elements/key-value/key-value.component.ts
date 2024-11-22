@@ -15,8 +15,6 @@ import {KeyValueElementComponent} from "./key-value-element/key-value-element.co
     selector: 'fg-key-value',
     imports: [
         ReactiveFormsModule,
-        JsonPipe,
-        NgForOf,
         KeyValueElementComponent,
         NgIf
     ],

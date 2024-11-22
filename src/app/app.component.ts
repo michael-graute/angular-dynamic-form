@@ -8,7 +8,7 @@ import {DynamicFormService} from "./dynamic-form/dynamic-form.service";
 
 @Component({
     selector: 'fg-root',
-    imports: [RouterOutlet, DynamicFormComponent, JsonPipe, NgIf],
+    imports: [RouterOutlet, DynamicFormComponent, NgIf],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })

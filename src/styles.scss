@@ -1,4 +1,4 @@
-@import "bootstrap/scss/bootstrap";/* You can add global styles to this file, and also import other style files */
+@use "bootstrap/scss/bootstrap";/* You can add global styles to this file, and also import other style files */
 .form-control, .form-select {
   &:active, &:focus {
     box-shadow: none;
