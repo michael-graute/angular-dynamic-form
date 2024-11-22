@@ -7,11 +7,10 @@ import {DynamicFormService} from "./dynamic-form/dynamic-form.service";
 
 
 @Component({
-  selector: 'fg-root',
-  standalone: true,
-  imports: [RouterOutlet, DynamicFormComponent, JsonPipe, NgIf],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'fg-root',
+    imports: [RouterOutlet, DynamicFormComponent, JsonPipe, NgIf],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'form-generator';

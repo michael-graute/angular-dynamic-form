@@ -4,15 +4,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {JsonPipe, NgForOf, NgIf} from "@angular/common";
 
 @Component({
-  selector: 'fg-select-input',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    NgForOf,
-    NgIf,
-    JsonPipe
-  ],
-  templateUrl: './select.component.html',
-  styleUrl: './select.component.scss'
+    selector: 'fg-select-input',
+    imports: [
+        ReactiveFormsModule,
+        NgForOf,
+        NgIf,
+        JsonPipe
+    ],
+    templateUrl: './select.component.html',
+    styleUrl: './select.component.scss'
 })
 export class SelectComponent extends AbstractInputComponent {}

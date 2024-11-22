@@ -8,14 +8,13 @@ import {TabService} from "../tab.service";
 import {DynamicFormService} from "../../../../dynamic-form.service";
 
 @Component({
-  selector: 'fg-tab-pane',
-  standalone: true,
-  imports: [
-    FormElementHostDirective,
-    NgIf
-  ],
-  templateUrl: './tab-pane.component.html',
-  styleUrl: './tab-pane.component.scss'
+    selector: 'fg-tab-pane',
+    imports: [
+        FormElementHostDirective,
+        NgIf
+    ],
+    templateUrl: './tab-pane.component.html',
+    styleUrl: './tab-pane.component.scss'
 })
 export class TabPaneComponent extends AbstractFormElementHostComponent<TabPaneComponent> implements DynamicFormElementInterface, OnInit {
   active: boolean = false;

@@ -6,15 +6,14 @@ import {FormElementHostDirective} from "../../form-element-host.directive";
 import {ReactiveFormsModule} from "@angular/forms";
 
 @Component({
-  selector: 'fg-card',
-  standalone: true,
-  imports: [
-    NgIf,
-    FormElementHostDirective,
-    ReactiveFormsModule
-  ],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.scss'
+    selector: 'fg-card',
+    imports: [
+        NgIf,
+        FormElementHostDirective,
+        ReactiveFormsModule
+    ],
+    templateUrl: './card.component.html',
+    styleUrl: './card.component.scss'
 })
 export class CardComponent extends AbstractFormElementHostComponent<CardComponent> implements DynamicFormElementInterface {
 

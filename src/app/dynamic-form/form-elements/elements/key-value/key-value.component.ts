@@ -12,16 +12,15 @@ import {JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {KeyValueElementComponent} from "./key-value-element/key-value-element.component";
 
 @Component({
-  selector: 'fg-key-value',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    JsonPipe,
-    NgForOf,
-    KeyValueElementComponent,
-    NgIf
-  ],
-  templateUrl: './key-value.component.html',
-  styleUrl: './key-value.component.scss'
+    selector: 'fg-key-value',
+    imports: [
+        ReactiveFormsModule,
+        JsonPipe,
+        NgForOf,
+        KeyValueElementComponent,
+        NgIf
+    ],
+    templateUrl: './key-value.component.html',
+    styleUrl: './key-value.component.scss'
 })
 export class KeyValueComponent extends AbstractInputComponent {}

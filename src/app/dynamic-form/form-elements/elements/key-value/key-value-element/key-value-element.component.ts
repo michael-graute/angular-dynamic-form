@@ -10,26 +10,25 @@ import {
 import {NgForOf} from "@angular/common";
 
 @Component({
-  selector: 'fg-key-value-element',
-  standalone: true,
-  imports: [
-    NgForOf,
-    FormsModule
-  ],
-  templateUrl: './key-value-element.component.html',
-  styleUrl: './key-value-element.component.scss',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => KeyValueElementComponent),
-      multi: true
-    },
-    {
-      provide: NG_VALIDATORS,
-      multi: true,
-      useExisting: forwardRef(() => KeyValueElementComponent)
-    }
-  ],
+    selector: 'fg-key-value-element',
+    imports: [
+        NgForOf,
+        FormsModule
+    ],
+    templateUrl: './key-value-element.component.html',
+    styleUrl: './key-value-element.component.scss',
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => KeyValueElementComponent),
+            multi: true
+        },
+        {
+            provide: NG_VALIDATORS,
+            multi: true,
+            useExisting: forwardRef(() => KeyValueElementComponent)
+        }
+    ]
 })
 export class KeyValueElementComponent implements ControlValueAccessor, Validator {
 

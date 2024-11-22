@@ -13,16 +13,15 @@ export type CustomButtonCallBackPayload = {
 }
 
 @Component({
-  selector: 'fg-dynamic-form',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    FormElementHostDirective,
-    NgForOf,
-    NgIf
-  ],
-  templateUrl: './dynamic-form.component.html',
-  styleUrl: './dynamic-form.component.scss'
+    selector: 'fg-dynamic-form',
+    imports: [
+        ReactiveFormsModule,
+        FormElementHostDirective,
+        NgForOf,
+        NgIf
+    ],
+    templateUrl: './dynamic-form.component.html',
+    styleUrl: './dynamic-form.component.scss'
 })
 export class DynamicFormComponent implements OnInit {
   @Input() id: string = '';

@@ -8,15 +8,14 @@ import {TabService} from "./tab.service";
 import {DynamicFormService, ElementAddedPayload, ElementRemovedPayload} from "../../../dynamic-form.service";
 
 @Component({
-  selector: 'fg-tab-container',
-  standalone: true,
-  imports: [
-    FormElementHostDirective,
-    NgForOf,
-    NgIf
-  ],
-  templateUrl: './tab-container.component.html',
-  styleUrl: './tab-container.component.scss'
+    selector: 'fg-tab-container',
+    imports: [
+        FormElementHostDirective,
+        NgForOf,
+        NgIf
+    ],
+    templateUrl: './tab-container.component.html',
+    styleUrl: './tab-container.component.scss'
 })
 export class TabContainerComponent extends AbstractFormElementHostComponent<TabContainerComponent> implements DynamicFormElementInterface, OnInit {
   activeTab: number = 0;

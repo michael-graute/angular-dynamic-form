@@ -4,13 +4,12 @@ import {DynamicFormElementInterface} from "../../../../dynamic-form-element.inte
 import {FormElementHostDirective} from "../../../form-element-host.directive";
 
 @Component({
-  selector: 'fg-col',
-  standalone: true,
-  imports: [
-    FormElementHostDirective
-  ],
-  templateUrl: './col.component.html',
-  styleUrl: './col.component.scss',
+    selector: 'fg-col',
+    imports: [
+        FormElementHostDirective
+    ],
+    templateUrl: './col.component.html',
+    styleUrl: './col.component.scss'
 })
 export class ColComponent extends AbstractFormElementHostComponent<ColComponent> implements DynamicFormElementInterface, OnInit {
   @HostBinding('class') override className = 'col ';
