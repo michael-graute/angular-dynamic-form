@@ -3,7 +3,7 @@ import {FormControl, FormControlName, FormGroup, ValidatorFn, Validators} from "
 import {FormElement} from "../dynamic-form.types";
 import {DynamicFormElementInterface} from "../dynamic-form-element.interface";
 
-@Component({standalone: true, template: ``})
+@Component({template: ``})
 export abstract class AbstractInputComponent implements DynamicFormElementInterface, OnInit, OnDestroy {
   id: string = '';
   form: FormGroup = new FormGroup({});

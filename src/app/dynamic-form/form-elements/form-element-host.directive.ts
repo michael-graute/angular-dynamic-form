@@ -1,8 +1,7 @@
 import {Directive, Input, ViewContainerRef} from '@angular/core';
 
 @Directive({
-  selector: '[fgFormElementHost]',
-  standalone: true
+  selector: '[fgFormElementHost]'
 })
 export class FormElementHostDirective {
 

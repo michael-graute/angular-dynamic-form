@@ -6,7 +6,7 @@ import {FormElementMap} from "../../form-elements.map";
 import {FormGroup} from "@angular/forms";
 import {DynamicFormService, ElementAddedPayload} from "../../dynamic-form.service";
 
-@Component({standalone: true, template: ``})
+@Component({template: ``})
 export abstract class AbstractFormElementHostComponent<T> implements OnInit {
   @Input() form = new FormGroup({})
   @Input() debug = false;
