@@ -48,6 +48,30 @@
   ],
   "elements": [
     {
+      "key": "form-group",
+      "type": "formGroup",
+      "children": [
+        {
+          "type": "input",
+          "key": "formGroupName1",
+          "label": "Name 1",
+          "floatingLabel": true
+        },
+        {
+          "type": "input",
+          "key": "formGroupName2",
+          "label": "Name 2",
+          "floatingLabel": true
+        },
+        {
+          "type": "input",
+          "key": "formGroupName3",
+          "label": "Name 3",
+          "floatingLabel": true
+        }
+      ]
+    },
+    {
       "key": "email",
       "label": "E-Mail",
       "floatingLabel": true,

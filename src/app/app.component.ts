@@ -24,6 +24,16 @@ export class AppComponent {
     this.counter++;
     this.dynamicFormService.addElement(
       {
+        "key": "fooNameFormGroup" + this.counter,
+        "label": "Foo Name "  + this.counter,
+        "floatingLabel": true,
+        "type": "input",
+        "controlType": "text",
+        "value": "Foooooooo"
+      }, 'form-group'
+    )
+    this.dynamicFormService.addElement(
+      {
         'key': 'newTabPane' + this.counter,
         'type': 'tabPane',
         'label': 'New Tab' + this.counter,

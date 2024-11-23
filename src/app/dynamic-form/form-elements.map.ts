@@ -7,6 +7,7 @@ import {RowComponent} from "./form-elements/containers/row/row.component";
 import {ColComponent} from "./form-elements/containers/row/col/col.component";
 import {CardComponent} from "./form-elements/containers/card/card.component";
 import {KeyValueComponent} from "./form-elements/elements/key-value/key-value.component";
+import {FormGroupComponent} from "./form-elements/containers/form-group/form-group.component";
 
 export const FormElementMap = {
   'fieldset': FieldsetComponent,
@@ -15,6 +16,7 @@ export const FormElementMap = {
   'row': RowComponent,
   'col': ColComponent,
   'card': CardComponent,
+  'formGroup': FormGroupComponent,
 
   'input': InputComponent,
   'select': SelectComponent,

@@ -11,6 +11,8 @@ export abstract class AbstractFormElementHostComponent<T> implements OnInit {
   @Input() form = new FormGroup({})
   @Input() debug = false;
 
+  formGroup: FormGroup | null = null;
+
   @ViewChild(FormElementHostDirective, {static: true}) formElementHost!: FormElementHostDirective;
 
   @HostBinding('class') className = '';
@@ -41,9 +43,10 @@ export abstract class AbstractFormElementHostComponent<T> implements OnInit {
     const componentRef: ComponentRef<DynamicFormElementInterface> = this.formElementHost.viewContainerRef.createComponent<DynamicFormElementInterface>(FormElementMap[formElement.type])
     componentRef.instance.id = formElement.key
     componentRef.instance.children = formElement.children
-    componentRef.instance.form = this.form
+    componentRef.instance.form = this.formGroup ?? this.form
     componentRef.instance.config = formElement
     componentRef.instance.debug = this.debug
+    componentRef.instance.formGroup = this.formGroup
     this.dynamicFormService.addComponentRef(componentRef, formElement.key)
     return componentRef;
   }
