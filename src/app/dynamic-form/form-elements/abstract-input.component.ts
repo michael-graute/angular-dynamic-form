@@ -1,7 +1,8 @@
 import {Component, HostBinding, OnDestroy, OnInit} from "@angular/core";
-import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
+import {FormControl, FormGroup, ValidatorFn} from "@angular/forms";
 import {FormElement} from "../dynamic-form.types";
 import {DynamicFormElementInterface} from "../dynamic-form-element.interface";
+import {DynamicFormValidators} from "../dynamic-form-validators";
 
 @Component({template: ``})
 export abstract class AbstractInputComponent implements DynamicFormElementInterface, OnInit, OnDestroy {
@@ -19,21 +20,8 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
 
     let validators:ValidatorFn[] = [];
     this.config?.validators?.forEach((validator: any) => {
-      switch (validator.name) {
-        case 'email':
-          validators.push(Validators.email)
-          break;
-        case 'required':
-          validators.push(Validators.required);
-          if(this.config) this.config.required = true
-          break;
-        case 'minLength':
-          validators.push(Validators.minLength(validator.value));
-          break;
-        case 'maxLength':
-          validators.push(Validators.maxLength(validator.value));
-          break;
-      }
+      //@ts-ignore
+      validators.push(DynamicFormValidators[validator.name](validator.value))
     });
     this.control = new FormControl(this.config?.value, validators);
     this.form.addControl(this.id, this.control);
