@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {CustomButtonCallBackPayload, DynamicFormComponent} from "./dynamic-form/dynamic-form.component";
 import {FormGroup} from "@angular/forms";
-import {JsonPipe, NgIf} from "@angular/common";
+import {NgIf} from "@angular/common";
 import {DynamicFormService} from "./dynamic-form/dynamic-form.service";
 
 
