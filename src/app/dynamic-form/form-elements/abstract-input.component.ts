@@ -8,7 +8,6 @@ import {DynamicFormValidators} from "../dynamic-form-validators";
 export abstract class AbstractInputComponent implements DynamicFormElementInterface, OnInit, OnDestroy {
   id: string = '';
   form: FormGroup = new FormGroup({});
-  formGroup: FormGroup | null = null;
   config: FormElement | undefined;
   control: FormControl | undefined;
   hidden = false
@@ -25,11 +24,8 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
       validators.push(DynamicFormValidators[validator.name](validator.value))
     });
     this.control = new FormControl(this.config?.value, validators);
-    if(this.formGroup) {
-      this.formGroup.addControl(this.id, this.control);
-    } else {
-      this.form.addControl(this.id, this.control);
-    }
+    this.form.addControl(this.id, this.control);
+
   }
 
   ngOnDestroy() {

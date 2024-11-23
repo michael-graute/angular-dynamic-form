@@ -46,7 +46,6 @@ export abstract class AbstractFormElementHostComponent<T> implements OnInit {
     componentRef.instance.form = this.formGroup ?? this.form
     componentRef.instance.config = formElement
     componentRef.instance.debug = this.debug
-    componentRef.instance.formGroup = this.formGroup
     this.dynamicFormService.addComponentRef(componentRef, formElement.key)
     return componentRef;
   }

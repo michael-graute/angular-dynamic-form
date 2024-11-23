@@ -50,6 +50,9 @@
     {
       "key": "form-group",
       "type": "formGroup",
+      "settings": {
+        "multiple": true
+      },
       "children": [
         {
           "type": "input",
