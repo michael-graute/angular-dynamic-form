@@ -47,4 +47,10 @@ export class DynamicFormValidators {
     }
   }
 
+  static pattern(pattern: string): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      return Validators.pattern(pattern);
+    }
+  }
+
 }

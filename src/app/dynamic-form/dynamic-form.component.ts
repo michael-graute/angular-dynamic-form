@@ -71,7 +71,7 @@ export class DynamicFormComponent implements OnInit {
       }
     })
     this.dynamicFormService.onPopulateFormData.subscribe((payload: any) => {
-      this.form.setValue(payload)
+      this.form.patchValue(payload)
     })
   }
   formSubmit(context: DynamicFormComponent) {
