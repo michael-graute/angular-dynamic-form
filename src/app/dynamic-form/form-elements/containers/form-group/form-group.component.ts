@@ -18,13 +18,8 @@ export class FormGroupComponent extends AbstractFormElementHostComponent<FormGro
   override formGroup = new FormGroup({})
 
   override ngOnInit() {
-    console.log(this.config?.settings)
-    if(this.config?.settings.multiple) {
-      this.form.addControl(this.id, new FormArray([this.formGroup]))
-    } else {
       this.form.addControl(this.id, this.formGroup)
-    }
-    super.ngOnInit()
+      super.ngOnInit()
   }
 
 }

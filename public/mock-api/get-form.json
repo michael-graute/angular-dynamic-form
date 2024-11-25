@@ -48,29 +48,51 @@
   ],
   "elements": [
     {
-      "key": "form-group",
-      "type": "formGroup",
-      "settings": {
-        "multiple": true
-      },
+      "key": "card-with-form-group",
+      "label": "Card Container with Form Group",
+      "type": "card",
       "children": [
         {
-          "type": "input",
-          "key": "formGroupName1",
-          "label": "Name 1",
-          "floatingLabel": true
-        },
-        {
-          "type": "input",
-          "key": "formGroupName2",
-          "label": "Name 2",
-          "floatingLabel": true
-        },
-        {
-          "type": "input",
-          "key": "formGroupName3",
-          "label": "Name 3",
-          "floatingLabel": true
+          "key": "form-group",
+          "type": "formGroup",
+          "children": [
+            {
+              "key": "formGroupRow1",
+              "type": "row",
+              "children": [
+                {
+                  "key": "formGroupRow1Col1",
+                  "type": "col",
+                  "children": [
+                    {
+                      "type": "input",
+                      "key": "formGroupName1",
+                      "label": "Name 1",
+                      "floatingLabel": true
+                    }
+                  ]
+                },
+                {
+                  "key": "formGroupRow1Col2",
+                  "type": "col",
+                  "children": [
+                    {
+                      "type": "input",
+                      "key": "formGroupName2",
+                      "label": "Name 2",
+                      "floatingLabel": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "input",
+              "key": "formGroupName3",
+              "label": "Name 3",
+              "floatingLabel": true
+            }
+          ]
         }
       ]
     },

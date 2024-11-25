@@ -1,19 +1,15 @@
 {
-  "email": "Foo@bar invalid",
-  "name1": "Values from REST API, way too long",
+  "email": "Foo@bar",
+  "name1": "from REST",
   "name2": "Foo changed",
   "name4": "two",
   "name3": "Text Input 2",
   "tabPane2name5": "Foo",
-  "form-group": [{
+  "form-group": {
     "formGroupName1": "Remote content",
     "formGroupName2": "Remote content",
     "formGroupName3": "Remote content"
-  },{
-    "formGroupName1": "Remote content",
-    "formGroupName2": "Remote content",
-    "formGroupName3": "Remote content"
-  }],
+  },
   "key-value": [
     {
       "foo": "bar",
