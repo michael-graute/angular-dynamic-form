@@ -11,7 +11,11 @@
       },
       "callback": {
         "function": "formSubmit",
-        "params": ["foo", "bar", 1234]
+        "params": [
+          "foo",
+          "bar",
+          1234
+        ]
       }
     },
     {
@@ -22,7 +26,11 @@
       "class": "btn-danger",
       "callback": {
         "function": "formCancel",
-        "params": ["foo", "bar", 1234]
+        "params": [
+          "foo",
+          "bar",
+          1234
+        ]
       }
     },
     {
@@ -33,7 +41,11 @@
       "class": "btn-warning",
       "callback": {
         "function": "formReset",
-        "params": ["foo", "bar", 1234]
+        "params": [
+          "foo",
+          "bar",
+          1234
+        ]
       }
     },
     {
@@ -42,7 +54,12 @@
       "label": "Custom Callback",
       "callback": {
         "function": "customCallback",
-        "params": ["foo", "bar", 1234, false]
+        "params": [
+          "foo",
+          "bar",
+          1234,
+          false
+        ]
       }
     }
   ],
@@ -68,7 +85,9 @@
                       "type": "input",
                       "key": "formGroupName1",
                       "label": "Name 1",
-                      "floatingLabel": true
+                      "settings": {
+                        "floatingLabel": true
+                      }
                     }
                   ]
                 },
@@ -80,7 +99,9 @@
                       "type": "input",
                       "key": "formGroupName2",
                       "label": "Name 2",
-                      "floatingLabel": true
+                      "settings": {
+                        "floatingLabel": true
+                      }
                     }
                   ]
                 }
@@ -90,7 +111,9 @@
               "type": "input",
               "key": "formGroupName3",
               "label": "Name 3",
-              "floatingLabel": true
+              "settings": {
+                "floatingLabel": true
+              }
             }
           ]
         }
@@ -99,7 +122,9 @@
     {
       "key": "email",
       "label": "E-Mail",
-      "floatingLabel": true,
+      "settings": {
+        "floatingLabel": true
+      },
       "type": "input",
       "controlType": "email",
       "validators": [
@@ -117,7 +142,9 @@
           "type": "input",
           "key": "name1",
           "label": "Name",
-          "floatingLabel": true,
+          "settings": {
+            "floatingLabel": true
+          },
           "validators": [
             {
               "name": "required"
@@ -172,7 +199,9 @@
                           "type": "select",
                           "key": "name4",
                           "label": "Foo",
-                          "floatingLabel": true,
+                          "settings": {
+                              "floatingLabel": true
+                          },
                           "options": [
                             {
                               "label": "One",
@@ -205,7 +234,9 @@
                           "key": "name3",
                           "controlType": "text",
                           "label": "Name 3",
-                          "floatingLabel": true,
+                          "settings": {
+                            "floatingLabel": true
+                          },
                           "validators": [
                             {
                               "name": "maxLength",

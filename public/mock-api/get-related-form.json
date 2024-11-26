@@ -72,19 +72,26 @@
         {
           "key": "related-email",
           "label": "Related E-Mail",
-          "floatingLabel": true,
+          "settings": {
+            "floatingLabel": true
+          },
           "type": "input",
           "controlType": "email",
           "validators": [
             {
               "name": "email"
+            },
+            {
+              "name": "required"
             }
           ]
         },
         {
           "key": "related-email-2",
           "label": "Related E-Mail 2",
-          "floatingLabel": true,
+          "settings": {
+            "floatingLabel": true
+          },
           "type": "input",
           "controlType": "email",
           "validators": [
@@ -97,6 +104,16 @@
           "key": "related-key-value",
           "type": "key-value",
           "label": "Related Key-Value Input",
+          "validators": [
+            {
+              "name": "minItems",
+              "value": 2
+            },
+            {
+              "name": "maxItems",
+              "value": 4
+            }
+          ],
           "settings": {
             "colDefs": [
               {
