@@ -73,10 +73,12 @@ export class KeyValueElementComponent implements ControlValueAccessor, Validator
     this.value.push(
       newValueRow
     )
+    this.onChange(this.value)
   }
 
   removeRow(index: number): void {
     this.value.splice(index, 1)
+    this.onChange(this.value)
   }
 
 }

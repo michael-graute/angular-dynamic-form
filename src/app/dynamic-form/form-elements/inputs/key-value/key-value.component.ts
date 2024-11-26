@@ -3,16 +3,17 @@ import {
   ReactiveFormsModule,
 } from "@angular/forms";
 import {AbstractInputComponent} from "../abstract-input.component";
-import {NgIf} from "@angular/common";
+import {JsonPipe, NgIf} from "@angular/common";
 import {KeyValueElementComponent} from "./key-value-element/key-value-element.component";
 
 @Component({
     selector: 'fg-key-value',
-    imports: [
-        ReactiveFormsModule,
-        KeyValueElementComponent,
-        NgIf
-    ],
+  imports: [
+    ReactiveFormsModule,
+    KeyValueElementComponent,
+    NgIf,
+    JsonPipe
+  ],
     templateUrl: './key-value.component.html',
     styleUrl: './key-value.component.scss'
 })
