@@ -4,7 +4,7 @@
 <p>It uses the built-in formSubmit event to log the form's values to the console, as well as some basic validation</p>
 <p>An additional Button is configured which uses the customCallBack event to load and populate some data from a remote resource</p>
 <p>The form inputs are wrapped in "card", "row" and "col" layout elements to provide a simple layout</p>
-<fg-dynamic-form id="simpleForm" asyncUrl="/get-simple-form" (onFormSubmit)="formSubmit($event)" (onCustomCallBack)="loadFormData($event)" (onFormConfigLoaded)="formConfigLoaded($event)"/>
+<fg-dynamic-form id="simpleForm" asyncUrl="/get-form-layout" (onFormSubmit)="formSubmit($event)" (onCustomCallBack)="loadFormData($event)" (onFormConfigLoaded)="formConfigLoaded($event)"/>
 
 <div *ngIf="formConfig">
   <button type="button" class="btn btn-primary" (click)="toggleFormConfig()">Show Config</button>

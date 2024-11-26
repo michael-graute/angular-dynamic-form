@@ -3,7 +3,7 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item" *ngFor="let tab of children; let i = index">
-        <a class="nav-link" aria-current="page" href="#" [class]="{'active': activeTab === i}" (click)="tabClicked(tab?.key, i)">{{ tab?.label }}</a>
+        <a class="nav-link" aria-current="page" href="#" [class]="{'active': activeTab === i}" (click)="tabClicked(tab?.key, i, $event)">{{ tab?.label }}</a>
       </li>
     </ul>
   </div>

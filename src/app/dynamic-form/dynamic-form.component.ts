@@ -34,6 +34,7 @@ export class DynamicFormComponent implements OnInit {
   @Output() onFormSubmit = new EventEmitter<FormGroup>();
   @Output() onFormCancel = new EventEmitter<FormGroup>();
   @Output() onFormReset = new EventEmitter<FormGroup>();
+  @Output() onFormConfigLoaded = new EventEmitter<FormConfig>();
 
   @ViewChild(FormElementHostDirective, {static: true}) formElementHost!: FormElementHostDirective;
 
@@ -53,12 +54,13 @@ export class DynamicFormComponent implements OnInit {
 
 
   ngOnInit() {
-    if(this.asyncUrl != null){
+    if(this.asyncUrl != null) {
       this.dynamicFormService.loadForm(this.asyncUrl).subscribe((formConfig: FormConfig) => {
         this.formConfig = formConfig;
         this.formConfig.elements.forEach(element => {
           this.addFormElement(element);
         })
+        this.onFormConfigLoaded.emit(this.formConfig);
       })
     } else {
       this.formConfig?.elements.forEach(element => {

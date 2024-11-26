@@ -9,6 +9,7 @@ import {CardComponent} from "./form-elements/containers/card/card.component";
 import {KeyValueComponent} from "./form-elements/inputs/key-value/key-value.component";
 import {FormGroupComponent} from "./form-elements/containers/form-group/form-group.component";
 import {DataRelationComponent} from "./form-elements/inputs/data-relation/data-relation.component";
+import {FormTextComponent} from "./form-elements/elements/form-text/form-text.component";
 
 export const FormElementMap = {
   'fieldset': FieldsetComponent,
@@ -18,6 +19,8 @@ export const FormElementMap = {
   'col': ColComponent,
   'card': CardComponent,
   'formGroup': FormGroupComponent,
+
+  'form-text': FormTextComponent,
 
   'input': InputComponent,
   'select': SelectComponent,

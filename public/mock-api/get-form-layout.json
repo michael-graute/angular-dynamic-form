@@ -22,7 +22,7 @@
       "class": "btn-primary",
       "callback": {
         "function": "customCallback",
-        "params": {"url": "/get-simple-form-data"}
+        "params": {"url": "/get-form-layout-data"}
       }
     }
   ],
@@ -30,8 +30,13 @@
     {
       "key": "user-information",
       "type": "card",
-      "label": "User Information",
+      "label": "Layout Container of Type \"card\"",
       "children": [
+        {
+          "key": "formTextRowCols",
+          "type": "form-text",
+          "value": "<p>The following elements are wrapped inside \"row\" and \"col\" layout containers</p>"
+        },
         {
           "key": "name-row",
           "type": "row",
@@ -108,19 +113,73 @@
           ]
         },
         {
-          "key": "email",
-          "label": "E-Mail Address",
-          "type": "input",
-          "controlType": "email",
-          "settings": {
-            "floatingLabel": true
-          },
-          "validators": [
+          "key": "contact-row",
+          "type": "row",
+          "children": [
             {
-              "name": "email"
+              "key": "email-col",
+              "type": "col",
+              "children": [{
+                "key": "email",
+                "label": "E-Mail Address",
+                "type": "input",
+                "controlType": "email",
+                "settings": {
+                  "floatingLabel": true
+                },
+                "validators": [
+                  {
+                    "name": "email"
+                  },
+                  {
+                    "name": "required"
+                  }
+                ]
+              }]
             },
             {
-              "name": "required"
+              "key": "phone-col",
+              "type": "col",
+              "children": [
+                {
+                  "key": "phone",
+                  "label": "Telephone",
+                  "type": "input",
+                  "controlType": "phone",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "formTextRowCols",
+          "type": "form-text",
+          "value": "<h6>Layout Container of type \"tabContainer\"</h6>"
+        },
+        {
+          "key": "tabContainer",
+          "type": "tabContainer",
+          "children": [
+            {
+              "key": "tabOne",
+              "type": "tabPane",
+              "label": "Tab No. 1",
+              "children": [
+                {
+                  "key": "tabOneText",
+                  "type": "form-text",
+                  "value": "foo"
+                }
+              ]
+            },
+            {
+              "key": "tabTwo",
+              "type": "tabPane",
+              "label": "Tab No. 2",
+              "children": []
             }
           ]
         }

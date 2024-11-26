@@ -52,7 +52,8 @@ export class TabContainerComponent extends AbstractFormElementHostComponent<TabC
     })
   }
 
-  tabClicked(tabId: string | undefined, index: number): void {
+  tabClicked(tabId: string | undefined, index: number, evt: MouseEvent | null = null): void {
+    evt?.preventDefault();
     this.tabService.clickTab(tabId ?? '');
     this.activeTab = index
   }
