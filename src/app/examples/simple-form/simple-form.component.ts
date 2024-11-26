@@ -1,20 +1,18 @@
 import {Component} from '@angular/core';
 import {DynamicFormComponent} from "../../dynamic-form/dynamic-form.component";
 import {FormGroup} from "@angular/forms";
-import {JsonPipe, NgIf} from "@angular/common";
+import {ConfigDisplayComponent} from "../../helpers/config-display/config-display.component";
 
 @Component({
   selector: 'fg-simple-form',
   imports: [
     DynamicFormComponent,
-    NgIf,
-    JsonPipe
+    ConfigDisplayComponent
   ],
   templateUrl: './simple-form.component.html',
   styleUrl: './simple-form.component.scss'
 })
 export class SimpleFormComponent {
-  showConfig = false;
   formConfig: any = {
     buttons: [
       {
@@ -83,9 +81,5 @@ export class SimpleFormComponent {
 
   formSubmit(formGroup: FormGroup): void {
     console.log(formGroup.getRawValue());
-  }
-
-  toggleFormConfig() {
-    this.showConfig = !this.showConfig;
   }
 }

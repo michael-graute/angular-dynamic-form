@@ -38,3 +38,16 @@ label {
     display: block;
   }
 }
+
+.card {
+  .card-body {
+    &.config-display {
+      max-height: 400px;
+      overflow: scroll;
+      scrollbar-width: thin;
+      pre {
+        overflow: initial;
+      }
+    }
+  }
+}

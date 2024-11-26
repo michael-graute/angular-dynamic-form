@@ -5,7 +5,4 @@
 
 <fg-dynamic-form id="simpleForm" [formConfig]="formConfig" (onFormSubmit)="formSubmit($event)"/>
 
-<div>
-  <button type="button" class="btn btn-primary" (click)="toggleFormConfig()">Show Config</button>
-  <pre *ngIf="showConfig">{{formConfig | json}}</pre>
-</div>
+<fg-config-display [formConfig]="formConfig"></fg-config-display>

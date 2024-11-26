@@ -1,0 +1,10 @@
+<div *ngIf="formConfig">
+  <div class="card mb-5 mt-5">
+    <div class="card-header">
+      <button type="button" class="btn btn-dark btn-sm" (click)="toggleFormConfig()">{{ showConfig ? 'Hide' : 'Show' }} Config</button>
+    </div>
+    <div *ngIf="showConfig" class="card-body config-display">
+      <pre [innerHTML]="formConfigPretty"></pre>
+    </div>
+  </div>
+</div>
