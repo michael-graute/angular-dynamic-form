@@ -4,6 +4,7 @@ import {JsonPipe, NgIf} from "@angular/common";
 import {DynamicFormService} from "../../dynamic-form/dynamic-form.service";
 import {FormConfig} from "../../dynamic-form/dynamic-form.types";
 import {FormGroup} from "@angular/forms";
+import {prettyPrintJson} from "pretty-print-json";
 
 @Component({
   selector: 'fg-form-layouts',
@@ -18,12 +19,14 @@ import {FormGroup} from "@angular/forms";
 export class FormLayoutsComponent {
   showConfig = false;
   formConfig: FormConfig | undefined = undefined;
+  formConfigPretty: any = '';
 
   constructor(private dynamicFormService: DynamicFormService) {
   }
 
   formConfigLoaded(formConfig: FormConfig) {
     this.formConfig = formConfig;
+    this.formConfigPretty = prettyPrintJson.toHtml(this.formConfig, {lineNumbers: false});
   }
 
   formSubmit(formGroup: FormGroup): void {

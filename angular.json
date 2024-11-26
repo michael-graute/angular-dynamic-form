@@ -32,7 +32,8 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/pretty-print-json/dist/css/pretty-print-json.dark-mode.min.css"
             ],
             "scripts": []
           },

@@ -8,5 +8,5 @@
 
 <div *ngIf="formConfig">
   <button type="button" class="btn btn-primary" (click)="toggleFormConfig()">{{ showConfig ? 'Hide' : 'Show' }} Config</button>
-  <pre *ngIf="showConfig">{{formConfig | json}}</pre>
+  <pre *ngIf="showConfig" [innerHTML]="formConfigPretty"></pre>
 </div>
