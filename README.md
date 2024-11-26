@@ -2,8 +2,9 @@
 
 Proof of Concept of a dynamic form component that lets you easily build full blown forms with different layout-components, validation and custom input-types from a json configuration which can be served from a REST API, .json file or local variable.
 
-![dynamic-form-screenshot.png](dynamic-form-screenshot.png)
+![dynamic-form-screenshot.png](dynamic-form-screenshot.png)  
 
+![dynamic-form-screenshot-2.png](dynamic-form-screenshot-2.png)
 ## Installation
 
 run `git clone https://github.com/michael-graute/angular-dynamic-form.git`  
