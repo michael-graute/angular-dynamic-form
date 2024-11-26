@@ -4,13 +4,13 @@ export class DynamicFormValidators {
 
   static minItems(minItems: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      return (control.value?.length < minItems || control.value === null) ? {minItems: {param: minItems, value: control.value?.length || 0}} : null;
+      return (control.value?.length < minItems || control.value === null) ? {minItems: {expected: minItems, given: control.value?.length || 0}} : null;
     };
   }
 
   static maxItems(maxItems: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      return (control.value?.length > maxItems) ? {maxItems: {param: maxItems, value: control.value?.length || 0}} : null;
+      return (control.value?.length > maxItems) ? {maxItems: {expected: maxItems, given: control.value?.length || 0}} : null;
     };
   }
 
@@ -22,13 +22,13 @@ export class DynamicFormValidators {
 
   static minLength(minLength: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      return (control.value?.length < minLength || control.value === null) ? {minLength: {param: minLength,value: control.value?.length || 0}} : null;
+      return (control.value?.length < minLength || control.value === null) ? {minLength: {expected: minLength,given: control.value?.length || 0}} : null;
     };
   }
 
   static maxLength(maxLength: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      return (control.value?.length > maxLength) ? {maxLength: {param: maxLength, value: control.value?.length}} : null;
+      return (control.value?.length > maxLength) ? {maxLength: {expected: maxLength, given: control.value?.length}} : null;
     };
   }
 

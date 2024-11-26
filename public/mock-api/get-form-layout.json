@@ -215,7 +215,49 @@
               "key": "tabTwo",
               "type": "tabPane",
               "label": "Tab No. 2",
-              "children": []
+              "children": [
+                {
+                  "key": "key-value",
+                  "type": "key-value",
+                  "label": "Key-Value Input",
+                  "validators": [
+                    {
+                      "name": "minItems",
+                      "value": 2
+                    },
+                    {
+                      "name": "maxItems",
+                      "value": 4
+                    }
+                  ],
+                  "settings": {
+                    "colDefs": [
+                      {
+                        "header": "Some Foo",
+                        "type": "text",
+                        "varName": "foo"
+                      },
+                      {
+                        "header": "Some Bar",
+                        "type": "text",
+                        "varName": "bar"
+                      },
+                      {
+                        "header": "Some Baz",
+                        "type": "text",
+                        "varName": "baz"
+                      }
+                    ]
+                  },
+                  "value": [
+                    {
+                      "foo": null,
+                      "bar": null,
+                      "baz": null
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }

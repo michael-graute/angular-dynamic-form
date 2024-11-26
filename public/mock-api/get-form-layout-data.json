@@ -8,5 +8,17 @@
     "foo": "foo remote",
     "bar": "bar remote",
     "baz": "baz remote"
-  }
+  },
+  "key-value": [
+    {
+      "foo": "remote foo 1",
+      "bar": "remote bar 1",
+      "baz": "remote baz 1"
+    },
+    {
+      "foo": "remote foo 2",
+      "bar": "remote bar 2",
+      "baz": "remote baz 2"
+    }
+  ]
 }

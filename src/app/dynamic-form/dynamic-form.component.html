@@ -5,7 +5,7 @@
   <div *ngIf="formConfig?.buttons" class="form-footer button-row d-flex gap-1 justify-content-end">
     <button
       *ngFor="let button of formConfig?.buttons"
-      [type]="button.type ?? 'button'" [class]="['btn', button.class ?? 'btn-primary']"
+      [type]="button.type" [class]="['btn', button.class ?? 'btn-primary']"
       (click)="buttonClick(button)"
       [disabled]="button.settings?.disableIfFormInvalid && !form.valid"
     >
