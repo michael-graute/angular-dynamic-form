@@ -1,8 +1,8 @@
 import {Component, HostBinding, OnDestroy, OnInit} from "@angular/core";
 import {FormControl, FormGroup, ValidatorFn} from "@angular/forms";
-import {FormElement} from "../dynamic-form.types";
-import {DynamicFormElementInterface} from "../dynamic-form-element.interface";
-import {DynamicFormValidators} from "../dynamic-form-validators";
+import {FormElement} from "../../dynamic-form.types";
+import {DynamicFormElementInterface} from "../../dynamic-form-element.interface";
+import {DynamicFormValidators} from "../../dynamic-form-validators";
 
 @Component({template: ``})
 export abstract class AbstractInputComponent implements DynamicFormElementInterface, OnInit, OnDestroy {

@@ -25,7 +25,7 @@ export type CustomButtonCallBackPayload = {
 })
 export class DynamicFormComponent implements OnInit {
   @Input() id: string = '';
-  @Input() formConfig: FormConfig = {buttons:[], elements: []};
+  @Input() formConfig: FormConfig | undefined;
   @Input() form = new FormGroup({})
   @Input() debug = false;
   @Input() asyncUrl: string | null = null;
@@ -61,7 +61,7 @@ export class DynamicFormComponent implements OnInit {
         })
       })
     } else {
-      this.formConfig.elements.forEach(element => {
+      this.formConfig?.elements.forEach(element => {
         this.addFormElement(element);
       })
     }

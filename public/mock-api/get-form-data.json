@@ -26,5 +26,21 @@
       "bar": null,
       "baz": null
     }
-  ]
+  ],
+  "data-relation": {
+    "related-email": "foo@bar",
+    "related-email-2": "bar@baz",
+    "related-key-value": [
+      {
+        "foo": "Foo",
+        "bar": "Bar",
+        "baz": "Baz"
+      },
+      {
+        "foo": "Foo1",
+        "bar": "Bar1",
+        "baz": "Baz1"
+      }
+    ]
+  }
 }

@@ -274,6 +274,14 @@
           "baz": null
         }
       ]
+    },
+    {
+      "key": "data-relation",
+      "type": "data-relation",
+      "label": "Data Relation Input",
+      "settings": {
+        "asyncUrl": "/get-related-form"
+      }
     }
   ]
 }

@@ -1,14 +1,9 @@
-import {Component, forwardRef, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {
-  AbstractControl,
-  ControlValueAccessor, FormControlName,
-  NG_VALIDATORS,
-  NG_VALUE_ACCESSOR, ReactiveFormsModule,
-  ValidationErrors,
-  Validator
+  ReactiveFormsModule,
 } from "@angular/forms";
-import {AbstractInputComponent} from "../../abstract-input.component";
-import {JsonPipe, NgForOf, NgIf} from "@angular/common";
+import {AbstractInputComponent} from "../abstract-input.component";
+import {NgIf} from "@angular/common";
 import {KeyValueElementComponent} from "./key-value-element/key-value-element.component";
 
 @Component({

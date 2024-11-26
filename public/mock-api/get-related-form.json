@@ -1,0 +1,130 @@
+{
+  "buttons": [
+    {
+      "key": "submit",
+      "type": "submit",
+      "label": "Submit",
+      "icon": "bi-plus",
+      "class": "btn-success",
+      "settings": {
+        "disableIfFormInvalid": true
+      },
+      "callback": {
+        "function": "formSubmit",
+        "params": [
+          "foo",
+          "bar",
+          1234
+        ]
+      }
+    },
+    {
+      "key": "cancel",
+      "type": "submit",
+      "label": "Cancel",
+      "icon": "bi-plus",
+      "class": "btn-danger",
+      "callback": {
+        "function": "formCancel",
+        "params": [
+          "foo",
+          "bar",
+          1234
+        ]
+      }
+    },
+    {
+      "key": "reset",
+      "type": "submit",
+      "label": "Reset",
+      "icon": "bi-plus",
+      "class": "btn-warning",
+      "callback": {
+        "function": "formReset",
+        "params": [
+          "foo",
+          "bar",
+          1234
+        ]
+      }
+    },
+    {
+      "key": "customCallback",
+      "type": "submit",
+      "label": "Custom Callback",
+      "callback": {
+        "function": "customCallback",
+        "params": [
+          "foo",
+          "bar",
+          1234,
+          false
+        ]
+      }
+    }
+  ],
+  "elements": [
+    {
+      "type": "card",
+      "key": "related-card",
+      "label": "Foo",
+      "children": [
+        {
+          "key": "related-email",
+          "label": "Related E-Mail",
+          "floatingLabel": true,
+          "type": "input",
+          "controlType": "email",
+          "validators": [
+            {
+              "name": "email"
+            }
+          ]
+        },
+        {
+          "key": "related-email-2",
+          "label": "Related E-Mail 2",
+          "floatingLabel": true,
+          "type": "input",
+          "controlType": "email",
+          "validators": [
+            {
+              "name": "email"
+            }
+          ]
+        },
+        {
+          "key": "related-key-value",
+          "type": "key-value",
+          "label": "Related Key-Value Input",
+          "settings": {
+            "colDefs": [
+              {
+                "header": "Some Foo",
+                "type": "text",
+                "varName": "foo"
+              },
+              {
+                "header": "Some Bar",
+                "type": "text",
+                "varName": "bar"
+              },
+              {
+                "header": "Some Baz",
+                "type": "text",
+                "varName": "baz"
+              }
+            ]
+          },
+          "value": [
+            {
+              "foo": null,
+              "bar": null,
+              "baz": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

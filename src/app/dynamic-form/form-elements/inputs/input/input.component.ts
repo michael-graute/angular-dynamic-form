@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ReactiveFormsModule} from "@angular/forms";
 import {JsonPipe, NgIf} from "@angular/common";
-import {AbstractInputComponent} from "../../abstract-input.component";
+import {AbstractInputComponent} from "../abstract-input.component";
 
 @Component({
     selector: 'fg-text-input',
