@@ -1,9 +1,11 @@
 # Angular Dynamic Form Generator
 
+Proof of Concept of a dynamic form component that lets you easily build full blown forms with different layout-components, validation and custom input-types from a json configuration file which can be served from a REST API, .json File or variable.
+
 ## Installation
 
-clone this repository   
-`cd angular-dynamic-form`  
+run `git clone https://github.com/michael-graute/angular-dynamic-form.git`  
+run `cd angular-dynamic-form`  
 run `yarn install`
 
 ## Development server
