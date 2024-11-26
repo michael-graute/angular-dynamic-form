@@ -1,0 +1,119 @@
+{
+  "buttons": [
+    {
+      "key": "submit",
+      "type": "submit",
+      "label": "Submit",
+      "icon": "bi-plus",
+      "class": "btn-success",
+      "settings": {
+        "disableIfFormInvalid": true
+      },
+      "callback": {
+        "function": "formSubmit",
+        "params": ["foo", "bar", 1234]
+      }
+    }
+  ],
+  "elements": [
+    {
+      "key": "user-information",
+      "type": "card",
+      "label": "User Information",
+      "children": [
+        {
+          "key": "name-row",
+          "type": "row",
+          "children": [
+            {
+              "key": "gender-col",
+              "type": "col",
+              "class": "col-2",
+              "children": [
+                {
+                  "type": "select",
+                  "key": "gender",
+                  "label": "Gender",
+                  "settings": {
+                    "floatingLabel": true
+                  },
+                  "options": [
+                    {
+                      "label": "Mr.",
+                      "value": "male"
+                    },
+                    {
+                      "label": "Mrs.",
+                      "value": "female"
+                    },
+                    {
+                      "label": "Diverse",
+                      "value": "diverse"
+                    }
+                  ],
+                  "validators": [
+                    {
+                      "name": "required"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "firstname-col",
+              "type": "col",
+              "children": [{
+                "key": "firstname",
+                "label": "Firstname",
+                "type": "input",
+                "controlType": "text",
+                "settings": {
+                  "floatingLabel": true
+                }
+              }]
+            },
+            {
+              "key": "lastname-col",
+              "type": "col",
+              "children": [{
+                "key": "lastname",
+                "label": "Lastname",
+                "type": "input",
+                "controlType": "text",
+                "settings": {
+                  "floatingLabel": true
+                },
+                "validators": [
+                  {
+                    "name": "required"
+                  },
+                  {
+                    "name": "minLength",
+                    "value": 9
+                  }
+                ]
+              }]
+            }
+          ]
+        },
+        {
+          "key": "email",
+          "label": "E-Mail Address",
+          "type": "input",
+          "controlType": "email",
+          "settings": {
+            "floatingLabel": true
+          },
+          "validators": [
+            {
+              "name": "email"
+            },
+            {
+              "name": "required"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
