@@ -1,0 +1,12 @@
+{
+  "gender": "female",
+  "firstname": "Jane",
+  "lastname": "Doebarbaz",
+  "email": "jane.doe@foo.bar",
+  "phone": "+1 555 555 5555",
+  "formGroup": {
+    "foo": "foo remote",
+    "bar": "bar remote",
+    "baz": "baz remote"
+  }
+}

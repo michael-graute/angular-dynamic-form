@@ -171,7 +171,43 @@
                 {
                   "key": "tabOneText",
                   "type": "form-text",
-                  "value": "foo"
+                  "value": "<p>The following inputs are grouped inside a \"formGroup\" container, which will add a nested object into the forms values (submit and see the consoles log)</p>"
+                },
+                {
+                  "key": "formGroup",
+                  "type": "formGroup",
+                  "children": [
+                    {
+                      "key": "foo",
+                      "label": "Foo",
+                      "value": "foo default value",
+                      "type": "input",
+                      "controlType": "text",
+                      "settings": {
+                        "floatingLabel": true
+                      }
+                    },
+                    {
+                      "key": "bar",
+                      "label": "Bar",
+                      "value": "bar default value",
+                      "type": "input",
+                      "controlType": "text",
+                      "settings": {
+                        "floatingLabel": true
+                      }
+                    },
+                    {
+                      "key": "baz",
+                      "label": "Baz",
+                      "value": "baz default value",
+                      "type": "input",
+                      "controlType": "text",
+                      "settings": {
+                        "floatingLabel": true
+                      }
+                    }
+                  ]
                 }
               ]
             },

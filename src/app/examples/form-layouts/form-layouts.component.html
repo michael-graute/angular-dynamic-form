@@ -7,6 +7,6 @@
 <fg-dynamic-form id="simpleForm" asyncUrl="/get-form-layout" (onFormSubmit)="formSubmit($event)" (onCustomCallBack)="loadFormData($event)" (onFormConfigLoaded)="formConfigLoaded($event)"/>
 
 <div *ngIf="formConfig">
-  <button type="button" class="btn btn-primary" (click)="toggleFormConfig()">Show Config</button>
+  <button type="button" class="btn btn-primary" (click)="toggleFormConfig()">{{ showConfig ? 'Hide' : 'Show' }} Config</button>
   <pre *ngIf="showConfig">{{formConfig | json}}</pre>
 </div>
