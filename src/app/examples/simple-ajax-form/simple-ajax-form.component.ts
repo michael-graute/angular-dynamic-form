@@ -4,6 +4,8 @@ import {FormGroup} from "@angular/forms";
 import {DynamicFormService} from "../../dynamic-form/dynamic-form.service";
 import {FormConfig} from "../../dynamic-form/dynamic-form.types";
 import {ConfigDisplayComponent} from "../../helpers/config-display/config-display.component";
+import {prettyPrintJson} from "pretty-print-json";
+import {ModalService} from "../../helpers/modal/modal.service";
 
 @Component({
   selector: 'fg-simple-ajax-form',
@@ -17,7 +19,7 @@ import {ConfigDisplayComponent} from "../../helpers/config-display/config-displa
 export class SimpleAjaxFormComponent {
   formConfig: FormConfig | undefined = undefined;
 
-  constructor(private dynamicFormService: DynamicFormService) {
+  constructor(private dynamicFormService: DynamicFormService, private modalService: ModalService) {
   }
 
   formConfigLoaded(formConfig: FormConfig) {
@@ -25,7 +27,11 @@ export class SimpleAjaxFormComponent {
   }
 
   formSubmit(formGroup: FormGroup): void {
-    console.log(formGroup.getRawValue());
+    this.modalService.show({
+      title: 'Form Values',
+      size: 'modal-lg',
+      bodyText: '<pre>' + prettyPrintJson.toHtml(formGroup.getRawValue()) + '</pre>',
+    }, null)
   }
 
   loadFormData(evt: any) {

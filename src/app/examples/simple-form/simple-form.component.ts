@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {DynamicFormComponent} from "../../dynamic-form/dynamic-form.component";
 import {FormGroup} from "@angular/forms";
 import {ConfigDisplayComponent} from "../../helpers/config-display/config-display.component";
+import {prettyPrintJson} from "pretty-print-json";
+import {ModalService} from "../../helpers/modal/modal.service";
 
 @Component({
   selector: 'fg-simple-form',
@@ -13,6 +15,9 @@ import {ConfigDisplayComponent} from "../../helpers/config-display/config-displa
   styleUrl: './simple-form.component.scss'
 })
 export class SimpleFormComponent {
+  constructor(public modalService: ModalService) {
+  }
+
   formConfig: any = {
     buttons: [
       {
@@ -80,6 +85,10 @@ export class SimpleFormComponent {
   }
 
   formSubmit(formGroup: FormGroup): void {
-    console.log(formGroup.getRawValue());
+    this.modalService.show({
+      title: 'Form Values',
+      size: 'modal-lg',
+      bodyText: '<pre>' + prettyPrintJson.toHtml(formGroup.getRawValue()) + '</pre>',
+    }, null)
   }
 }

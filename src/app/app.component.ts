@@ -3,11 +3,12 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {CustomButtonCallBackPayload} from "./dynamic-form/dynamic-form.component";
 import {FormGroup} from "@angular/forms";
 import {DynamicFormService} from "./dynamic-form/dynamic-form.service";
+import {ModalComponent} from "./helpers/modal/modal.component";
 
 
 @Component({
     selector: 'fg-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, ModalComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })
