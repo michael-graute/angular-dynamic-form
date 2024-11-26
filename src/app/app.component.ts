@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {CustomButtonCallBackPayload, DynamicFormComponent} from "./dynamic-form/dynamic-form.component";
 import {FormGroup} from "@angular/forms";
 import {NgIf} from "@angular/common";
@@ -8,7 +8,7 @@ import {DynamicFormService} from "./dynamic-form/dynamic-form.service";
 
 @Component({
     selector: 'fg-root',
-    imports: [RouterOutlet, DynamicFormComponent, NgIf],
+  imports: [RouterOutlet, DynamicFormComponent, NgIf, RouterLink, RouterLinkActive],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })

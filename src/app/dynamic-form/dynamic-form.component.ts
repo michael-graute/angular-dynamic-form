@@ -3,7 +3,7 @@ import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {FormElementHostDirective} from "./form-elements/form-element-host.directive";
 import {DynamicFormElementInterface} from "./dynamic-form-element.interface";
 import {FormElementMap} from "./form-elements.map";
-import {FormButtonCallback, FormConfig, FormElement} from "./dynamic-form.types";
+import {FormButton, FormButtonCallback, FormConfig, FormElement} from "./dynamic-form.types";
 import {NgForOf, NgIf} from "@angular/common";
 import {DynamicFormService, ElementAddedPayload} from "./dynamic-form.service";
 
@@ -74,7 +74,10 @@ export class DynamicFormComponent implements OnInit {
       this.form.patchValue(payload)
     })
   }
-  formSubmit(context: DynamicFormComponent) {
+  formSubmit(context?: DynamicFormComponent | null) {
+    if(!context) {
+      context = this;
+    }
     context.onFormSubmit.emit(context.form);
   }
 
@@ -86,16 +89,18 @@ export class DynamicFormComponent implements OnInit {
     context.onFormReset.emit(context.form);
   }
 
-  buttonClick(callback: FormButtonCallback) {
-    const finalParameters = [this].concat(callback.params ?? []);
-    if(callback) {
+  buttonClick(button: FormButton) {
+    const finalParameters = [this].concat(button.callback.params ?? []);
+    if(button.callback) {
       //@ts-ignore
-      if (typeof this[callback.function] === 'function') {
-        //@ts-ignore
-        const fn: Function = this[callback.function];
-        fn.apply(null, finalParameters);
+      if (typeof this[button.callback.function] === 'function') {
+        if(button.type != 'submit') { //prevent onSubmitFunction from being called twice
+          //@ts-ignore
+          const fn: Function = this[button.callback.function];
+          fn.apply(null, finalParameters);
+        }
       } else {
-        this.onCustomCallBack.emit({form: this.form, callBack: callback});
+        this.onCustomCallBack.emit({form: this.form, callBack: button.callback});
       }
     }
   }

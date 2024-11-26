@@ -1,0 +1,11 @@
+<h3>Most Simple Form</h3>
+<p>This is the most simple form possible, it only consists of some inputs and a submit button without any validation.</p>
+<p>The form's configuration is hardcoded in a variable "formConfig" in this components class</p>
+<p>It uses the built-in formSubmit event to log the form's values to the console</p>
+
+<fg-dynamic-form id="simpleForm" [formConfig]="formConfig" (onFormSubmit)="formSubmit($event)"/>
+
+<div>
+  <button type="button" class="btn btn-primary" (click)="toggleFormConfig()">Show Config</button>
+  <pre *ngIf="showConfig">{{formConfig | json}}</pre>
+</div>

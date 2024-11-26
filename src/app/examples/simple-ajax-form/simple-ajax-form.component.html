@@ -1,0 +1,6 @@
+<h3>Simple Form with Remote Configuration and Data</h3>
+<p>This form loads it's configuration from a JSON response of an AJAX call, additionally fom values can be populated with a request</p>
+<p>The form's configuration and values are served over a mocked api call to local JSON files</p>
+<p>It uses the built-in formSubmit event to log the form's values to the console, as well as some basic validation</p>
+
+<fg-dynamic-form id="simpleForm" asyncUrl="/get-simple-form" (onFormSubmit)="formSubmit($event)"/>
