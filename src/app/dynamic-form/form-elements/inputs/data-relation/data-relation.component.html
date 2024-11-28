@@ -2,6 +2,7 @@
   <label *ngIf="config?.label">{{config?.label}}</label>
   <fg-data-relation-element [formControlName]="id" [settings]="config?.settings"/>
 </div>
+<div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
 <div *ngIf="control?.errors" class="form-text text-danger">
   {{control?.errors | json}}
 </div>

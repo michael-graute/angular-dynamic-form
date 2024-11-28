@@ -4,6 +4,7 @@
     <option *ngFor="let option of config?.options" [value]="option.value">{{option.label}}</option>
   </select>
   <label [for]="id" *ngIf="config?.label && config?.settings?.floatingLabel">{{config?.label}}</label>
+  <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
   <div *ngIf="control?.errors" class="form-text text-danger">
     {{control?.errors | json}}
   </div>

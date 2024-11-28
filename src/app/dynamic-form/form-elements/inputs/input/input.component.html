@@ -2,6 +2,7 @@
   <label [for]="id" *ngIf="config?.label && !config?.settings?.floatingLabel" [class]="{'required': config?.required}">{{config?.label}}</label>
   <input class="form-control" [class]="{'required': config?.required}" [type]="config?.controlType ?? 'text'" [id]="id" [formControlName]="id" [required]="config?.required || false" [placeholder]="config?.floatingLabel ?? ''">
   <label [for]="id" *ngIf="config?.label && config?.settings?.floatingLabel" [class]="{'required': config?.required}">{{config?.label}}</label>
+  <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
   <div *ngIf="control?.errors" class="form-text text-danger">
     {{control?.errors | json}}
   </div>
