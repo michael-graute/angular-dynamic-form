@@ -1,129 +1,181 @@
 {
   "elements": [
     {
-      "key": "cardSimpleInputs",
-      "type": "card",
+      "key": "tabContainerInputs",
+      "type": "tabContainer",
       "label": "Simple Inputs",
       "children": [
         {
-          "key": "inputText",
-          "type": "input",
-          "controlType": "text",
-          "label": "Text Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
+          "key": "tabSimpleInputs",
+          "type": "tabPane",
+          "label": "Simple Inputs",
+          "children": [
+            {
+              "key": "simpleInputGroup",
+              "type": "formGroup",
+              "children": [
+                {
+                  "key": "inputText",
+                  "type": "input",
+                  "controlType": "text",
+                  "label": "Text Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputPassword",
+                  "type": "input",
+                  "controlType": "password",
+                  "label": "Password Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputEmail",
+                  "type": "input",
+                  "controlType": "email",
+                  "label": "Email Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputTel",
+                  "type": "input",
+                  "controlType": "tel",
+                  "label": "Tel Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputNumber",
+                  "type": "input",
+                  "controlType": "number",
+                  "label": "Number Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputDate",
+                  "type": "input",
+                  "controlType": "date",
+                  "label": "Date Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputDateTime",
+                  "type": "input",
+                  "controlType": "datetime-local",
+                  "label": "Date-Time-Local Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputMonth",
+                  "type": "input",
+                  "controlType": "month",
+                  "label": "Month Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputWeek",
+                  "type": "input",
+                  "controlType": "week",
+                  "label": "Week Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputTime",
+                  "type": "input",
+                  "controlType": "time",
+                  "label": "Time Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputUrl",
+                  "type": "input",
+                  "controlType": "url",
+                  "label": "Url Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputSearch",
+                  "type": "input",
+                  "controlType": "search",
+                  "label": "Search Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                },
+                {
+                  "key": "inputSelect",
+                  "type": "select",
+                  "options": [
+                    {
+                      "value": null,
+                      "label": "Please select"
+                    },
+                    {
+                      "value": "foo",
+                      "label": "Foo!"
+                    },
+                    {
+                      "value": "bar",
+                      "label": "Bar!"
+                    },
+                    {
+                      "value": "baz",
+                      "label": "Baz!"
+                    }
+                  ],
+                  "label": "Select Input",
+                  "helpText": "Foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
-          "key": "inputPassword",
-          "type": "input",
-          "controlType": "password",
-          "label": "Password Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
+          "key": "tabAdvancedInputs",
+          "type": "tabPane",
+          "label": "Advanced Inputs",
+          "children": []
         },
         {
-          "key": "inputEmail",
-          "type": "input",
-          "controlType": "email",
-          "label": "Email Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
-        },
-        {
-          "key": "inputTel",
-          "type": "input",
-          "controlType": "tel",
-          "label": "Tel Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
-        },
-        {
-          "key": "inputNumber",
-          "type": "input",
-          "controlType": "number",
-          "label": "Number Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
-        },
-        {
-          "key": "inputDate",
-          "type": "input",
-          "controlType": "date",
-          "label": "Date Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
-        },
-        {
-          "key": "inputDateTime",
-          "type": "input",
-          "controlType": "datetime-local",
-          "label": "Date-Time-Local Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
-        },
-        {
-          "key": "inputMonth",
-          "type": "input",
-          "controlType": "month",
-          "label": "Month Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
-        },
-        {
-          "key": "inputWeek",
-          "type": "input",
-          "controlType": "week",
-          "label": "Week Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
-        },
-        {
-          "key": "inputTime",
-          "type": "input",
-          "controlType": "time",
-          "label": "Time Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
-        },
-        {
-          "key": "inputUrl",
-          "type": "input",
-          "controlType": "url",
-          "label": "Url Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
-        },
-        {
-          "key": "inputSearch",
-          "type": "input",
-          "controlType": "search",
-          "label": "Search Input",
-          "helpText": "Foo",
-          "settings": {
-            "floatingLabel": true
-          }
+          "key": "tabCustomInputs",
+          "type": "tabPane",
+          "label": "Custom Inputs",
+          "children": []
         }
       ]
     }
