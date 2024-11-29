@@ -3,7 +3,6 @@
     {
       "key": "tabContainerInputs",
       "type": "tabContainer",
-      "label": "Simple Inputs",
       "children": [
         {
           "key": "tabSimpleInputs",
