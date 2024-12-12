@@ -1,6 +1,6 @@
 import {ComponentRef, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable, Subject} from "rxjs";
+import {catchError, Observable, Subject, throwError} from "rxjs";
 import {FormElement} from "./dynamic-form.types";
 
 
@@ -55,7 +55,13 @@ export class DynamicFormService {
 
   loadFormData(url: string): void {
     this.showLoadingIndicator()
-    this.http.get(url).subscribe((data: any) => {
+    this.http.get(url).pipe(
+      catchError((err) => {
+        console.log(err)
+        this.hideLoadingIndicator()
+        return throwError(() => new Error('Oops! Something went wrong. Please try again later.'));
+      })
+    ).subscribe((data: any) => {
       this.onPopulateFormData.next(data)
       this.hideLoadingIndicator()
     })
