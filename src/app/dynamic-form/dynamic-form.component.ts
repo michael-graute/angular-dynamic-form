@@ -38,6 +38,8 @@ export class DynamicFormComponent implements OnInit {
 
   @ViewChild(FormElementHostDirective, {static: true}) formElementHost!: FormElementHostDirective;
 
+  showLoadingIndicator: boolean = false;
+
   constructor(private dynamicFormService: DynamicFormService) {
   }
 
@@ -74,6 +76,12 @@ export class DynamicFormComponent implements OnInit {
     })
     this.dynamicFormService.onPopulateFormData.subscribe((payload: any) => {
       this.form.patchValue(payload)
+    })
+    this.dynamicFormService.onShowLoadingIndicator.subscribe(() => {
+      this.showLoadingIndicator = true;
+    })
+    this.dynamicFormService.onHideLoadingIndicator.subscribe(() => {
+      this.showLoadingIndicator = false;
     })
   }
   formSubmit(context?: DynamicFormComponent | null) {
