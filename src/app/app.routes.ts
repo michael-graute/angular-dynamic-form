@@ -3,8 +3,13 @@ import {SimpleFormComponent} from "./examples/simple-form/simple-form.component"
 import {SimpleAjaxFormComponent} from "./examples/simple-ajax-form/simple-ajax-form.component";
 import {FormLayoutsComponent} from "./examples/form-layouts/form-layouts.component";
 import {FormInputsComponent} from "./examples/form-inputs/form-inputs.component";
+import {HomeComponent} from "./examples/home/home.component";
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+  },
   {
     path: 'simple-form',
     component: SimpleFormComponent
