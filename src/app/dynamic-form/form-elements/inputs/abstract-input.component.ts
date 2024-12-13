@@ -25,7 +25,11 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
     });
     this.control = new FormControl(this.config?.value, validators);
     this.form.addControl(this.id, this.control);
-
+    if(this.config?.onChange) {
+      this.control.valueChanges.subscribe((value: string) => {
+        console.log(this.id, this.config?.onChange, value)
+      })
+    }
   }
 
   ngOnDestroy() {

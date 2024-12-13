@@ -14,6 +14,7 @@ export type FormElement = {
   errorMessages?: any[],
   helpText?: string;
   children?: FormElement[];
+  onChange?: any
 }
 
 export type FormButtonCallback = {

@@ -70,6 +70,7 @@
         {
           "key": "form-group",
           "type": "formGroup",
+          "onChange": "formGroupChanged",
           "children": [
             {
               "key": "formGroupRow1",
@@ -83,6 +84,7 @@
                       "type": "input",
                       "key": "formGroupName1",
                       "label": "Name 1",
+                      "onChange": "doSomeFoo",
                       "settings": {
                         "floatingLabel": true
                       }
@@ -197,6 +199,7 @@
                           "type": "select",
                           "key": "name4",
                           "label": "Foo",
+                          "onChange": "selectChanged",
                           "settings": {
                               "floatingLabel": true
                           },
@@ -277,6 +280,7 @@
       "key": "key-value",
       "type": "key-value",
       "label": "Key-Value Input",
+      "onChange": "keyValueChanged",
       "settings": {
         "colDefs": [
           {
@@ -308,6 +312,7 @@
       "key": "data-relation",
       "type": "data-relation",
       "label": "Data Relation Input",
+      "onChange": "dataRelationChanged",
       "settings": {
         "asyncUrl": "/get-related-form"
       }
