@@ -1,8 +1,8 @@
 <div *ngFor="let dataset of value; let i = index" class="row">
   <div *ngFor="let col of settings.colDefs" class="col mb-2">
     <div class=" form-floating">
-      <input type="text" class="form-control" [(ngModel)]="dataset[col.varName]" [placeholder]="col.header">
-      <label>{{col.header}}</label>
+      <input type="text" class="form-control" [id]="id + col.varName + i" [(ngModel)]="dataset[col.varName]" [placeholder]="col.header">
+      <label [for]="id + col.varName + i">{{col.header}}</label>
     </div>
   </div>
   <div class="col-1">

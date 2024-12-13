@@ -174,7 +174,7 @@
                   "value": "<p>The following inputs are grouped inside a \"formGroup\" container, which will add a nested object into the forms values (submit and see the consoles log)</p>"
                 },
                 {
-                  "key": "formGroup",
+                  "key": "tabOneFormGroup",
                   "type": "formGroup",
                   "children": [
                     {
@@ -217,7 +217,7 @@
               "label": "Tab No. 2",
               "children": [
                 {
-                  "key": "key-value",
+                  "key": "tabTwoKeyValue",
                   "type": "key-value",
                   "label": "Key-Value Input",
                   "validators": [

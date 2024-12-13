@@ -4,12 +4,12 @@
   "lastname": "Doebarbaz",
   "email": "jane.doe@foo.bar",
   "phone": "+1 555 555 5555",
-  "formGroup": {
+  "tabOneFormGroup": {
     "foo": "foo remote",
     "bar": "bar remote",
     "baz": "baz remote"
   },
-  "key-value": [
+  "tabTwoKeyValue": [
     {
       "foo": "remote foo 1",
       "bar": "remote bar 1",

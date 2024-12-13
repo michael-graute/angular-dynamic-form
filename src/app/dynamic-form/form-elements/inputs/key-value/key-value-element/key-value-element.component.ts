@@ -33,6 +33,7 @@ import {NgForOf} from "@angular/common";
 export class KeyValueElementComponent implements ControlValueAccessor, Validator {
 
   @Input() settings: any = {}
+  @Input() id: string = ''
 
   value: any[] = [];
 

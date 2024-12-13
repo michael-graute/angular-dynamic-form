@@ -1,5 +1,5 @@
 <div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.floatingLabel}" class="mb-2">
-  <label *ngIf="config?.label">{{config?.label}}</label>
+  <span class="label" *ngIf="config?.label">{{config?.label}}</span>
   <fg-data-relation-element [formControlName]="id" [settings]="config?.settings"/>
 </div>
 <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
