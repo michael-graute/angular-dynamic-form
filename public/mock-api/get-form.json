@@ -4,54 +4,40 @@
       "key": "submit",
       "type": "submit",
       "label": "Submit",
-      "icon": "bi-plus",
+      "icon": "bi-cloud-arrow-up",
       "class": "btn-success",
       "settings": {
         "disableIfFormInvalid": true
       },
       "callback": {
-        "function": "formSubmit",
-        "params": [
-          "foo",
-          "bar",
-          1234
-        ]
+        "function": "formSubmit"
       }
     },
     {
       "key": "cancel",
-      "type": "submit",
+      "type": "button",
       "label": "Cancel",
-      "icon": "bi-plus",
+      "icon": "bi-x-circle",
       "class": "btn-danger",
       "callback": {
-        "function": "formCancel",
-        "params": [
-          "foo",
-          "bar",
-          1234
-        ]
+        "function": "formCancel"
       }
     },
     {
       "key": "reset",
-      "type": "submit",
+      "type": "button",
       "label": "Reset",
-      "icon": "bi-plus",
+      "icon": "bi-x-diamond",
       "class": "btn-warning",
       "callback": {
-        "function": "formReset",
-        "params": [
-          "foo",
-          "bar",
-          1234
-        ]
+        "function": "formReset"
       }
     },
     {
       "key": "customCallback",
-      "type": "submit",
+      "type": "button",
       "label": "Custom Callback",
+      "icon": "bi-building-gear",
       "callback": {
         "function": "customCallback",
         "params": [
@@ -60,6 +46,18 @@
           1234,
           false
         ]
+      }
+    },
+    {
+      "key": "loadRemoteDate",
+      "type": "button",
+      "label": "Load Remote Data",
+      "icon": "bi-cloud-arrow-down",
+      "callback": {
+        "function": "loadRemoteData",
+        "params": {
+          "url": "/get-form-data"
+        }
       }
     }
   ],

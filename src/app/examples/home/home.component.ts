@@ -96,6 +96,10 @@ export class HomeComponent {
   }
 
   customCallBack(payload: CustomButtonCallBackPayload) {
+    if(payload.callBack.function === 'loadRemoteData') {
+      this.loadRemoteData(payload.callBack.params)
+      return
+    }
     console.log('onCustomCallBack', payload);
   }
 
@@ -112,10 +116,10 @@ export class HomeComponent {
   }
 
   formReset(form: FormGroup) {
-    console.log('onFormReset', form.getRawValue());
+    //this.dynamicFormService.reloadForm('/get-form')
   }
 
-  loadFormData() {
-    this.dynamicFormService.loadFormData('/get-form-data')
+  loadRemoteData(params: any) {
+    this.dynamicFormService.loadFormData(params.url)
   }
 }

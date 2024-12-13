@@ -19,18 +19,6 @@ export class SimpleFormComponent {
   }
 
   formConfig: any = {
-    buttons: [
-      {
-        key: 'submit',
-        type: "submit",
-        label: "Submit",
-        icon: "bi-check",
-        class: "btn-success",
-        callback: {
-          function: "formSubmit"
-        }
-      }
-    ],
     elements: [
       {
         type: "select",
@@ -79,6 +67,18 @@ export class SimpleFormComponent {
         controlType: "email",
         settings: {
           floatingLabel: true
+        }
+      }
+    ],
+    buttons: [
+      {
+        key: 'submit',
+        type: "submit",
+        label: "Submit",
+        icon: "bi-check",
+        class: "btn-success",
+        callback: {
+          function: "formSubmit"
         }
       }
     ]
