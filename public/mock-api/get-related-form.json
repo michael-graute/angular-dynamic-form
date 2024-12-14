@@ -70,33 +70,39 @@
       "label": "Foo",
       "children": [
         {
-          "key": "related-email",
-          "label": "Related E-Mail",
-          "settings": {
-            "floatingLabel": true
-          },
-          "type": "input",
-          "controlType": "email",
-          "validators": [
+          "key": "contact",
+          "type": "formGroup",
+          "children": [
             {
-              "name": "email"
+              "key": "related-email",
+              "label": "Related E-Mail",
+              "settings": {
+                "floatingLabel": true
+              },
+              "type": "input",
+              "controlType": "email",
+              "validators": [
+                {
+                  "name": "email"
+                },
+                {
+                  "name": "required"
+                }
+              ]
             },
             {
-              "name": "required"
-            }
-          ]
-        },
-        {
-          "key": "related-email-2",
-          "label": "Related E-Mail 2",
-          "settings": {
-            "floatingLabel": true
-          },
-          "type": "input",
-          "controlType": "email",
-          "validators": [
-            {
-              "name": "email"
+              "key": "related-email-2",
+              "label": "Related E-Mail 2",
+              "settings": {
+                "floatingLabel": true
+              },
+              "type": "input",
+              "controlType": "email",
+              "validators": [
+                {
+                  "name": "email"
+                }
+              ]
             }
           ]
         },

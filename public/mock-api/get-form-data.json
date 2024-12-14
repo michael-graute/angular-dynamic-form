@@ -2,9 +2,13 @@
   "email": "Foo@bar",
   "name1": "from REST",
   "name2": "Foo changed",
-  "name4": "two",
-  "name3": "Text Input 2",
-  "tabPane2name5": "Foo",
+  "tab1": {
+    "name4": "two",
+    "name3": "Text Input 2"
+  },
+  "tab2": {
+    "tabPane2name5": "Foo"
+  },
   "form-group": {
     "formGroupName1": "Remote content",
     "formGroupName2": "Remote content",
@@ -28,8 +32,10 @@
     }
   ],
   "data-relation": {
-    "related-email": "foo@bar",
-    "related-email-2": "bar@baz",
+    "contact": {
+      "related-email": "foo@bar",
+      "related-email-2": "bar@baz"
+    },
     "related-key-value": [
       {
         "foo": "Foo",

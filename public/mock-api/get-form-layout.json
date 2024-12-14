@@ -1,31 +1,4 @@
 {
-  "buttons": [
-    {
-      "key": "submit",
-      "type": "submit",
-      "label": "Submit",
-      "icon": "bi-check",
-      "class": "btn-success",
-      "settings": {
-        "disableIfFormInvalid": true
-      },
-      "callback": {
-        "function": "formSubmit",
-        "params": ["foo", "bar", 1234]
-      }
-    },
-    {
-      "key": "loadRemoteData",
-      "type": "button",
-      "label": "Load Remote Data",
-      "icon": "bi-cloud",
-      "class": "btn-primary",
-      "callback": {
-        "function": "customCallback",
-        "params": {"url": "/get-form-layout-data"}
-      }
-    }
-  ],
   "elements": [
     {
       "key": "user-information",
@@ -262,6 +235,34 @@
           ]
         }
       ]
+    }
+  ],
+  "buttons": [
+    {
+      "key": "submit",
+      "type": "submit",
+      "label": "Submit",
+      "icon": "bi-check",
+      "class": "btn-success",
+      "settings": {
+        "disableIfFormInvalid": true
+      },
+      "callback": {
+        "function": "formSubmit"
+      }
+    },
+    {
+      "key": "loadRemoteData",
+      "type": "button",
+      "label": "Load Remote Data",
+      "icon": "bi-cloud",
+      "class": "btn-primary",
+      "callback": {
+        "function": "customCallback",
+        "params": {
+          "url": "/get-form-layout-data"
+        }
+      }
     }
   ]
 }

@@ -187,61 +187,67 @@
               "label": "Tab 1",
               "children": [
                 {
-                  "type": "row",
-                  "key": "tabPane1row",
+                  "key": "tab1",
+                  "type": "formGroup",
                   "children": [
                     {
-                      "type": "col",
-                      "key": "tabPane1rowCol1",
-                      "class": "col-3",
+                      "type": "row",
+                      "key": "tabPane1row",
                       "children": [
                         {
-                          "type": "select",
-                          "key": "name4",
-                          "label": "Foo",
-                          "onChange": "selectChanged",
-                          "settings": {
-                              "floatingLabel": true
-                          },
-                          "options": [
+                          "type": "col",
+                          "key": "tabPane1rowCol1",
+                          "class": "col-3",
+                          "children": [
                             {
-                              "label": "One",
-                              "value": "one"
-                            },
-                            {
-                              "label": "Two",
-                              "value": "two"
-                            }
-                          ],
-                          "validators": [
-                            {
-                              "name": "required"
-                            },
-                            {
-                              "name": "maxLength",
-                              "value": 12
+                              "type": "select",
+                              "key": "name4",
+                              "label": "Foo",
+                              "onChange": "selectChanged",
+                              "settings": {
+                                "floatingLabel": true
+                              },
+                              "options": [
+                                {
+                                  "label": "One",
+                                  "value": "one"
+                                },
+                                {
+                                  "label": "Two",
+                                  "value": "two"
+                                }
+                              ],
+                              "validators": [
+                                {
+                                  "name": "required"
+                                },
+                                {
+                                  "name": "maxLength",
+                                  "value": 12
+                                }
+                              ]
                             }
                           ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "col",
-                      "key": "tabPane1rowCol1",
-                      "class": "col-9",
-                      "children": [
+                        },
                         {
-                          "type": "input",
-                          "key": "name3",
-                          "controlType": "text",
-                          "label": "Name 3",
-                          "settings": {
-                            "floatingLabel": true
-                          },
-                          "validators": [
+                          "type": "col",
+                          "key": "tabPane1rowCol1",
+                          "class": "col-9",
+                          "children": [
                             {
-                              "name": "maxLength",
-                              "value": 12
+                              "type": "input",
+                              "key": "name3",
+                              "controlType": "text",
+                              "label": "Name 3",
+                              "settings": {
+                                "floatingLabel": true
+                              },
+                              "validators": [
+                                {
+                                  "name": "maxLength",
+                                  "value": 12
+                                }
+                              ]
                             }
                           ]
                         }
@@ -257,17 +263,23 @@
               "label": "Tab 2",
               "children": [
                 {
-                  "type": "input",
-                  "key": "tabPane2name5",
-                  "controlType": "text",
-                  "validators": [
+                  "key": "tab2",
+                  "type": "formGroup",
+                  "children": [
                     {
-                      "name": "required"
-                    },
-                    {
-                      "name": "maxLength",
-                      "value": 12
-                    }
+                    "type": "input",
+                    "key": "tabPane2name5",
+                    "controlType": "text",
+                    "validators": [
+                      {
+                        "name": "required"
+                      },
+                      {
+                        "name": "maxLength",
+                        "value": 12
+                      }
+                    ]
+                  }
                   ]
                 }
               ]
