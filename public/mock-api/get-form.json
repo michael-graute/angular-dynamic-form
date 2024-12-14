@@ -68,6 +68,29 @@
       "type": "card",
       "children": [
         {
+          "key": "repeater",
+          "type": "repeater",
+          "children": [
+            {
+              "type": "input",
+              "key": "repeaterTextInput",
+              "label": "Name 1",
+              "settings": {
+                "floatingLabel": true
+              }
+            },
+            {
+              "type": "input",
+              "key": "repeaterEmailInput",
+              "label": "Email",
+              "controlType": "email",
+              "settings": {
+                "floatingLabel": true
+              }
+            }
+          ]
+        },
+        {
           "key": "form-group",
           "type": "formGroup",
           "onChange": "formGroupChanged",

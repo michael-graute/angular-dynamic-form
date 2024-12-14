@@ -38,6 +38,7 @@ export class DataRelationElementComponent implements ControlValueAccessor, Valid
   @Input() settings: any | undefined;
   @Input() debug = false;
   @Input() value: any = {}
+  @Input() formConfig: FormConfig | undefined;
   form = new FormGroup({})
 
   constructor(private dynamicFormService: DynamicFormService) {
@@ -55,11 +56,17 @@ export class DataRelationElementComponent implements ControlValueAccessor, Valid
   }
 
   ngOnInit() {
-    this.dynamicFormService.loadForm(this.settings.asyncUrl).subscribe((data: FormConfig) => {
-      data.elements.forEach((element: FormElement) => {
+    if(!this.formConfig) {
+      this.dynamicFormService.loadForm(this.settings.asyncUrl).subscribe((data: FormConfig) => {
+        data.elements.forEach((element: FormElement) => {
+          this.addFormElement(element);
+        })
+      })
+    } else {
+      this.formConfig.elements.forEach((element: FormElement) => {
         this.addFormElement(element);
       })
-    })
+    }
     this.form.valueChanges.subscribe((value) => {
       this.value = value
       this.onChange(this.value)

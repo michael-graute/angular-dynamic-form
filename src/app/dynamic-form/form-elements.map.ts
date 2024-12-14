@@ -10,6 +10,7 @@ import {KeyValueComponent} from "./form-elements/inputs/key-value/key-value.comp
 import {FormGroupComponent} from "./form-elements/containers/form-group/form-group.component";
 import {DataRelationComponent} from "./form-elements/inputs/data-relation/data-relation.component";
 import {FormTextComponent} from "./form-elements/elements/form-text/form-text.component";
+import {RepeaterComponent} from "./form-elements/inputs/repeater/repeater.component";
 
 export const FormElementMap = {
   'fieldset': FieldsetComponent,
@@ -25,5 +26,6 @@ export const FormElementMap = {
   'input': InputComponent,
   'select': SelectComponent,
   'key-value': KeyValueComponent,
-  'data-relation': DataRelationComponent
+  'data-relation': DataRelationComponent,
+  'repeater': RepeaterComponent
 }
