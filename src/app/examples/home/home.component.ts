@@ -5,20 +5,28 @@ import {DynamicFormService} from "../../dynamic-form/dynamic-form.service";
 import {FormGroup} from "@angular/forms";
 import {prettyPrintJson} from "pretty-print-json";
 import {ModalService} from "../../helpers/modal/modal.service";
+import {ConfigDisplayComponent} from "../../helpers/config-display/config-display.component";
+import {FormConfig} from "../../dynamic-form/dynamic-form.types";
 
 @Component({
   selector: 'fg-home',
   imports: [
     DynamicFormComponent,
-    NgIf
+    NgIf,
+    ConfigDisplayComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   counter: number = 0;
+  formConfig: FormConfig | undefined = undefined;
 
   constructor(private dynamicFormService: DynamicFormService, private modalService: ModalService) {
+  }
+
+  formConfigLoaded(formConfig: FormConfig) {
+    this.formConfig = formConfig;
   }
 
   addElement(): void {
@@ -45,44 +53,50 @@ export class HomeComponent {
             "type": "fieldset",
             "children": [
               {
-                key: 'newRow' + this.counter,
-                type: 'row',
-                children: [
+                "key": "newTab" + this.counter,
+                "type": "formGroup",
+                "children": [
                   {
-                    key: 'newCol1' + this.counter,
-                    type: 'col',
+                    key: 'newRow' + this.counter,
+                    type: 'row',
                     children: [
                       {
-                        "key": "fooName" + this.counter,
-                        "label": "Foo Name "  + this.counter,
-                        "floatingLabel": true,
-                        "type": "input",
-                        "controlType": "text",
-                        "value": "Foooooooo"
-                      }
-                    ]
-                  },
-                  {
-                    key: 'newCol2' + this.counter,
-                    type: 'col',
-                    children: [
-                      {
-                        "key": "fooMail" + this.counter,
-                        "label": "Foo Mail " + this.counter,
-                        "floatingLabel": true,
-                        "type": "input",
-                        "controlType": "email",
-                        "value": "Foo@bar.baz",
-                        "validators": [
+                        key: 'newCol1' + this.counter,
+                        type: 'col',
+                        children: [
                           {
-                            "name": "email"
+                            "key": "fooName" + this.counter,
+                            "label": "Foo Name "  + this.counter,
+                            "floatingLabel": true,
+                            "type": "input",
+                            "controlType": "text",
+                            "value": "Foooooooo"
+                          }
+                        ]
+                      },
+                      {
+                        key: 'newCol2' + this.counter,
+                        type: 'col',
+                        children: [
+                          {
+                            "key": "fooMail" + this.counter,
+                            "label": "Foo Mail " + this.counter,
+                            "floatingLabel": true,
+                            "type": "input",
+                            "controlType": "email",
+                            "value": "Foo@bar.baz",
+                            "validators": [
+                              {
+                                "name": "email"
+                              }
+                            ]
                           }
                         ]
                       }
                     ]
                   }
                 ]
-              }
+              },
             ]
           }
         ]

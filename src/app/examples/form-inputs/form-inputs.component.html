@@ -1,4 +1,3 @@
 <button type="button" class="btn btn-dark" (click)="toggleDebug()"><i class="bi bi-list"></i> {{debug ? 'Hide' : 'Show'}} Configurations for all inputs</button>
 <fg-dynamic-form id="simpleForm" asyncUrl="/get-form-inputs" [debug]="debug" (onFormSubmit)="formSubmit($event)" (onCustomCallBack)="loadFormData($event)" (onFormConfigLoaded)="formConfigLoaded($event)"/>
-
 <fg-config-display [formConfig]="formConfig"></fg-config-display>
