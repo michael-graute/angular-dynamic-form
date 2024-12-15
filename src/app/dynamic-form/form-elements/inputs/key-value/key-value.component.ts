@@ -3,7 +3,7 @@ import {
   ReactiveFormsModule,
 } from "@angular/forms";
 import {AbstractInputComponent} from "../abstract-input.component";
-import {JsonPipe, NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {KeyValueElementComponent} from "./key-value-element/key-value-element.component";
 
 @Component({
@@ -12,7 +12,7 @@ import {KeyValueElementComponent} from "./key-value-element/key-value-element.co
     ReactiveFormsModule,
     KeyValueElementComponent,
     NgIf,
-    JsonPipe
+    NgForOf
   ],
     templateUrl: './key-value.component.html',
     styleUrl: './key-value.component.scss'

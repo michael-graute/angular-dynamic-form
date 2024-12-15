@@ -5,6 +5,7 @@ import {FormConfig} from "../../../dynamic-form.types";
 import {DynamicFormValidators} from "../../../dynamic-form-validators";
 import {DataRelationElementComponent} from "../data-relation/data-relation-element/data-relation-element.component";
 import {JsonPipe, NgForOf, NgIf} from "@angular/common";
+import {defaultErrorMessages} from "../../../default-error-messages";
 
 @Component({
   selector: 'fg-repeater',
@@ -36,6 +37,9 @@ export class RepeaterComponent extends AbstractInputComponent {
     this.config?.validators?.forEach((validator: any) => {
       //@ts-ignore
       validators.push(DynamicFormValidators[validator.name](validator.value))
+      if(validator.errorMessage) {
+        this.errorMessages[validator.name] = validator.errorMessage;
+      }
     });
 
     this.form.addControl(this.id, new FormArray([], validators))
@@ -49,6 +53,28 @@ export class RepeaterComponent extends AbstractInputComponent {
         this.formArray.controls.at(index)?.patchValue(value)
       })
     },50)
+  }
+
+  override getErrorMessages(): string[] {
+    let messages = []
+    for (let key in this.formArray?.errors) {
+      let message = '';
+      if(this.errorMessages.hasOwnProperty(key)) {
+        message = this.errorMessages[key];
+      } else if(defaultErrorMessages.hasOwnProperty(key)) {
+        message = defaultErrorMessages[key];
+      } else {
+        message = key;
+      }
+      if(typeof this.formArray?.errors?.[key] === 'object') {
+        console.log(this.formArray?.errors?.[key])
+        for (let replaceKey in this.formArray?.errors?.[key]) {
+          message = message.replace('{' + replaceKey + '}', this.formArray?.errors?.[key][replaceKey]);
+        }
+      }
+      messages.push(message);
+    }
+    return messages;
   }
 
   addItem() {

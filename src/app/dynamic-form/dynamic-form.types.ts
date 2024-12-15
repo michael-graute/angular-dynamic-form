@@ -4,17 +4,23 @@ export type FormElement = {
   label?: string;
   floatingLabel?: boolean;
   required?: boolean;
-  validators?: {name: string; value?: any; errorMessage?: string}[];
+  validators?: ElementValidator[];
   order?: number;
   controlType?: 'text' | 'number' | 'email' | 'password' | 'date' | 'datetime-local' | 'time' | 'week' | 'search' | 'tel' | 'url';
   type?: string;
-  options?: {value?: string; label?: string}[];
+  options?: { value?: string; label?: string }[];
   class?: string;
   settings?: any;
   errorMessages?: any[],
   helpText?: string;
   children?: FormElement[];
   onChange?: any
+}
+
+export type ElementValidator = {
+  name: string;
+  value?: any;
+  errorMessage?: string
 }
 
 export type FormButtonCallback = {

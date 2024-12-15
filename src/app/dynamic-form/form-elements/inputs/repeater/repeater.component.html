@@ -14,9 +14,9 @@
     <button type="button" class="btn btn-success" (click)="addItem()"><i [class]="config?.settings?.addButton.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.addButton.label ?? 'Add'}}</button>
   </div>
   <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
-  <div *ngIf="formArray.errors" class="form-text text-danger">
-    {{formArray.errors | json}}
-  </div>
+  <ul *ngIf="formArray?.errors" class="error-messages form-text text-danger">
+    <li *ngFor="let message of getErrorMessages()">{{message}}</li>
+  </ul>
   <div  *ngIf="debug" class="form-text">
     <pre>{{config | json}}</pre>
   </div>

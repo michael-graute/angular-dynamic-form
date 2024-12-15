@@ -1,8 +1,9 @@
-import {Component, HostBinding, OnDestroy, OnInit} from "@angular/core";
+import {Component, HostBinding, Input, OnDestroy, OnInit} from "@angular/core";
 import {FormControl, FormGroup, ValidatorFn} from "@angular/forms";
 import {FormElement} from "../../dynamic-form.types";
 import {DynamicFormElementInterface} from "../../dynamic-form-element.interface";
 import {DynamicFormValidators} from "../../dynamic-form-validators";
+import {defaultErrorMessages} from "../../default-error-messages";
 
 @Component({template: ``})
 export abstract class AbstractInputComponent implements DynamicFormElementInterface, OnInit, OnDestroy {
@@ -12,8 +13,31 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
   control: FormControl | undefined;
   hidden = false
   debug = false;
+  @Input() errorMessages: {[key: string]: string} = {};
 
   @HostBinding('class') className = '';
+
+  getErrorMessages(): string[] {
+    let messages = []
+    for (let key in this.control?.errors) {
+      let message = '';
+      if(this.errorMessages.hasOwnProperty(key)) {
+        message = this.errorMessages[key];
+      } else if(defaultErrorMessages.hasOwnProperty(key)) {
+        message = defaultErrorMessages[key];
+      } else {
+        message = key;
+      }
+      if(typeof this.control?.errors?.[key] === 'object') {
+        console.log(this.control?.errors?.[key])
+        for (let replaceKey in this.control?.errors?.[key]) {
+          message = message.replace('{' + replaceKey + '}', this.control?.errors?.[key][replaceKey]);
+        }
+      }
+      messages.push(message);
+    }
+    return messages;
+  }
 
   ngOnInit(): void {
     if(this.config?.class) this.className = this.className + ' ' + this.config?.class
@@ -22,6 +46,9 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
     this.config?.validators?.forEach((validator: any) => {
       //@ts-ignore
       validators.push(DynamicFormValidators[validator.name](validator.value))
+      if(validator.errorMessage) {
+        this.errorMessages[validator.name] = validator.errorMessage;
+      }
     });
     this.control = new FormControl(this.config?.value, validators);
     this.form.addControl(this.id, this.control);

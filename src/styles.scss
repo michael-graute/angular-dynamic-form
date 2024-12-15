@@ -64,7 +64,7 @@ label {
   right: -5px;
   background-color: rgb(33 37 41 / 77%);
   border-radius: var(--bs-border-radius);
-  box-shadow: 0px 0px 15px 5px rgba(255, 252, 251, 0.0588235294);
+  box-shadow: 0 0 15px 5px rgba(255, 252, 251, 0.0588235294);
   z-index: 1000;
 
   .form-loading-indicator__icon {
@@ -89,5 +89,13 @@ label {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+ul {
+  &.error-messages {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 }

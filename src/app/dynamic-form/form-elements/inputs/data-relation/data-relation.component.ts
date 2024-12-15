@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {AbstractInputComponent} from "../abstract-input.component";
-import {JsonPipe, NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DataRelationElementComponent} from "./data-relation-element/data-relation-element.component";
 
@@ -11,7 +11,7 @@ import {DataRelationElementComponent} from "./data-relation-element/data-relatio
     ReactiveFormsModule,
     DataRelationElementComponent,
     FormsModule,
-    JsonPipe
+    NgForOf
   ],
   templateUrl: './data-relation.component.html',
   styleUrl: './data-relation.component.scss'
