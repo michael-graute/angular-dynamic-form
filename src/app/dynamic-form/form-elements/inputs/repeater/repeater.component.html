@@ -10,7 +10,9 @@
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-success" (click)="addItem()"><i [class]="config?.settings?.addButton.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.addButton.label ?? 'Add'}}</button>
+  <div class="d-flex gap-1 justify-content-end">
+    <button type="button" class="btn btn-success" (click)="addItem()"><i [class]="config?.settings?.addButton.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.addButton.label ?? 'Add'}}</button>
+  </div>
   <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
   <div *ngIf="formArray.errors" class="form-text text-danger">
     {{formArray.errors | json}}

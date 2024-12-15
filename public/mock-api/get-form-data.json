@@ -51,14 +51,17 @@
   },
   "repeater": [
     {
+      "gender": "diverse",
       "repeaterTextInput": "foo1 from remote",
       "repeaterEmailInput": "remote.foo1@bar.baz"
     },
     {
+      "gender": "diverse",
       "repeaterTextInput": "foo2 from remote",
       "repeaterEmailInput": "remote.foo2@bar.baz"
     },
     {
+      "gender": "diverse",
       "repeaterTextInput": "foo3 from remote",
       "repeaterEmailInput": "remote.foo3@bar.baz"
     }

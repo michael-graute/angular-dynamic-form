@@ -73,6 +73,38 @@
           "label": "Repeater Element",
           "children": [
             {
+              "type": "select",
+              "key": "gender",
+              "label": "Gender",
+              "onChange": "selectChanged",
+              "settings": {
+                "floatingLabel": true
+              },
+              "options": [
+                {
+                  "label": "Please Select",
+                  "value": null
+                },
+                {
+                  "label": "Mr.",
+                  "value": "male"
+                },
+                {
+                  "label": "Mrs.",
+                  "value": "female"
+                },
+                {
+                  "label": "Div.",
+                  "value": "diverse"
+                }
+              ],
+              "validators": [
+                {
+                  "name": "required"
+                }
+              ]
+            },
+            {
               "type": "input",
               "key": "repeaterTextInput",
               "label": "Name 1",
@@ -102,10 +134,12 @@
           ],
           "value": [
             {
+              "gender": "male",
               "repeaterTextInput": "foo1",
               "repeaterEmailInput": "foo1@bar.baz"
             },
             {
+              "gender": "female",
               "repeaterTextInput": "foo2",
               "repeaterEmailInput": "foo2@bar.baz"
             }
