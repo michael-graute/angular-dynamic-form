@@ -39,7 +39,7 @@ export class DataRelationElementComponent implements ControlValueAccessor, Valid
   @Input() debug = false;
   @Input() value: any = {}
   @Input() formConfig: FormConfig | undefined;
-  form = new FormGroup({})
+  @Input() form = new FormGroup({})
 
   constructor(private dynamicFormService: DynamicFormService) {
   }

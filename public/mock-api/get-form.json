@@ -63,33 +63,58 @@
   ],
   "elements": [
     {
+      "key": "repeater",
+      "type": "repeater",
+      "children": [
+        {
+          "type": "input",
+          "key": "repeaterTextInput",
+          "label": "Name 1",
+          "settings": {
+            "floatingLabel": true
+          },
+          "validators": [
+            {
+              "name": "required"
+            }
+          ]
+        },
+        {
+          "type": "input",
+          "key": "repeaterEmailInput",
+          "label": "Email",
+          "controlType": "email",
+          "settings": {
+            "floatingLabel": true
+          }
+        }
+      ],
+      "value": [
+        {
+          "repeaterTextInput": "foo1",
+          "repeaterEmailInput": "foo1@bar.baz"
+        },
+        {
+          "repeaterTextInput": "foo2",
+          "repeaterEmailInput": "foo2@bar.baz"
+        }
+      ],
+      "validators": [
+        {
+          "name": "maxLength",
+          "value": 7
+        },
+        {
+          "name": "minLength",
+          "value": 2
+        }
+      ]
+    },
+    {
       "key": "card-with-form-group",
       "label": "Card Container with Form Group",
       "type": "card",
       "children": [
-        {
-          "key": "repeater",
-          "type": "repeater",
-          "children": [
-            {
-              "type": "input",
-              "key": "repeaterTextInput",
-              "label": "Name 1",
-              "settings": {
-                "floatingLabel": true
-              }
-            },
-            {
-              "type": "input",
-              "key": "repeaterEmailInput",
-              "label": "Email",
-              "controlType": "email",
-              "settings": {
-                "floatingLabel": true
-              }
-            }
-          ]
-        },
         {
           "key": "form-group",
           "type": "formGroup",
