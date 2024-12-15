@@ -29,7 +29,6 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
         message = key;
       }
       if(typeof this.control?.errors?.[key] === 'object') {
-        console.log(this.control?.errors?.[key])
         for (let replaceKey in this.control?.errors?.[key]) {
           message = message.replace('{' + replaceKey + '}', this.control?.errors?.[key][replaceKey]);
         }
