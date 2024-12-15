@@ -4,7 +4,7 @@ import {FormArray, FormGroup, ReactiveFormsModule, ValidatorFn} from "@angular/f
 import {FormConfig} from "../../../dynamic-form.types";
 import {DynamicFormValidators} from "../../../dynamic-form-validators";
 import {DataRelationElementComponent} from "../data-relation/data-relation-element/data-relation-element.component";
-import {JsonPipe, NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {defaultErrorMessages} from "../../../default-error-messages";
 
 @Component({
@@ -13,7 +13,6 @@ import {defaultErrorMessages} from "../../../default-error-messages";
     ReactiveFormsModule,
     DataRelationElementComponent,
     NgForOf,
-    JsonPipe,
     NgIf
   ],
   templateUrl: './repeater.component.html',

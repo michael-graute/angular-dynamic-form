@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {ReactiveFormsModule} from "@angular/forms";
-import {JsonPipe, NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {AbstractInputComponent} from "../abstract-input.component";
 
 @Component({
@@ -8,7 +8,6 @@ import {AbstractInputComponent} from "../abstract-input.component";
   imports: [
     ReactiveFormsModule,
     NgIf,
-    JsonPipe,
     NgForOf
   ],
     templateUrl: './input.component.html',
