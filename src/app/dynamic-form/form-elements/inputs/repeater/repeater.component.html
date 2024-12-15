@@ -1,3 +1,4 @@
+<span *ngIf="config?.label" class="label">{{config?.label}}</span>
 <div [formGroup]="form">
   <div [formArrayName]="id">
     <div  *ngFor="let item of formArray.controls; let i = index" class="row mb-4">
@@ -5,10 +6,11 @@
         <fg-data-relation-element [id]="id + 'Dataset' + i" [form]="item" [formConfig]="formConfig" />
       </div>
       <div class="col-1">
-        <button type="button" class="btn btn-danger" (click)="removeItem(i)"><i class="bi-dash-circle"></i> Remove</button>
+        <button type="button" class="btn btn-danger" (click)="removeItem(i)"><i [class]="config?.settings?.removeButton.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.removeButton.label ?? 'Delete'}}</button>
       </div>
     </div>
   </div>
+  <button type="button" class="btn btn-success" (click)="addItem()"><i [class]="config?.settings?.addButton.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.addButton.label ?? 'Add'}}</button>
   <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
   <div *ngIf="formArray.errors" class="form-text text-danger">
     {{formArray.errors | json}}
@@ -16,5 +18,4 @@
   <div  *ngIf="debug" class="form-text">
     <pre>{{config | json}}</pre>
   </div>
-  <button type="button" class="btn btn-success" (click)="addItem()"><i class="bi-plus-circle"></i> Add</button>
 </div>

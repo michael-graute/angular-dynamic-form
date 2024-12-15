@@ -63,50 +63,73 @@
   ],
   "elements": [
     {
-      "key": "repeater",
-      "type": "repeater",
+      "key": "card-with-repeater",
+      "label": "Card Container with Repeater element",
+      "type": "card",
       "children": [
         {
-          "type": "input",
-          "key": "repeaterTextInput",
-          "label": "Name 1",
-          "settings": {
-            "floatingLabel": true
-          },
+          "key": "repeater",
+          "type": "repeater",
+          "label": "Repeater Element",
+          "children": [
+            {
+              "type": "input",
+              "key": "repeaterTextInput",
+              "label": "Name 1",
+              "settings": {
+                "floatingLabel": true
+              },
+              "validators": [
+                {
+                  "name": "required"
+                }
+              ]
+            },
+            {
+              "type": "input",
+              "key": "repeaterEmailInput",
+              "label": "Email",
+              "controlType": "email",
+              "settings": {
+                "floatingLabel": true
+              },
+              "validators": [
+                {
+                  "name": "email"
+                }
+              ]
+            }
+          ],
+          "value": [
+            {
+              "repeaterTextInput": "foo1",
+              "repeaterEmailInput": "foo1@bar.baz"
+            },
+            {
+              "repeaterTextInput": "foo2",
+              "repeaterEmailInput": "foo2@bar.baz"
+            }
+          ],
           "validators": [
             {
-              "name": "required"
+              "name": "maxLength",
+              "value": 7
+            },
+            {
+              "name": "minLength",
+              "value": 2
             }
-          ]
-        },
-        {
-          "type": "input",
-          "key": "repeaterEmailInput",
-          "label": "Email",
-          "controlType": "email",
+          ],
           "settings": {
-            "floatingLabel": true
+            "addButton": {
+              "label": "Add Element",
+              "icon": "bi-plus-circle"
+            },
+            "removeButton": {
+              "icon": "bi-dash-circle",
+              "label": ""
+            }
           }
-        }
-      ],
-      "value": [
-        {
-          "repeaterTextInput": "foo1",
-          "repeaterEmailInput": "foo1@bar.baz"
-        },
-        {
-          "repeaterTextInput": "foo2",
-          "repeaterEmailInput": "foo2@bar.baz"
-        }
-      ],
-      "validators": [
-        {
-          "name": "maxLength",
-          "value": 7
-        },
-        {
-          "name": "minLength",
-          "value": 2
         }
       ]
     },
@@ -315,19 +338,19 @@
                   "type": "formGroup",
                   "children": [
                     {
-                    "type": "input",
-                    "key": "tabPane2name5",
-                    "controlType": "text",
-                    "validators": [
-                      {
-                        "name": "required"
-                      },
-                      {
-                        "name": "maxLength",
-                        "value": 12
-                      }
-                    ]
-                  }
+                      "type": "input",
+                      "key": "tabPane2name5",
+                      "controlType": "text",
+                      "validators": [
+                        {
+                          "name": "required"
+                        },
+                        {
+                          "name": "maxLength",
+                          "value": 12
+                        }
+                      ]
+                    }
                   ]
                 }
               ]
