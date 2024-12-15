@@ -19,7 +19,7 @@ export type FormElement = {
 
 export type FormButtonCallback = {
   function: string;
-  params: any[];
+  params?: any[];
 }
 
 export type FormButton = {

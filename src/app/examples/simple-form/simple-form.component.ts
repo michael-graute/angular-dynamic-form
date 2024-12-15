@@ -4,6 +4,7 @@ import {FormGroup} from "@angular/forms";
 import {ConfigDisplayComponent} from "../../helpers/config-display/config-display.component";
 import {prettyPrintJson} from "pretty-print-json";
 import {ModalService} from "../../helpers/modal/modal.service";
+import {FormConfig} from "../../dynamic-form/dynamic-form.types";
 
 @Component({
   selector: 'fg-simple-form',
@@ -18,7 +19,7 @@ export class SimpleFormComponent {
   constructor(public modalService: ModalService) {
   }
 
-  formConfig: any = {
+  formConfig: FormConfig = {
     elements: [
       {
         type: "select",
