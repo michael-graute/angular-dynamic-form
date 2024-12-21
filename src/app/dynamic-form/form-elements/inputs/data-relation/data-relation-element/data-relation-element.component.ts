@@ -40,6 +40,7 @@ export class DataRelationElementComponent implements ControlValueAccessor, Valid
   @Input() value: any = {}
   @Input() formConfig: FormConfig | undefined;
   @Input() form = new FormGroup({})
+  @Input() id: string = ''
 
   constructor(private dynamicFormService: DynamicFormService) {
   }
@@ -47,7 +48,7 @@ export class DataRelationElementComponent implements ControlValueAccessor, Valid
   addFormElement(formElement: FormElement) {
     // @ts-ignore
     const componentRef: ComponentRef<DynamicFormElementInterface> = this.formElementHost.viewContainerRef.createComponent<DynamicFormElementInterface>(FormElementMap[formElement.type])
-    componentRef.instance.id = formElement.key
+    componentRef.instance.id = this.id + formElement.key
     componentRef.instance.children = formElement.children
     componentRef.instance.form = this.form
     componentRef.instance.config = formElement
