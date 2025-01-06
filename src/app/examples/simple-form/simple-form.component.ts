@@ -5,12 +5,14 @@ import {ConfigDisplayComponent} from "../../helpers/config-display/config-displa
 import {prettyPrintJson} from "pretty-print-json";
 import {ModalService} from "../../helpers/modal/modal.service";
 import {FormConfig} from "../../dynamic-form/dynamic-form.types";
+import {PrismComponent} from "../../helpers/prism/prism.component";
 
 @Component({
   selector: 'fg-simple-form',
   imports: [
     DynamicFormComponent,
-    ConfigDisplayComponent
+    ConfigDisplayComponent,
+    PrismComponent
   ],
   templateUrl: './simple-form.component.html',
   styleUrl: './simple-form.component.scss'

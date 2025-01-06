@@ -5,4 +5,12 @@
 
 <fg-dynamic-form id="simpleForm" [formConfig]="formConfig" (onFormSubmit)="formSubmit($event)"/>
 
+<fg-prism>
+  <code class="language-css">
+    .foo {{'{'}}
+    bar baz
+    {{'}'}}
+  </code>
+</fg-prism>
+
 <fg-config-display [formConfig]="formConfig"></fg-config-display>
