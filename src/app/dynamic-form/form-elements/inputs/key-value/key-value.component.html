@@ -1,6 +1,6 @@
 <div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.floatingLabel}" class="mb-2">
   <span class="label" *ngIf="config?.label">{{config?.label}}</span>
-  <fg-key-value-element [id]="config?.key ?? ''" [formControlName]="id" [settings]="config?.settings"></fg-key-value-element>
+  <fg-key-value-element [id]="config?.key ?? ''" [formControlName]="key" [settings]="config?.settings"></fg-key-value-element>
 </div>
 <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
 <ul *ngIf="control?.errors" class="error-messages form-text text-danger">

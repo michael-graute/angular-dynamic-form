@@ -25,6 +25,7 @@ export type CustomButtonCallBackPayload = {
 })
 export class DynamicFormComponent implements OnInit {
   @Input() id: string = '';
+  @Input() key: string = '';
   @Input() formConfig: FormConfig | undefined;
   @Input() form = new FormGroup({})
   @Input() debug = false;
@@ -46,16 +47,18 @@ export class DynamicFormComponent implements OnInit {
   addFormElement(formElement: FormElement) {
     // @ts-ignore
     const componentRef: ComponentRef<DynamicFormElementInterface> = this.formElementHost.viewContainerRef.createComponent<DynamicFormElementInterface>(FormElementMap[formElement.type])
-    componentRef.instance.id = formElement.key
+    componentRef.instance.id = this.id + formElement.key
+    componentRef.instance.key = formElement.key;
     componentRef.instance.children = formElement.children
     componentRef.instance.form = this.form
     componentRef.instance.config = formElement
     componentRef.instance.debug = this.debug
-    this.dynamicFormService.addComponentRef(componentRef, formElement.key)
+    this.dynamicFormService.addComponentRef(componentRef)
   }
 
 
   ngOnInit() {
+    if(this.key === '') this.key = this.id;
     if(this.asyncUrl != null) {
       this.dynamicFormService.loadForm(this.asyncUrl).subscribe((formConfig: FormConfig) => {
         this.formConfig = formConfig;
@@ -70,7 +73,8 @@ export class DynamicFormComponent implements OnInit {
       })
     }
     this.dynamicFormService.elementAdded.subscribe((payload: ElementAddedPayload) => {
-      if(payload.targetContainerId === this.id) {
+      console.log('id:' + this.id, 'key:' + this.key)
+      if(payload.targetContainerId === this.key) {
         this.addFormElement(payload.element)
       }
     })

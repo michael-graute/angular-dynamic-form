@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AbstractFormElementHostComponent} from "../abstract-form-element-host.component";
 import {DynamicFormElementInterface} from "../../../dynamic-form-element.interface";
-import {FormArray, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {FormElementHostDirective} from "../../form-element-host.directive";
 
 @Component({
@@ -18,7 +18,7 @@ export class FormGroupComponent extends AbstractFormElementHostComponent<FormGro
   override formGroup = new FormGroup({})
 
   override ngOnInit() {
-      this.form.addControl(this.id, this.formGroup)
+      this.form.addControl(this.key, this.formGroup)
       super.ngOnInit()
   }
 

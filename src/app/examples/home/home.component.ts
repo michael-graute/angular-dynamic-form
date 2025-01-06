@@ -102,10 +102,22 @@ export class HomeComponent {
         ]
       }
       ,'fieldset2TabContainer')
+    this.dynamicFormService.addElement(
+      {
+        "key": "fooNameDynamicForm" + this.counter,
+        "label": "Foo Name "  + this.counter,
+        "floatingLabel": true,
+        "type": "input",
+        "controlType": "text",
+        "value": "Foooooooo"
+      }, 'dynamicForm'
+    )
   }
 
   deleteElement(): void {
     this.dynamicFormService.removeElement('newTabPane' + this.counter);
+    this.dynamicFormService.removeElement('fooNameFormGroup' + this.counter);
+    this.dynamicFormService.removeElement('fooNameDynamicForm' + this.counter);
     this.counter--;
   }
 
@@ -130,6 +142,7 @@ export class HomeComponent {
   }
 
   formReset(form: FormGroup) {
+    console.log('onFormReset', form.getRawValue());
     //this.dynamicFormService.reloadForm('/get-form')
   }
 

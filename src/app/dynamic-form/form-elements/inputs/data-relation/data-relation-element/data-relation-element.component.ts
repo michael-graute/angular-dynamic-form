@@ -35,12 +35,12 @@ import {FormElementMap} from "../../../../form-elements.map";
 })
 export class DataRelationElementComponent implements ControlValueAccessor, Validator, OnInit  {
   @ViewChild(FormElementHostDirective, {static: true}) formElementHost!: FormElementHostDirective;
+  @Input() id: string = '';
   @Input() settings: any | undefined;
   @Input() debug = false;
   @Input() value: any = {}
   @Input() formConfig: FormConfig | undefined;
   @Input() form = new FormGroup({})
-  @Input() id: string = ''
 
   constructor(private dynamicFormService: DynamicFormService) {
   }
@@ -48,12 +48,13 @@ export class DataRelationElementComponent implements ControlValueAccessor, Valid
   addFormElement(formElement: FormElement) {
     // @ts-ignore
     const componentRef: ComponentRef<DynamicFormElementInterface> = this.formElementHost.viewContainerRef.createComponent<DynamicFormElementInterface>(FormElementMap[formElement.type])
-    componentRef.instance.id = formElement.key
+    componentRef.instance.id = this.id + formElement.key
+    componentRef.instance.key = formElement.key
     componentRef.instance.children = formElement.children
     componentRef.instance.form = this.form
     componentRef.instance.config = formElement
     componentRef.instance.debug = this.debug
-    this.dynamicFormService.addComponentRef(componentRef, formElement.key)
+    this.dynamicFormService.addComponentRef(componentRef)
   }
 
   ngOnInit() {

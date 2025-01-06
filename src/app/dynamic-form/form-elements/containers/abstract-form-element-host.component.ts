@@ -22,6 +22,7 @@ export abstract class AbstractFormElementHostComponent<T> implements OnInit {
 
   children: FormElement[] = [];
   id: string = '';
+  key: string = '';
   config: FormElement | undefined;
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ export abstract class AbstractFormElementHostComponent<T> implements OnInit {
     })
 
     this.dynamicFormService.elementAdded.subscribe((payload: ElementAddedPayload) => {
-      if(payload.targetContainerId === this.id) {
+      if(payload.targetContainerId === this.key) {
         this.addFormElement(payload.element)
       }
     })
@@ -41,12 +42,13 @@ export abstract class AbstractFormElementHostComponent<T> implements OnInit {
   addFormElement(formElement: FormElement): ComponentRef<any> {
     // @ts-ignore
     const componentRef: ComponentRef<DynamicFormElementInterface> = this.formElementHost.viewContainerRef.createComponent<DynamicFormElementInterface>(FormElementMap[formElement.type])
-    componentRef.instance.id = formElement.key
+    componentRef.instance.id = this.id + formElement.key
+    componentRef.instance.key = formElement.key
     componentRef.instance.children = formElement.children
     componentRef.instance.form = this.formGroup ?? this.form
     componentRef.instance.config = formElement
     componentRef.instance.debug = this.debug
-    this.dynamicFormService.addComponentRef(componentRef, formElement.key)
+    this.dynamicFormService.addComponentRef(componentRef)
     return componentRef;
   }
 }

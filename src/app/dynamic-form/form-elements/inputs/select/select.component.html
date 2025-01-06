@@ -1,6 +1,6 @@
 <div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.settings?.floatingLabel}" class="mb-2">
   <label [for]="id" *ngIf="config?.label && !config?.settings?.floatingLabel">{{config?.label}}</label>
-  <select [id]="id" class="form-select" [formControlName]="id">
+  <select [id]="id" class="form-select" [formControlName]="key">
     <option *ngFor="let option of config?.options" [value]="option.value">{{option.label}}</option>
   </select>
   <label [for]="id" *ngIf="config?.label && config?.settings?.floatingLabel">{{config?.label}}</label>

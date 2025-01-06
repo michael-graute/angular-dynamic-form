@@ -41,8 +41,8 @@ export class DynamicFormService {
     this.removeComponentRef(elementId)
   }
 
-  addComponentRef(componentRef: ComponentRef<any>, id: string): void {
-    this.componentRefs[id] = componentRef
+  addComponentRef(componentRef: ComponentRef<any>): void {
+    this.componentRefs[componentRef.instance.key] = componentRef
   }
 
   removeComponentRef(id: string): void {

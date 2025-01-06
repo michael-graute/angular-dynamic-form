@@ -1,6 +1,6 @@
 export type FormElement = {
-  value?: any;
   key: string;
+  value?: any;
   label?: string;
   floatingLabel?: boolean;
   required?: boolean;
@@ -15,6 +15,7 @@ export type FormElement = {
   helpText?: string;
   children?: FormElement[];
   onChange?: any
+  multiple?: boolean;
 }
 
 export type ElementValidator = {

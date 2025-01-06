@@ -69,6 +69,31 @@
                   "name": "email"
                 }
               ]
+            },
+            {
+              "key": "repeaterRepeater",
+              "type": "repeater",
+              "label": "Repeater inside Repeater",
+              "children": [
+                {
+                  "type": "input",
+                  "key": "repeaterRepeaterTextInput",
+                  "label": "Some foo",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                }
+              ],
+              "settings": {
+                "addButton": {
+                  "label": "Add Foo",
+                  "icon": "bi-plus-circle"
+                },
+                "removeButton": {
+                  "icon": "bi-dash-circle",
+                  "label": ""
+                }
+              }
             }
           ],
           "value": [
@@ -86,11 +111,13 @@
           "validators": [
             {
               "name": "maxItems",
-              "value": 7
+              "value": 7,
+              "errorMessage": "You are allowed to have {expected} items in this list, but you've added {given}."
             },
             {
               "name": "minItems",
-              "value": 2
+              "value": 2,
+              "errorMessage": "You are required to have at least {expected} items in this list, but for now you've only added {given}."
             }
           ],
           "settings": {

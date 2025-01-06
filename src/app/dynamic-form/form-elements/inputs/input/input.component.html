@@ -1,6 +1,6 @@
 <div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.settings?.floatingLabel}" class="mb-2">
   <label [for]="id" *ngIf="config?.label && !config?.settings?.floatingLabel" [class]="{'required': config?.required}">{{config?.label}}</label>
-  <input class="form-control" [class]="{'required': config?.required}" [type]="config?.controlType ?? 'text'" [id]="id" [formControlName]="id" [required]="config?.required || false" [placeholder]="config?.floatingLabel ?? ''">
+  <input class="form-control" [class]="{'required': config?.required}" [type]="config?.controlType ?? 'text'" [id]="id" [formControlName]="key" [required]="config?.required || false" [placeholder]="config?.floatingLabel ?? ''">
   <label [for]="id" *ngIf="config?.label && config?.settings?.floatingLabel" [class]="{'required': config?.required}">{{config?.label}}</label>
   <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
   <ul *ngIf="control?.errors" class="error-messages form-text text-danger">

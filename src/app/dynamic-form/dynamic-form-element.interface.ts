@@ -5,6 +5,7 @@ import {FormElement} from "./dynamic-form.types";
 
 export interface DynamicFormElementInterface {
   id: string;
+  key: string;
   form: FormGroup;
   children?: any[];
   config?: FormElement

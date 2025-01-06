@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormElement} from "../../../../dynamic-form.types";
 import {AbstractFormElementHostComponent} from "../../abstract-form-element-host.component";
 import {DynamicFormElementInterface} from "../../../../dynamic-form-element.interface";
 import {FormElementHostDirective} from "../../../form-element-host.directive";
-import {NgIf} from "@angular/common";
 import {TabService} from "../tab.service";
 import {DynamicFormService} from "../../../../dynamic-form.service";
 
@@ -25,7 +23,7 @@ export class TabPaneComponent extends AbstractFormElementHostComponent<TabPaneCo
   override ngOnInit(): void {
     super.ngOnInit();
     this.tabService.tabClicked.subscribe(tab => {
-      this.active = this.id === tab;
+      this.active = this.key === tab;
     })
   }
 }

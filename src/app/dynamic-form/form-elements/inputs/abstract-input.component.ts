@@ -1,5 +1,5 @@
 import {Component, HostBinding, Input, OnDestroy, OnInit} from "@angular/core";
-import {FormControl, FormGroup, ValidatorFn} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, ValidatorFn} from "@angular/forms";
 import {FormElement} from "../../dynamic-form.types";
 import {DynamicFormElementInterface} from "../../dynamic-form-element.interface";
 import {DynamicFormValidators} from "../../dynamic-form-validators";
@@ -8,9 +8,10 @@ import {defaultErrorMessages} from "../../default-error-messages";
 @Component({template: ``})
 export abstract class AbstractInputComponent implements DynamicFormElementInterface, OnInit, OnDestroy {
   id: string = '';
+  key: string = '';
   form: FormGroup = new FormGroup({});
   config: FormElement | undefined;
-  control: FormControl | undefined;
+  control: FormControl | FormArray<never> | undefined;
   hidden = false
   debug = false;
   @Input() errorMessages: {[key: string]: string} = {};
@@ -50,15 +51,15 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
       }
     });
     this.control = new FormControl(this.config?.value, validators);
-    this.form.addControl(this.id, this.control);
+    this.form.addControl(this.key, this.control);
     if(this.config?.onChange) {
       this.control.valueChanges.subscribe((value: string) => {
-        console.log(this.id, this.config?.onChange, value)
+        console.log(this.key, this.config?.onChange, value)
       })
     }
   }
 
   ngOnDestroy() {
-    this.form.removeControl(this.id);
+    this.form.removeControl(this.key);
   }
 }

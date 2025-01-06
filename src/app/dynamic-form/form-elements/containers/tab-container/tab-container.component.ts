@@ -33,7 +33,7 @@ export class TabContainerComponent extends AbstractFormElementHostComponent<TabC
       }
     })
     this.dynamicFormService.elementAdded.subscribe((payload: ElementAddedPayload) => {
-      if(payload.targetContainerId === this.id) {
+      if(payload.targetContainerId === this.key) {
         this.children.push(payload.element);
         this.addFormElement(payload.element)
         setTimeout(() => {

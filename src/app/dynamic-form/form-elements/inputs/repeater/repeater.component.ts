@@ -5,7 +5,7 @@ import {FormConfig} from "../../../dynamic-form.types";
 import {DynamicFormValidators} from "../../../dynamic-form-validators";
 import {DataRelationElementComponent} from "../data-relation/data-relation-element/data-relation-element.component";
 import {NgForOf, NgIf} from "@angular/common";
-import {defaultErrorMessages} from "../../../default-error-messages";
+
 
 @Component({
   selector: 'fg-repeater',
@@ -26,7 +26,7 @@ export class RepeaterComponent extends AbstractInputComponent {
   }
 
   get formArray(): FormArray<FormGroup> {
-    return this.form.get(this.id) as FormArray;
+    return this.form.get(this.key) as FormArray;
   }
 
   override ngOnInit() {
@@ -40,40 +40,20 @@ export class RepeaterComponent extends AbstractInputComponent {
         this.errorMessages[validator.name] = validator.errorMessage;
       }
     });
+    this.control = new FormArray([], validators);
+    this.form.addControl(this.key, this.control);
 
-    this.form.addControl(this.id, new FormArray([], validators))
-
-    this.config?.value.forEach((value: any) => {
-      const formGroup = new FormGroup({})
-      this.formArray.push(formGroup)
-    })
-    setTimeout(() => {
-      this.config?.value.forEach((value: any, index: number) => {
-        this.formArray.controls.at(index)?.patchValue(value)
+    if(this.config?.value) {
+      this.config?.value.forEach(() => {
+        const formGroup = new FormGroup({})
+        this.formArray.push(formGroup)
       })
-    },50)
-  }
-
-  override getErrorMessages(): string[] {
-    let messages = []
-    for (let key in this.formArray?.errors) {
-      let message = '';
-      if(this.errorMessages.hasOwnProperty(key)) {
-        message = this.errorMessages[key];
-      } else if(defaultErrorMessages.hasOwnProperty(key)) {
-        message = defaultErrorMessages[key];
-      } else {
-        message = key;
-      }
-      if(typeof this.formArray?.errors?.[key] === 'object') {
-        console.log(this.formArray?.errors?.[key])
-        for (let replaceKey in this.formArray?.errors?.[key]) {
-          message = message.replace('{' + replaceKey + '}', this.formArray?.errors?.[key][replaceKey]);
-        }
-      }
-      messages.push(message);
+      setTimeout(() => {
+        this.config?.value.forEach((value: any, index: number) => {
+          this.formArray.controls.at(index)?.patchValue(value)
+        })
+      },50)
     }
-    return messages;
   }
 
   addItem() {
