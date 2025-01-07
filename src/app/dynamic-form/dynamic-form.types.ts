@@ -16,6 +16,7 @@ export type FormElement = {
   children?: FormElement[];
   onChange?: any
   multiple?: boolean;
+  multipleLabel?: string;
 }
 
 export type ElementValidator = {

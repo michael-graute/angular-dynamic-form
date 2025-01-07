@@ -14,9 +14,14 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
   control: FormControl | FormArray<never> | undefined;
   hidden = false
   debug = false;
+  validators: ValidatorFn[] = []
   @Input() errorMessages: {[key: string]: string} = {};
 
   @HostBinding('class') className = '';
+
+  get formArray(): FormArray {
+    return this.form.get(this.key) as FormArray;
+  }
 
   getErrorMessages(): string[] {
     let messages = []
@@ -42,24 +47,45 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
   ngOnInit(): void {
     if(this.config?.class) this.className = this.className + ' ' + this.config?.class
 
-    let validators:ValidatorFn[] = [];
     this.config?.validators?.forEach((validator: any) => {
       //@ts-ignore
-      validators.push(DynamicFormValidators[validator.name](validator.value))
+      this.validators.push(DynamicFormValidators[validator.name](validator.value))
       if(validator.errorMessage) {
         this.errorMessages[validator.name] = validator.errorMessage;
       }
     });
-    this.control = new FormControl(this.config?.value, validators);
-    this.form.addControl(this.key, this.control);
-    if(this.config?.onChange) {
-      this.control.valueChanges.subscribe((value: string) => {
-        console.log(this.key, this.config?.onChange, value)
-      })
+    if(this.config?.multiple) {
+      if(this.config?.type != 'input' && this.config?.type != 'select') {
+        throw new Error('The "multiple" config parameter is only suitable for the primitive types "input" and "select"')
+      }
+      this.control = new FormArray([]);
+      this.form.addControl(this.key, this.control);
+      if(this.config?.value) {
+        this.config?.value.forEach((value: any) => {
+          this.formArray.push(new FormControl(value, this.validators));
+        })
+      }
+    } else {
+      this.control = new FormControl(this.config?.value, this.validators);
+      this.form.addControl(this.key, this.control);
+      if(this.config?.onChange) {
+        this.control.valueChanges.subscribe((value: string) => {
+          console.log(this.key, this.config?.onChange, value)
+        })
+      }
     }
+
   }
 
   ngOnDestroy() {
     this.form.removeControl(this.key);
+  }
+
+  addItem() {
+    this.formArray.push(new FormControl('', this.validators))
+  }
+
+  removeItem(index: number) {
+    this.formArray.removeAt(index)
   }
 }

@@ -73,7 +73,6 @@ export class DynamicFormComponent implements OnInit {
       })
     }
     this.dynamicFormService.elementAdded.subscribe((payload: ElementAddedPayload) => {
-      console.log('id:' + this.id, 'key:' + this.key)
       if(payload.targetContainerId === this.key) {
         this.addFormElement(payload.element)
       }

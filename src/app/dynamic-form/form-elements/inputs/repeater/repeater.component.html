@@ -1,7 +1,7 @@
 <span *ngIf="config?.label" class="label">{{config?.label}}</span>
 <div [formGroup]="form">
   <div [formArrayName]="key">
-    <div  *ngFor="let item of formArray.controls; let i = index" class="row mb-4">
+    <div *ngFor="let item of formArray.controls; let i = index" class="row mb-4">
       <div class="col-11">
         <fg-data-relation-element [id]="id + 'Dataset' + i" [form]="item" [formConfig]="formConfig" />
       </div>

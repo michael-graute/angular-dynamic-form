@@ -25,7 +25,7 @@ export class RepeaterComponent extends AbstractInputComponent {
     buttons: []
   }
 
-  get formArray(): FormArray<FormGroup> {
+  override get formArray(): FormArray<FormGroup> {
     return this.form.get(this.key) as FormArray;
   }
 
@@ -56,12 +56,8 @@ export class RepeaterComponent extends AbstractInputComponent {
     }
   }
 
-  addItem() {
+  override addItem() {
     this.formArray.push(new FormGroup({}))
-  }
-
-  removeItem(index: number) {
-    this.formArray.removeAt(index)
   }
 
 }

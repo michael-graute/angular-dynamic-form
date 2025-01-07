@@ -1,5 +1,5 @@
 {
-  "email": "Foo@bar",
+  "emails": ["Foo@bar","Bar@baz"],
   "name1": "from REST",
   "name2": "Foo changed",
   "tab1": {
@@ -53,7 +53,18 @@
     {
       "gender": "diverse",
       "repeaterTextInput": "foo1 from remote",
-      "repeaterEmailInput": "remote.foo1@bar.baz"
+      "repeaterEmailInput": "remote.foo1@bar.baz",
+      "repeaterRepeater": [
+        {
+          "repeaterRepeaterTextInput": "barBaz",
+          "repeaterRepeaterMultipleTextInput": [
+            "dfsdfsd",
+            "dfsdfsdf",
+            "dsfsdfdsf",
+            "dsfsdfdsf"
+          ]
+        }
+      ]
     },
     {
       "gender": "diverse",

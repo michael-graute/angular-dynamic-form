@@ -82,6 +82,16 @@
                   "settings": {
                     "floatingLabel": true
                   }
+                },
+                {
+                  "type": "input",
+                  "key": "repeaterRepeaterMultipleTextInput",
+                  "label": "Some multiple foo",
+                  "multiple": true,
+                  "multipleLabel": "Multiple Input",
+                  "settings": {
+                    "floatingLabel": true
+                  }
                 }
               ],
               "settings": {
@@ -191,18 +201,32 @@
       ]
     },
     {
-      "key": "email",
-      "label": "E-Mail",
-      "settings": {
-        "floatingLabel": true
-      },
-      "type": "input",
-      "controlType": "email",
-      "validators": [
-        {
-          "name": "email"
-        }
-      ]
+      "key": "card-with-multiple",
+      "label": "Card Container with multiple input",
+      "type": "card",
+      "children": [{
+        "key": "emails",
+        "label": "E-Mail",
+        "settings": {
+          "floatingLabel": true
+        },
+        "type": "input",
+        "controlType": "email",
+        "multiple": true,
+        "multipleLabel": "E-Mails",
+        "value": [
+          "foo@bar.baz",
+          ""
+        ],
+        "validators": [
+          {
+            "name": "required"
+          },
+          {
+            "name": "email"
+          }
+        ]
+      }]
     },
     {
       "key": "fieldset1",
