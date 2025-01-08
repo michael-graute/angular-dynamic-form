@@ -4,7 +4,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {AbstractInputComponent} from "../abstract-input.component";
 
 @Component({
-    selector: 'fg-text-input',
+    selector: 'fg-input',
   imports: [
     ReactiveFormsModule,
     NgIf,

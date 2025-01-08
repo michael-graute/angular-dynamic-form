@@ -11,6 +11,8 @@ import {FormGroupComponent} from "./form-elements/containers/form-group/form-gro
 import {DataRelationComponent} from "./form-elements/inputs/data-relation/data-relation.component";
 import {FormTextComponent} from "./form-elements/elements/form-text/form-text.component";
 import {RepeaterComponent} from "./form-elements/inputs/repeater/repeater.component";
+import {CheckboxComponent} from "./form-elements/inputs/checkbox/checkbox.component";
+import {RadioGroupComponent} from "./form-elements/inputs/radio-group/radio-group.component";
 
 export const FormElementMap = {
   'fieldset': FieldsetComponent,
@@ -25,6 +27,8 @@ export const FormElementMap = {
 
   'input': InputComponent,
   'select': SelectComponent,
+  'checkbox': CheckboxComponent,
+  'radio-group': RadioGroupComponent,
   'key-value': KeyValueComponent,
   'data-relation': DataRelationComponent,
   'repeater': RepeaterComponent

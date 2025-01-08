@@ -54,6 +54,7 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
         this.errorMessages[validator.name] = validator.errorMessage;
       }
     });
+
     if(this.config?.multiple) {
       if(this.config?.type != 'input' && this.config?.type != 'select') {
         throw new Error('The "multiple" config parameter is only suitable for the primitive types "input" and "select"')
@@ -74,7 +75,6 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
         })
       }
     }
-
   }
 
   ngOnDestroy() {
@@ -82,7 +82,7 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
   }
 
   addItem() {
-    this.formArray.push(new FormControl('', this.validators))
+    this.formArray.push(new FormControl(null, this.validators))
   }
 
   removeItem(index: number) {

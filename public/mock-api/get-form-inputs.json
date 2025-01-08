@@ -14,6 +14,36 @@
               "type": "formGroup",
               "children": [
                 {
+                  "key": "checkbox",
+                  "type": "checkbox",
+                  "label": "Checkbox",
+                  "helpText": "Foo",
+                  "settings": {
+                    "switch": true
+                  }
+                },
+                {
+                  "key": "radio-group",
+                  "type": "radio-group",
+                  "label": "Radio Group",
+                  "helpText": "Foo",
+                  "value": "bar",
+                  "options": [
+                    {
+                      "value": "foo",
+                      "label": "Foo!"
+                    },
+                    {
+                      "value": "bar",
+                      "label": "Bar!"
+                    },
+                    {
+                      "value": "baz",
+                      "label": "Baz!"
+                    }
+                  ]
+                },
+                {
                   "key": "inputText",
                   "type": "input",
                   "controlType": "text",
