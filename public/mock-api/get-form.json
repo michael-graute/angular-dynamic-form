@@ -168,7 +168,13 @@
                       "onChange": "doSomeFoo",
                       "settings": {
                         "floatingLabel": true
-                      }
+                      },
+                      "validators": [
+                        {
+                          "name": "pattern",
+                          "value": "^\\d+$"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -182,7 +188,13 @@
                       "label": "Name 2",
                       "settings": {
                         "floatingLabel": true
-                      }
+                      },
+                      "validators": [
+                        {
+                          "name": "pattern",
+                          "value": "foo"
+                        }
+                      ]
                     }
                   ]
                 }

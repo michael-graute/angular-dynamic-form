@@ -47,9 +47,15 @@ export class DynamicFormValidators {
     }
   }
 
-  static pattern(pattern: string): ValidatorFn {
+  static pattern(pattern: string | RegExp): ValidatorFn {
+    let regex: RegExp;
+    if(typeof pattern === 'string') {
+      regex = new RegExp(pattern);
+    } else {
+      regex = pattern;
+    }
     return (control: AbstractControl): ValidationErrors | null => {
-      return Validators.pattern(pattern);
+     return (regex.test(control.value) ? null : {pattern: {expected: regex.toString(), given: control.value}})
     }
   }
 
