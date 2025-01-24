@@ -206,7 +206,13 @@
               "label": "Name 3",
               "settings": {
                 "floatingLabel": true
-              }
+              },
+              "validators": [
+                {
+                  "name": "inArray",
+                  "value": ["foo", "bar", "baz"]
+                }
+              ]
             }
           ]
         }

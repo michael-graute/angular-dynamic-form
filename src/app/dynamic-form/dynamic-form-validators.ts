@@ -16,7 +16,7 @@ export class DynamicFormValidators {
 
   static inArray(allowedValues: string[]): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      return allowedValues.includes(control.value) ? null : {inArray: {param: allowedValues.join(', '), value: control.value, allowedValues: allowedValues}};
+      return allowedValues.includes(control.value) ? null : {inArray: {expected: allowedValues.join(', '), given: control.value}};
     }
   }
 
