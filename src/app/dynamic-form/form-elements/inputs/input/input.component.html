@@ -10,13 +10,13 @@
   </ng-container>
   <ng-container *ngIf="config?.multiple">
     <span *ngIf="config?.multipleLabel">{{config?.multipleLabel}}</span>
-    <div [formArrayName]="key" class="row" *ngFor="let item of formArray.controls; let i = index">
+    <div [formArrayName]="key" class="row mb-2" *ngFor="let item of formArray.controls; let i = index">
       <div class="col-11">
         <div [class]="{'form-floating': config?.settings?.floatingLabel}">
           <input class="form-control" [class]="{'required': config?.required}" [type]="config?.controlType ?? 'text'" [id]="id + i" [formControlName]="i" [required]="config?.required || false" [placeholder]="config?.floatingLabel ?? ''">
           <label [for]="id + i" *ngIf="config?.label && config?.settings?.floatingLabel" [class]="{'required': config?.required}">{{config?.label}}</label>
           <ul *ngIf="item?.errors" class="error-messages form-text text-danger">
-            <li *ngFor="let message of getErrorMessages()">{{message}}</li>
+            <li *ngFor="let message of getMultipleErrorMessages(item)">{{message}}</li>
           </ul>
         </div>
       </div>

@@ -44,6 +44,27 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
     return messages;
   }
 
+  getMultipleErrorMessages(foo: any): any[] {
+    let messages = []
+    for (let key in foo?.errors) {
+      let message = '';
+      if(this.errorMessages.hasOwnProperty(key)) {
+        message = this.errorMessages[key];
+      } else if(defaultErrorMessages.hasOwnProperty(key)) {
+        message = defaultErrorMessages[key];
+      } else {
+        message = key;
+      }
+      if(typeof foo.errors?.[key] === 'object') {
+        for (let replaceKey in this.control?.errors?.[key]) {
+          message = message.replace('{' + replaceKey + '}', this.control?.errors?.[key][replaceKey]);
+        }
+      }
+      messages.push(message);
+    }
+    return messages;
+  }
+
   ngOnInit(): void {
     if(this.config?.class) this.className = this.className + ' ' + this.config?.class
 

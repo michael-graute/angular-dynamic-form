@@ -10,9 +10,9 @@
     "tabPane2name5": "Foo"
   },
   "form-group": {
-    "formGroupName1": "Remote content",
-    "formGroupName2": "Remote content",
-    "formGroupName3": "Remote content"
+    "formGroupName1": "12",
+    "formGroupName2": "foo",
+    "formGroupName3": "baz"
   },
   "key-value": [
     {
