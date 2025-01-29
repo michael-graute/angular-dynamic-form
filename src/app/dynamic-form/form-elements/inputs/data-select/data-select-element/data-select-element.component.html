@@ -1,0 +1,13 @@
+<div class="form-control">
+  <div class="selection-display-wrapper" (click)="toggleDataList()">
+    <span class="current-selection">
+      <ng-container *ngIf="value">{{value[settings.valueKey] ?? ''}}</ng-container>
+    </span>
+    <i class="bi-chevron-down"></i>
+  </div>
+</div>
+<div *ngIf="showDataList" class="data-display">
+  <ul class="list-group">
+    <li *ngFor="let dataset of options" class="list-group-item" (click)="optionClicked(dataset)">{{dataset[settings.valueKey]}}</li>
+  </ul>
+</div>

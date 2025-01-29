@@ -13,6 +13,7 @@ import {FormTextComponent} from "./form-elements/elements/form-text/form-text.co
 import {RepeaterComponent} from "./form-elements/inputs/repeater/repeater.component";
 import {CheckboxComponent} from "./form-elements/inputs/checkbox/checkbox.component";
 import {RadioGroupComponent} from "./form-elements/inputs/radio-group/radio-group.component";
+import {DataSelectComponent} from "./form-elements/inputs/data-select/data-select.component";
 
 export const FormElementMap = {
   'fieldset': FieldsetComponent,
@@ -31,5 +32,6 @@ export const FormElementMap = {
   'radio-group': RadioGroupComponent,
   'key-value': KeyValueComponent,
   'data-relation': DataRelationComponent,
-  'repeater': RepeaterComponent
+  'repeater': RepeaterComponent,
+  'data-select': DataSelectComponent,
 }

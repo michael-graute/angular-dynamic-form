@@ -1,0 +1,8 @@
+<div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.floatingLabel}" class="mb-2">
+  <span class="label" *ngIf="config?.label">{{config?.label}}</span>
+  <fg-data-select-element [id]="config?.key ?? ''" [formControlName]="key" [settings]="config?.settings" [options]="config?.options ?? []"></fg-data-select-element>
+</div>
+<div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
+<ul *ngIf="control?.errors" class="error-messages form-text text-danger">
+  <li *ngFor="let message of getErrorMessages()">{{message}}</li>
+</ul>
