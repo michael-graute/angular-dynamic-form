@@ -8,6 +8,7 @@ import {
   Validator
 } from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
+import {DataSelectElementService} from "./data-select-element.service";
 
 @Component({
   selector: 'fg-data-select-element',
@@ -39,6 +40,8 @@ export class DataSelectElementComponent implements OnInit, ControlValueAccessor,
 
   value: any = null;
 
+  constructor(private dataService: DataSelectElementService) {}
+
   toggleDataList(): void {
     this.showDataList = !this.showDataList;
   }
@@ -46,14 +49,21 @@ export class DataSelectElementComponent implements OnInit, ControlValueAccessor,
   optionClicked(dataset: any): void {
     this.showDataList = false;
     this.value = dataset;
-    console.log(this.value);
+    this.onChange(this.value);
   }
 
   ngOnInit() {
-
+    if(this.settings.asyncURL) {
+      this.dataService.loadData(this.settings.asyncURL).subscribe((data: any) => {
+        this.options = data;
+      })
+    }
   }
 
+  onChange = (value: any) => {};
+
   registerOnChange(fn: any): void {
+    this.onChange = fn
   }
 
   registerOnTouched(fn: any): void {

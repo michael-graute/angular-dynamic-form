@@ -6,25 +6,9 @@
       "type": "data-select",
       "settings": {
         "floatingLabel": true,
-        "valueKey": "name"
-      },
-      "options": [
-        {
-          "ID": 1,
-          "name": "Foo",
-          "email": "foo@bar.baz"
-        },
-        {
-          "ID": 2,
-          "name": "Bar",
-          "email": "bar@bar.baz"
-        },
-        {
-          "ID": 3,
-          "name": "Baz",
-          "email": "baz@bar.baz"
-        }
-      ]
+        "valueKey": "name",
+        "asyncURL": "/get-select-options"
+      }
     },
     {
       "key": "card-with-repeater",
