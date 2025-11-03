@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {AbstractInputComponent} from "../abstract-input.component";
 import {ReactiveFormsModule} from "@angular/forms";
 
@@ -9,6 +9,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule
 ],
     templateUrl: './select.component.html',
-    styleUrl: './select.component.scss'
+    styleUrl: './select.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectComponent extends AbstractInputComponent {}

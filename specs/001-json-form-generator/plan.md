@@ -11,10 +11,10 @@ The Angular Dynamic Form Generator is an existing component library that enables
 
 ## Technical Context
 
-**Language/Version**: TypeScript 5.5.2 / Angular 19.1.3
+**Language/Version**: TypeScript 5.9.3 / Angular 20.3.9
 **Primary Dependencies**: @angular/forms (Reactive Forms), @angular/common/http (async loading), Bootstrap 5.3.3 (UI styling), RxJS 7.8.0 (async operations)
 **Storage**: N/A (client-side form library - data persistence is consumer responsibility)
-**Testing**: Jasmine 5.1.0 with Karma 6.4.0 (Angular default test framework)
+**Testing**: Jasmine 5.12.1 with Karma 6.4.0 (Angular default test framework)
 **Target Platform**: Modern web browsers (ES6+ support required)
 **Project Type**: Single Angular application (component library with example implementations)
 **Performance Goals**: Forms with 50+ fields render within 1 second, 100 repeater items without UI lag, async operations complete within 2 seconds
@@ -137,10 +137,11 @@ No violations requiring justification. This section intentionally left empty.
 
 Based on the existing codebase analysis and technical context review, the following areas require research to establish best practices and design patterns:
 
-1. **Angular 19 Component Architecture Best Practices**
-   - Latest patterns for dynamic component instantiation in Angular 19
-   - Standalone components vs module-based architecture
-   - Best practices for ViewContainerRef and component lifecycle management
+1. **Angular 20 Component Architecture Best Practices**
+   - Latest patterns for dynamic component instantiation in Angular 20.3.9
+   - Standalone components vs module-based architecture (Angular 20 specific changes)
+   - Best practices for ViewContainerRef and component lifecycle management in Angular 20
+   - Verification of API compatibility between Angular 19 patterns and Angular 20
 
 2. **Reactive Forms Advanced Patterns**
    - Best practices for deeply nested FormGroups (3+ levels)

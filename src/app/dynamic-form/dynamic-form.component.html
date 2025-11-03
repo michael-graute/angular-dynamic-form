@@ -4,7 +4,7 @@
   </div>
   @if (formConfig?.buttons) {
     <div class="form-footer button-row d-flex gap-1 justify-content-end">
-      @for (button of formConfig?.buttons; track button) {
+      @for (button of formConfig?.buttons; track trackByButtonKey($index, button)) {
         <button
           [type]="button.type" [class]="['btn', button.class ?? 'btn-primary']"
           (click)="buttonClick(button)"

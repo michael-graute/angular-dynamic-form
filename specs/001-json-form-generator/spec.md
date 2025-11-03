@@ -261,7 +261,7 @@ As a developer, I need to define custom buttons with callback functions in the f
 ### Assumptions
 
 - Developers using this system have basic knowledge of JSON syntax and web forms
-- The application will run in modern browsers supporting ES6+ JavaScript
+- The application runs on Angular 20.3.9 with TypeScript 5.9.3 in modern browsers supporting ES6+ JavaScript
 - Form configurations will be provided as valid JSON (validation of configuration structure is not guaranteed)
 - HTTP endpoints for async operations return data in expected formats (form component does not validate API response schemas)
 - Developers are responsible for server-side validation and data persistence
@@ -271,6 +271,16 @@ As a developer, I need to define custom buttons with callback functions in the f
 - The system uses reactive forms approach (not template-driven forms)
 - Button callbacks and onChange handlers are defined in the parent component consuming the form
 - The system assumes a single form instance per component scope (multiple forms require multiple component instances)
+
+## Clarifications
+
+### Session 2025-11-03
+
+- Q: Should @angular/cdk installation target version 20 to match Angular 20.3.9, version 19 as originally planned, or latest regardless? → A: Option A - Install @angular/cdk@20 to match the Angular 20.3.9 version (recommended for compatibility)
+- Q: Should documentation reference TypeScript 5.9.3 (current package.json), keep 5.5.2 (original plan), or downgrade? → A: Option A - Update all documentation to reference TypeScript 5.9.3 (matches current package.json)
+- Q: Should Angular 20 standalone component patterns be verified before implementation, proceed with Angular 19 patterns, or defer migration? → A: Option A - Add verification task to research Angular 20-specific standalone component patterns and ViewContainerRef APIs
+- Q: Should performance targets (2s async, 100ms validation, 200ms interactions) be maintained, relaxed, or made more aggressive for Angular 20? → A: Option A - Maintain current performance targets (2s async, 100ms validation, 200ms interactions) and validate with Angular 20 benchmarks
+- Q: Should documentation reference Jasmine 5.12.1 (current package.json), keep 5.1.0, or downgrade? → A: Option A - Update plan to reference Jasmine 5.12.1 (matches package.json, ensures accurate documentation)
 
 ## Out of Scope
 

@@ -8,9 +8,9 @@
 
 This document contains all implementation tasks for the Angular Dynamic Form Generator, organized by user story to enable independent, incremental delivery. The project is an **existing codebase** being enhanced with modern patterns and additional capabilities.
 
-**Total Tasks**: 68
+**Total Tasks**: 103 (updated 2025-11-03 for Angular 20.3.9)
 **User Stories**: 10 (P1: 1, P2: 5, P3: 4)
-**Parallel Opportunities**: 42 tasks marked [P]
+**Parallel Opportunities**: 43 tasks marked [P]
 
 ## Implementation Strategy
 
@@ -31,15 +31,16 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 ## Phase 1: Setup & Infrastructure
 
-**Goal**: Prepare development environment and project structure for Angular 19 patterns.
+**Goal**: Prepare development environment and project structure for Angular 20.3.9 patterns.
 
 **Tasks**:
 
-- [ ] T001 Install @angular/cdk package for virtual scrolling support (npm install @angular/cdk@19)
-- [ ] T002 Install zod package for runtime JSON validation (npm install zod)
-- [ ] T003 [P] Update tsconfig.json to enable strict mode if not already enabled
-- [ ] T004 [P] Create performance testing configuration in angular.json (add budgets for 100-field forms)
-- [ ] T005 [P] Set up Jasmine custom matchers for form validation testing in src/test-helpers/form-matchers.ts
+- [X] T001 Install @angular/cdk package for virtual scrolling support (npm install @angular/cdk@20 to match Angular 20.3.9)
+- [X] T002 Install zod package for runtime JSON validation (npm install zod)
+- [X] T003 [P] Update tsconfig.json to enable strict mode if not already enabled (already enabled)
+- [X] T004 [P] Create performance testing configuration in angular.json (add budgets for 100-field forms)
+- [X] T005 [P] Set up Jasmine custom matchers for form validation testing in src/test-helpers/form-matchers.ts
+- [X] T006A [P] Research and verify Angular 20.3.9 standalone component patterns and ViewContainerRef API compatibility (clarification 2025-11-03) - See angular-20-verification.md
 
 ---
 
@@ -47,40 +48,40 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 **Goal**: Implement blocking prerequisites that benefit all user stories (modern Angular patterns, type safety, performance foundation).
 
-**Dependencies**: Phase 1 must complete first.
+**Dependencies**: Phase 1 must complete first (including T006A Angular 20 verification).
 
 **Tasks**:
 
 ### Architecture Modernization
 
-- [ ] T006 [P] Convert AbstractInputComponent to standalone component in src/app/dynamic-form/form-elements/abstract/abstract-input.component.ts
-- [ ] T007 [P] Convert AbstractFormElementHostComponent to standalone in src/app/dynamic-form/form-elements/abstract/abstract-form-element-host.component.ts
-- [ ] T008 [P] Update DynamicFormComponent to standalone in src/app/dynamic-form/dynamic-form.component.ts
-- [ ] T009 Update form-elements.map.ts to use ViewContainerRef.createComponent() API (modern Angular 19 pattern)
+- [X] T006 [P] Convert AbstractInputComponent to standalone component in src/app/dynamic-form/form-elements/abstract/abstract-input.component.ts (using verified Angular 20 patterns)
+- [X] T007 [P] Convert AbstractFormElementHostComponent to standalone in src/app/dynamic-form/form-elements/abstract/abstract-form-element-host.component.ts (using verified Angular 20 patterns)
+- [X] T008 [P] Update DynamicFormComponent to standalone in src/app/dynamic-form/dynamic-form.component.ts (using verified Angular 20 patterns)
+- [X] T009 Update form-elements.map.ts to use ViewContainerRef.createComponent() API (modern Angular 20 pattern verified in T006A) - Already using modern API, added type safety
 
 ### Runtime Validation & Type Safety
 
-- [ ] T010 [P] Create Zod schema for FormConfig in src/app/dynamic-form/schemas/form-config.schema.ts
-- [ ] T011 [P] Create Zod schema for FormElement (recursive) in src/app/dynamic-form/schemas/form-element.schema.ts
-- [ ] T012 [P] Create Zod schema for FormButton in src/app/dynamic-form/schemas/form-button.schema.ts
-- [ ] T013 [P] Create Zod schema for ElementValidator in src/app/dynamic-form/schemas/element-validator.schema.ts
-- [ ] T014 Implement validateFormConfig() function in src/app/dynamic-form/validators/config-validator.ts
-- [ ] T015 Add type guards (isFormElement, hasChildren, etc.) to src/app/dynamic-form/type-guards/form-type-guards.ts
-- [ ] T016 Integrate runtime validation into DynamicFormService.loadForm() in src/app/dynamic-form/dynamic-form.service.ts
+- [X] T010 [P] Create Zod schema for FormConfig in src/app/dynamic-form/schemas/form-config.schema.ts
+- [X] T011 [P] Create Zod schema for FormElement (recursive) in src/app/dynamic-form/schemas/form-element.schema.ts
+- [X] T012 [P] Create Zod schema for FormButton in src/app/dynamic-form/schemas/form-button.schema.ts
+- [X] T013 [P] Create Zod schema for ElementValidator in src/app/dynamic-form/schemas/element-validator.schema.ts
+- [X] T014 Implement validateFormConfig() function in src/app/dynamic-form/validators/config-validator.ts
+- [X] T015 Add type guards (isFormElement, hasChildren, etc.) to src/app/dynamic-form/type-guards/form-type-guards.ts
+- [X] T016 Integrate runtime validation into DynamicFormService.loadForm() in src/app/dynamic-form/dynamic-form.service.ts
 
 ### Performance Foundation
 
-- [ ] T017 [P] Add OnPush change detection to DynamicFormComponent in src/app/dynamic-form/dynamic-form.component.ts
-- [ ] T018 [P] Add trackBy functions to all *ngFor directives in DynamicFormComponent template
-- [ ] T019 Create performance monitoring service in src/app/dynamic-form/services/performance-monitor.service.ts
-- [ ] T020 [P] Add performance budget warnings for 50+ fields in DynamicFormComponent
+- [X] T017 [P] Add OnPush change detection to DynamicFormComponent in src/app/dynamic-form/dynamic-form.component.ts
+- [X] T018 [P] Add trackBy functions to all *ngFor directives in DynamicFormComponent template
+- [X] T019 Create performance monitoring service in src/app/dynamic-form/services/performance-monitor.service.ts
+- [X] T020 [P] Add performance budget warnings for 50+ fields in DynamicFormComponent
 
 ### Async Enhancement Foundation
 
-- [ ] T021 Implement caching layer with TTL in DynamicFormService (5-min TTL for configs, 10-min for dropdowns)
-- [ ] T022 Add retry logic with exponential backoff to HTTP requests in DynamicFormService
-- [ ] T023 [P] Create LoadingState interface in src/app/dynamic-form/types/loading-state.ts
-- [ ] T024 Implement loading state management in DynamicFormService (BehaviorSubject pattern)
+- [X] T021 Implement caching layer with TTL in DynamicFormService (5-min TTL for configs, 10-min for dropdowns)
+- [X] T022 Add retry logic with exponential backoff to HTTP requests in DynamicFormService
+- [X] T023 [P] Create LoadingState interface in src/app/dynamic-form/types/loading-state.ts
+- [X] T024 Implement loading state management in DynamicFormService (BehaviorSubject pattern)
 
 ---
 
@@ -106,24 +107,24 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 ### Core Components
 
-- [ ] T025 [US1] Convert InputComponent to standalone in src/app/dynamic-form/form-elements/inputs/input/input.component.ts
-- [ ] T026 [P] [US1] Convert SelectComponent to standalone in src/app/dynamic-form/form-elements/inputs/select/select.component.ts
-- [ ] T027 [P] [US1] Convert CheckboxComponent to standalone in src/app/dynamic-form/form-elements/inputs/checkbox/checkbox.component.ts
-- [ ] T028 [P] [US1] Convert RadioGroupComponent to standalone in src/app/dynamic-form/form-elements/inputs/radio-group/radio-group.component.ts
-- [ ] T029 [P] [US1] Add OnPush change detection to InputComponent
-- [ ] T030 [P] [US1] Add OnPush change detection to SelectComponent
+- [X] T025 [US1] Convert InputComponent to standalone in src/app/dynamic-form/form-elements/inputs/input/input.component.ts (Angular 20 default)
+- [X] T026 [P] [US1] Convert SelectComponent to standalone in src/app/dynamic-form/form-elements/inputs/select/select.component.ts (Angular 20 default)
+- [X] T027 [P] [US1] Convert CheckboxComponent to standalone in src/app/dynamic-form/form-elements/inputs/checkbox/checkbox.component.ts (Angular 20 default)
+- [X] T028 [P] [US1] Convert RadioGroupComponent to standalone in src/app/dynamic-form/form-elements/inputs/radio-group/radio-group.component.ts (Angular 20 default)
+- [X] T029 [P] [US1] Add OnPush change detection to InputComponent
+- [X] T030 [P] [US1] Add OnPush change detection to SelectComponent
 
 ### Validation Enhancement
 
-- [ ] T031 [US1] Update DynamicFormValidators to support all 8 validator types (verify existing: required, email, minLength, maxLength, pattern, minItems, maxItems, inArray)
-- [ ] T032 [US1] Enhance error message interpolation in default-error-messages.ts (support {expected}, {actual} placeholders)
-- [ ] T033 [US1] Add custom error message override logic in AbstractInputComponent
+- [X] T031 [US1] Update DynamicFormValidators to support all 8 validator types (verify existing: required, email, minLength, maxLength, pattern, minItems, maxItems, inArray)
+- [X] T032 [US1] Enhance error message interpolation in default-error-messages.ts (support {expected}, {actual} placeholders)
+- [X] T033 [US1] Add custom error message override logic in AbstractInputComponent (already implemented in ngOnInit)
 
 ### Form Submission & Events
 
-- [ ] T034 [US1] Implement form submission flow with validation check in DynamicFormComponent
-- [ ] T035 [P] [US1] Update simple-form example to use standalone components in src/app/examples/simple-form/
-- [ ] T036 [P] [US1] Add validation examples to simple-form (required, email, minLength)
+- [X] T034 [US1] Implement form submission flow with validation check in DynamicFormComponent
+- [X] T035 [P] [US1] Update simple-form example to use standalone components in src/app/examples/simple-form/ (already using standalone)
+- [X] T036 [P] [US1] Add validation examples to simple-form (required, email, minLength)
 
 ---
 
@@ -225,7 +226,7 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 **Tasks**:
 
-- [ ] T055 [P] [US3] Convert RepeaterComponent to standalone in src/app/dynamic-form/form-elements/inputs/repeater/repeater.component.ts
+- [X] T055 [P] [US3] Convert RepeaterComponent to standalone in src/app/dynamic-form/form-elements/inputs/repeater/repeater.component.ts (Angular 20 default)
 - [ ] T056 [US3] Add OnPush change detection to RepeaterComponent
 - [ ] T057 [P] [US3] Implement add/remove button logic in RepeaterComponent
 - [ ] T058 [US3] Add trackBy function for repeater items (track by index or unique ID)
@@ -251,7 +252,7 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 **Tasks**:
 
-- [ ] T061 [P] [US4] Convert DataSelectComponent to standalone in src/app/dynamic-form/form-elements/inputs/data-select/data-select.component.ts
+- [X] T061 [P] [US4] Convert DataSelectComponent to standalone in src/app/dynamic-form/form-elements/inputs/data-select/data-select.component.ts (Angular 20 default)
 - [ ] T062 [US4] Implement asyncURL option loading in DataSelectComponent (HTTP GET on init)
 - [ ] T063 [P] [US4] Add caching for dropdown options in DynamicFormService (10-min TTL)
 - [ ] T064 [US4] Add valueKey extraction logic to use correct property as form value
@@ -277,12 +278,12 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 **Tasks**:
 
-- [ ] T067 [P] [US5] Convert CardComponent to standalone in src/app/dynamic-form/form-elements/containers/card/card.component.ts
-- [ ] T068 [P] [US5] Convert FieldsetComponent to standalone in src/app/dynamic-form/form-elements/containers/fieldset/fieldset.component.ts
-- [ ] T069 [P] [US5] Convert RowComponent to standalone in src/app/dynamic-form/form-elements/containers/row/row.component.ts
-- [ ] T070 [P] [US5] Convert ColComponent to standalone in src/app/dynamic-form/form-elements/containers/col/col.component.ts
-- [ ] T071 [P] [US5] Convert TabContainerComponent to standalone in src/app/dynamic-form/form-elements/containers/tab-container/tab-container.component.ts
-- [ ] T072 [P] [US5] Convert TabPaneComponent to standalone in src/app/dynamic-form/form-elements/containers/tab-pane/tab-pane.component.ts
+- [X] T067 [P] [US5] Convert CardComponent to standalone in src/app/dynamic-form/form-elements/containers/card/card.component.ts (Angular 20 default)
+- [X] T068 [P] [US5] Convert FieldsetComponent to standalone in src/app/dynamic-form/form-elements/containers/fieldset/fieldset.component.ts (Angular 20 default)
+- [X] T069 [P] [US5] Convert RowComponent to standalone in src/app/dynamic-form/form-elements/containers/row/row.component.ts (Angular 20 default)
+- [X] T070 [P] [US5] Convert ColComponent to standalone in src/app/dynamic-form/form-elements/containers/col/col.component.ts (Angular 20 default)
+- [X] T071 [P] [US5] Convert TabContainerComponent to standalone in src/app/dynamic-form/form-elements/containers/tab-container/tab-container.component.ts (Angular 20 default)
+- [X] T072 [P] [US5] Convert TabPaneComponent to standalone in src/app/dynamic-form/form-elements/containers/tab-pane/tab-pane.component.ts (Angular 20 default)
 - [ ] T073 [US5] Add OnPush change detection to all container components
 - [ ] T074 [US5] Update form-layouts example with tabs, cards, grid in src/app/examples/form-layouts/
 
@@ -304,7 +305,7 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 **Tasks**:
 
-- [ ] T075 [P] [US6] Convert FormGroupComponent to standalone in src/app/dynamic-form/form-elements/containers/form-group/form-group.component.ts
+- [X] T075 [P] [US6] Convert FormGroupComponent to standalone in src/app/dynamic-form/form-elements/containers/form-group/form-group.component.ts (Angular 20 default)
 - [ ] T076 [US6] Add OnPush change detection to FormGroupComponent
 - [ ] T077 [P] [US6] Add nested formGroup examples to form-layouts example in src/app/examples/form-layouts/
 - [ ] T078 [US6] Verify formGroup validation propagation (child invalid → parent invalid)
@@ -532,16 +533,16 @@ expect(component.form.value.contacts.length).toBe(1);
 
 ## Summary
 
-**Total Tasks**: 102
+**Total Tasks**: 103 (updated 2025-11-03 for Angular 20.3.9)
 **Phases**: 14
-**Parallel Tasks**: 42 (marked with [P])
+**Parallel Tasks**: 43 (marked with [P])
 **User Stories**: 10
 
 **MVP Scope** (Recommended First Delivery):
-- Phase 1: Setup (5 tasks)
+- Phase 1: Setup (6 tasks, including Angular 20 verification)
 - Phase 2: Foundation (19 tasks)
 - Phase 3: US1 - Simple Form Creation (12 tasks)
-- **Total MVP**: 36 tasks
+- **Total MVP**: 37 tasks
 
 **Incremental Delivery Order**:
 1. MVP (US1) - 36 tasks

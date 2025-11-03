@@ -9,7 +9,7 @@
 }
 @if (control?.errors) {
   <ul class="error-messages form-text text-danger">
-    @for (message of getErrorMessages(); track message) {
+    @for (message of getErrorMessages(); track $index) {
       <li>{{message}}</li>
     }
   </ul>

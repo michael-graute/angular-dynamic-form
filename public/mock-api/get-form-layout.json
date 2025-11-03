@@ -118,7 +118,7 @@
                   "key": "phone",
                   "label": "Telephone",
                   "type": "input",
-                  "controlType": "phone",
+                  "controlType": "tel",
                   "settings": {
                     "floatingLabel": true
                   }

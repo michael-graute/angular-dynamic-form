@@ -1,11 +1,16 @@
 import {Component, HostBinding, Input, OnDestroy, OnInit} from "@angular/core";
-import {FormArray, FormControl, FormGroup, ValidatorFn} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 import {FormElement} from "../../dynamic-form.types";
 import {DynamicFormElementInterface} from "../../dynamic-form-element.interface";
 import {DynamicFormValidators} from "../../dynamic-form-validators";
 import {defaultErrorMessages} from "../../default-error-messages";
 
-@Component({template: ``})
+@Component({
+  template: ``,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule]
+})
 export abstract class AbstractInputComponent implements DynamicFormElementInterface, OnInit, OnDestroy {
   id: string = '';
   key: string = '';
@@ -38,6 +43,10 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
         for (let replaceKey in this.control?.errors?.[key]) {
           message = message.replace('{' + replaceKey + '}', this.control?.errors?.[key][replaceKey]);
         }
+        // Support {actual} as alias for {given}
+        if(this.control?.errors?.[key].hasOwnProperty('given')) {
+          message = message.replace('{actual}', this.control?.errors?.[key]['given']);
+        }
       }
       messages.push(message);
     }
@@ -56,8 +65,12 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
         message = key;
       }
       if(typeof foo.errors?.[key] === 'object') {
-        for (let replaceKey in this.control?.errors?.[key]) {
-          message = message.replace('{' + replaceKey + '}', this.control?.errors?.[key][replaceKey]);
+        for (let replaceKey in foo.errors?.[key]) {
+          message = message.replace('{' + replaceKey + '}', foo.errors?.[key][replaceKey]);
+        }
+        // Support {actual} as alias for {given}
+        if(foo.errors?.[key].hasOwnProperty('given')) {
+          message = message.replace('{actual}', foo.errors?.[key]['given']);
         }
       }
       messages.push(message);
