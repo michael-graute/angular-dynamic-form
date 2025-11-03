@@ -2,17 +2,24 @@
   <div class="form-body">
     <ng-template fgFormElementHost></ng-template>
   </div>
-  <div *ngIf="formConfig?.buttons" class="form-footer button-row d-flex gap-1 justify-content-end">
-    <button
-      *ngFor="let button of formConfig?.buttons"
-      [type]="button.type" [class]="['btn', button.class ?? 'btn-primary']"
-      (click)="buttonClick(button)"
-      [disabled]="button.settings?.disableIfFormInvalid && !form.valid"
-    >
-      <i *ngIf="button.icon" [class]="button.icon"></i> {{button.label}}
-    </button>
-  </div>
-  <div *ngIf="showLoadingIndicator" class="form-loading-indicator">
-    <div class="form-loading-indicator__icon"></div>
-  </div>
-</form>
+  @if (formConfig?.buttons) {
+    <div class="form-footer button-row d-flex gap-1 justify-content-end">
+      @for (button of formConfig?.buttons; track button) {
+        <button
+          [type]="button.type" [class]="['btn', button.class ?? 'btn-primary']"
+          (click)="buttonClick(button)"
+          [disabled]="button.settings?.disableIfFormInvalid && !form.valid"
+          >
+          @if (button.icon) {
+            <i [class]="button.icon"></i>
+            } {{button.label}}
+          </button>
+        }
+      </div>
+    }
+    @if (showLoadingIndicator) {
+      <div class="form-loading-indicator">
+        <div class="form-loading-indicator__icon"></div>
+      </div>
+    }
+  </form>

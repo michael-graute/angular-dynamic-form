@@ -4,17 +4,15 @@ import {FormArray, FormGroup, ReactiveFormsModule, ValidatorFn} from "@angular/f
 import {FormConfig} from "../../../dynamic-form.types";
 import {DynamicFormValidators} from "../../../dynamic-form-validators";
 import {DataRelationElementComponent} from "../data-relation/data-relation-element/data-relation-element.component";
-import {NgForOf, NgIf} from "@angular/common";
+
 
 
 @Component({
   selector: 'fg-repeater',
   imports: [
     ReactiveFormsModule,
-    DataRelationElementComponent,
-    NgForOf,
-    NgIf
-  ],
+    DataRelationElementComponent
+],
   templateUrl: './repeater.component.html',
   styleUrl: './repeater.component.scss'
 })

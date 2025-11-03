@@ -7,14 +7,13 @@ import {
   ValidationErrors,
   Validator
 } from "@angular/forms";
-import {NgForOf} from "@angular/common";
+
 
 @Component({
     selector: 'fg-key-value-element',
     imports: [
-        NgForOf,
-        FormsModule
-    ],
+    FormsModule
+],
     templateUrl: './key-value-element.component.html',
     styleUrl: './key-value-element.component.scss',
     providers: [

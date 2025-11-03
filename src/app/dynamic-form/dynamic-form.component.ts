@@ -4,7 +4,7 @@ import {FormElementHostDirective} from "./form-elements/form-element-host.direct
 import {DynamicFormElementInterface} from "./dynamic-form-element.interface";
 import {FormElementMap} from "./form-elements.map";
 import {FormButton, FormButtonCallback, FormConfig, FormElement} from "./dynamic-form.types";
-import {NgForOf, NgIf} from "@angular/common";
+
 import {DynamicFormService, ElementAddedPayload} from "./dynamic-form.service";
 
 export type CustomButtonCallBackPayload = {
@@ -15,11 +15,9 @@ export type CustomButtonCallBackPayload = {
 @Component({
     selector: 'fg-dynamic-form',
     imports: [
-        ReactiveFormsModule,
-        FormElementHostDirective,
-        NgForOf,
-        NgIf
-    ],
+    ReactiveFormsModule,
+    FormElementHostDirective
+],
     templateUrl: './dynamic-form.component.html',
     styleUrl: './dynamic-form.component.scss'
 })

@@ -1,7 +1,11 @@
 <div [formGroup]="form">
-  <span *ngIf="config?.label">{{config?.label}}</span>
-  <div *ngFor="let option of config?.options; let i = index" class="form-check">
-    <input class="form-check-input" type="radio" [value]="option.value" [id]="id + i" [formControlName]="key">
-    <label class="form-check-label" [for]="id + i">{{option.label}}</label>
-  </div>
+  @if (config?.label) {
+    <span>{{config?.label}}</span>
+  }
+  @for (option of config?.options; track option; let i = $index) {
+    <div class="form-check">
+      <input class="form-check-input" type="radio" [value]="option.value" [id]="id + i" [formControlName]="key">
+      <label class="form-check-label" [for]="id + i">{{option.label}}</label>
+    </div>
+  }
 </div>

@@ -1,20 +1,30 @@
-<span *ngIf="config?.label" class="label">{{config?.label}}</span>
+@if (config?.label) {
+  <span class="label">{{config?.label}}</span>
+}
 <div [formGroup]="form">
   <div [formArrayName]="key">
-    <div *ngFor="let item of formArray.controls; let i = index" class="row mb-4">
-      <div class="col-11">
-        <fg-data-relation-element [id]="id + 'Dataset' + i" [form]="item" [formConfig]="formConfig" />
+    @for (item of formArray.controls; track item; let i = $index) {
+      <div class="row mb-4">
+        <div class="col-11">
+          <fg-data-relation-element [id]="id + 'Dataset' + i" [form]="item" [formConfig]="formConfig" />
+        </div>
+        <div class="col-1">
+          <button type="button" class="btn btn-danger" (click)="removeItem(i)"><i [class]="config?.settings?.removeButton.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.removeButton.label ?? 'Delete'}}</button>
+        </div>
       </div>
-      <div class="col-1">
-        <button type="button" class="btn btn-danger" (click)="removeItem(i)"><i [class]="config?.settings?.removeButton.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.removeButton.label ?? 'Delete'}}</button>
-      </div>
-    </div>
+    }
   </div>
   <div class="d-flex gap-1 justify-content-end">
     <button type="button" class="btn btn-success" (click)="addItem()"><i [class]="config?.settings?.addButton.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.addButton.label ?? 'Add'}}</button>
   </div>
-  <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
-  <ul *ngIf="formArray?.errors" class="error-messages form-text text-danger">
-    <li *ngFor="let message of getErrorMessages()">{{message}}</li>
-  </ul>
+  @if (config?.helpText) {
+    <div class="form-text">{{config?.helpText}}</div>
+  }
+  @if (formArray?.errors) {
+    <ul class="error-messages form-text text-danger">
+      @for (message of getErrorMessages(); track message) {
+        <li>{{message}}</li>
+      }
+    </ul>
+  }
 </div>

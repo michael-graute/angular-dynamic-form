@@ -3,17 +3,15 @@ import {AbstractFormElementHostComponent} from "../abstract-form-element-host.co
 import {DynamicFormElementInterface} from "../../../dynamic-form-element.interface";
 import {FormElement} from "../../../dynamic-form.types";
 import {FormElementHostDirective} from "../../form-element-host.directive";
-import {NgForOf, NgIf} from "@angular/common";
+
 import {TabService} from "./tab.service";
 import {DynamicFormService, ElementAddedPayload, ElementRemovedPayload} from "../../../dynamic-form.service";
 
 @Component({
     selector: 'fg-tab-container',
     imports: [
-        FormElementHostDirective,
-        NgForOf,
-        NgIf
-    ],
+    FormElementHostDirective
+],
     templateUrl: './tab-container.component.html',
     styleUrl: './tab-container.component.scss'
 })

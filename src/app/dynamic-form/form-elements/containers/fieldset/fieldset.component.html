@@ -1,4 +1,6 @@
 <fieldset class="mb-2">
-  <legend *ngIf="config?.label">{{config?.label}}</legend>
+  @if (config?.label) {
+    <legend>{{config?.label}}</legend>
+  }
   <ng-template fgFormElementHost></ng-template>
 </fieldset>
