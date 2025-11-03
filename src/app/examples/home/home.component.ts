@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {CustomButtonCallBackPayload, DynamicFormComponent} from "../../dynamic-form/dynamic-form.component";
-import {NgIf} from "@angular/common";
+
 import {DynamicFormService} from "../../dynamic-form/dynamic-form.service";
 import {FormGroup} from "@angular/forms";
 import {prettyPrintJson} from "pretty-print-json";
@@ -12,9 +12,8 @@ import {FormConfig} from "../../dynamic-form/dynamic-form.types";
   selector: 'fg-home',
   imports: [
     DynamicFormComponent,
-    NgIf,
     ConfigDisplayComponent
-  ],
+],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

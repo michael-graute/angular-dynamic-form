@@ -1,8 +1,16 @@
 <div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.floatingLabel}" class="mb-2">
-  <span class="label" *ngIf="config?.label">{{config?.label}}</span>
+  @if (config?.label) {
+    <span class="label">{{config?.label}}</span>
+  }
   <fg-data-relation-element [formControlName]="key" [settings]="config?.settings"/>
 </div>
-<div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
-<ul *ngIf="control?.errors" class="error-messages form-text text-danger">
-  <li *ngFor="let message of getErrorMessages()">{{message}}</li>
-</ul>
+@if (config?.helpText) {
+  <div class="form-text">{{config?.helpText}}</div>
+}
+@if (control?.errors) {
+  <ul class="error-messages form-text text-danger">
+    @for (message of getErrorMessages(); track message) {
+      <li>{{message}}</li>
+    }
+  </ul>
+}

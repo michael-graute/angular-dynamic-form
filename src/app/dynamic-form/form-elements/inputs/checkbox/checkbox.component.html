@@ -1,4 +1,6 @@
 <div [formGroup]="form" [class]="{'hidden': hidden, 'form-switch': config?.settings.switch}" class="form-check mb-2">
   <input class="form-check-input" type="checkbox" [id]="id" [formControlName]="key">
-  <label *ngIf="config?.label" class="form-check-label" [for]="id">{{config?.label}}</label>
+  @if (config?.label) {
+    <label class="form-check-label" [for]="id">{{config?.label}}</label>
+  }
 </div>

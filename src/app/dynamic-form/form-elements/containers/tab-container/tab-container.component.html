@@ -1,10 +1,14 @@
-<div *ngIf="config?.label" class="h4">{{config?.label}}</div>
+@if (config?.label) {
+  <div class="h4">{{config?.label}}</div>
+}
 <div class="card mb-2">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item" *ngFor="let tab of children; let i = index">
-        <a class="nav-link" aria-current="page" href="#" [class]="{'active': activeTab === i}" (click)="tabClicked(tab?.key, i, $event)">{{ tab?.label }}</a>
-      </li>
+      @for (tab of children; track tab; let i = $index) {
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#" [class]="{'active': activeTab === i}" (click)="tabClicked(tab?.key, i, $event)">{{ tab?.label }}</a>
+        </li>
+      }
     </ul>
   </div>
   <div class="card-body">

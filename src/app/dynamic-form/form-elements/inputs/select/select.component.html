@@ -1,11 +1,23 @@
 <div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.settings?.floatingLabel}" class="mb-2">
-  <label [for]="id" *ngIf="config?.label && !config?.settings?.floatingLabel">{{config?.label}}</label>
+  @if (config?.label && !config?.settings?.floatingLabel) {
+    <label [for]="id">{{config?.label}}</label>
+  }
   <select [id]="id" class="form-select" [formControlName]="key">
-    <option *ngFor="let option of config?.options" [value]="option.value">{{option.label}}</option>
+    @for (option of config?.options; track option) {
+      <option [value]="option.value">{{option.label}}</option>
+    }
   </select>
-  <label [for]="id" *ngIf="config?.label && config?.settings?.floatingLabel">{{config?.label}}</label>
-  <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
-  <ul *ngIf="control?.errors" class="error-messages form-text text-danger">
-    <li *ngFor="let message of getErrorMessages()">{{message}}</li>
-  </ul>
+  @if (config?.label && config?.settings?.floatingLabel) {
+    <label [for]="id">{{config?.label}}</label>
+  }
+  @if (config?.helpText) {
+    <div class="form-text">{{config?.helpText}}</div>
+  }
+  @if (control?.errors) {
+    <ul class="error-messages form-text text-danger">
+      @for (message of getErrorMessages(); track message) {
+        <li>{{message}}</li>
+      }
+    </ul>
+  }
 </div>

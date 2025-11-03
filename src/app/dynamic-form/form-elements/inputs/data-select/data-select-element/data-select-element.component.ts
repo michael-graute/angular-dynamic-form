@@ -7,15 +7,12 @@ import {
   ValidationErrors,
   Validator
 } from "@angular/forms";
-import {NgForOf, NgIf} from "@angular/common";
+
 import {DataSelectElementService} from "./data-select-element.service";
 
 @Component({
   selector: 'fg-data-select-element',
-  imports: [
-    NgIf,
-    NgForOf
-  ],
+  imports: [],
   templateUrl: './data-select-element.component.html',
   styleUrl: './data-select-element.component.scss',
   providers: [

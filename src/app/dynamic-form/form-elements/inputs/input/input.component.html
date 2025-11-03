@@ -1,31 +1,51 @@
 <div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.settings?.floatingLabel}" class="mb-2">
-  <label [for]="id" *ngIf="config?.label && !config?.settings?.floatingLabel" [class]="{'required': config?.required}">{{config?.label}}</label>
-  <ng-container *ngIf="!config?.multiple">
+  @if (config?.label && !config?.settings?.floatingLabel) {
+    <label [for]="id" [class]="{'required': config?.required}">{{config?.label}}</label>
+  }
+  @if (!config?.multiple) {
     <input class="form-control" [class]="{'required': config?.required}" [type]="config?.controlType ?? 'text'" [id]="id" [formControlName]="key" [required]="config?.required || false" [placeholder]="config?.floatingLabel ?? ''">
-    <label [for]="id" *ngIf="config?.label && config?.settings?.floatingLabel" [class]="{'required': config?.required}">{{config?.label}}</label>
-    <div *ngIf="config?.helpText" class="form-text">{{config?.helpText}}</div>
-    <ul *ngIf="control?.errors" class="error-messages form-text text-danger">
-      <li *ngFor="let message of getErrorMessages()">{{message}}</li>
-    </ul>
-  </ng-container>
-  <ng-container *ngIf="config?.multiple">
-    <span *ngIf="config?.multipleLabel">{{config?.multipleLabel}}</span>
-    <div [formArrayName]="key" class="row mb-2" *ngFor="let item of formArray.controls; let i = index">
-      <div class="col-11">
-        <div [class]="{'form-floating': config?.settings?.floatingLabel}">
-          <input class="form-control" [class]="{'required': config?.required}" [type]="config?.controlType ?? 'text'" [id]="id + i" [formControlName]="i" [required]="config?.required || false" [placeholder]="config?.floatingLabel ?? ''">
-          <label [for]="id + i" *ngIf="config?.label && config?.settings?.floatingLabel" [class]="{'required': config?.required}">{{config?.label}}</label>
-          <ul *ngIf="item?.errors" class="error-messages form-text text-danger">
-            <li *ngFor="let message of getMultipleErrorMessages(item)">{{message}}</li>
-          </ul>
+    @if (config?.label && config?.settings?.floatingLabel) {
+      <label [for]="id" [class]="{'required': config?.required}">{{config?.label}}</label>
+    }
+    @if (config?.helpText) {
+      <div class="form-text">{{config?.helpText}}</div>
+    }
+    @if (control?.errors) {
+      <ul class="error-messages form-text text-danger">
+        @for (message of getErrorMessages(); track message) {
+          <li>{{message}}</li>
+        }
+      </ul>
+    }
+  }
+  @if (config?.multiple) {
+    @if (config?.multipleLabel) {
+      <span>{{config?.multipleLabel}}</span>
+    }
+    @for (item of formArray.controls; track item; let i = $index) {
+      <div [formArrayName]="key" class="row mb-2">
+        <div class="col-11">
+          <div [class]="{'form-floating': config?.settings?.floatingLabel}">
+            <input class="form-control" [class]="{'required': config?.required}" [type]="config?.controlType ?? 'text'" [id]="id + i" [formControlName]="i" [required]="config?.required || false" [placeholder]="config?.floatingLabel ?? ''">
+            @if (config?.label && config?.settings?.floatingLabel) {
+              <label [for]="id + i" [class]="{'required': config?.required}">{{config?.label}}</label>
+            }
+            @if (item?.errors) {
+              <ul class="error-messages form-text text-danger">
+                @for (message of getMultipleErrorMessages(item); track message) {
+                  <li>{{message}}</li>
+                }
+              </ul>
+            }
+          </div>
+        </div>
+        <div class="col-1">
+          <button type="button" class="btn btn-danger" (click)="removeItem(i)"><i [class]="config?.settings?.removeButton?.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.removeButton?.label ?? 'Delete'}}</button>
         </div>
       </div>
-      <div class="col-1">
-        <button type="button" class="btn btn-danger" (click)="removeItem(i)"><i [class]="config?.settings?.removeButton?.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.removeButton?.label ?? 'Delete'}}</button>
-      </div>
-    </div>
+    }
     <div class="d-flex gap-1 justify-content-end">
       <button type="button" class="btn btn-success" (click)="addItem()"><i [class]="config?.settings?.addButton?.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.addButton?.label ?? 'Add'}}</button>
     </div>
-  </ng-container>
+  }
 </div>

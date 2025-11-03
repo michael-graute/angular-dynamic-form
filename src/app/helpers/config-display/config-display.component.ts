@@ -1,13 +1,11 @@
 import {Component, Input} from '@angular/core';
 import {FormConfig} from "../../dynamic-form/dynamic-form.types";
-import {NgIf} from "@angular/common";
+
 import {prettyPrintJson} from "pretty-print-json";
 
 @Component({
   selector: 'fg-config-display',
-  imports: [
-    NgIf
-  ],
+  imports: [],
   templateUrl: './config-display.component.html',
   styleUrl: './config-display.component.scss'
 })
