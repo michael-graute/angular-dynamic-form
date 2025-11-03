@@ -18,20 +18,30 @@ import {ModalService} from "../../helpers/modal/modal.service";
 })
 export class SimpleAjaxFormComponent {
   formConfig: FormConfig | undefined = undefined;
+  asyncUrl: string = '/user-registration-form';
 
   constructor(private dynamicFormService: DynamicFormService, private modalService: ModalService) {
   }
 
   formConfigLoaded(formConfig: FormConfig) {
     this.formConfig = formConfig;
+    console.log('Form configuration loaded from API:', formConfig);
   }
 
   formSubmit(formGroup: FormGroup): void {
     this.modalService.show({
-      title: 'Form Values',
+      title: 'Registration Submitted',
       size: 'modal-lg',
       bodyText: '<pre>' + prettyPrintJson.toHtml(formGroup.getRawValue()) + '</pre>',
     }, null)
+  }
+
+  formCancel(formGroup: FormGroup): void {
+    console.log('Form cancelled', formGroup.getRawValue());
+    this.modalService.show({
+      title: 'Registration Cancelled',
+      bodyText: 'Your registration has been cancelled.',
+    }, null);
   }
 
   loadFormData(evt: any) {

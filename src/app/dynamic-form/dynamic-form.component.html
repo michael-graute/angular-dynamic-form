@@ -18,8 +18,6 @@
       </div>
     }
     @if (showLoadingIndicator) {
-      <div class="form-loading-indicator">
-        <div class="form-loading-indicator__icon"></div>
-      </div>
+      <fg-loading-spinner [message]="'Loading form...'" [overlay]="true"></fg-loading-spinner>
     }
   </form>

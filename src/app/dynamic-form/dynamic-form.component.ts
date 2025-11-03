@@ -7,6 +7,7 @@ import {FormButton, FormButtonCallback, FormConfig, FormElement} from "./dynamic
 
 import {DynamicFormService, ElementAddedPayload} from "./dynamic-form.service";
 import {PerformanceMonitorService} from "./services/performance-monitor.service";
+import {LoadingSpinnerComponent} from "./components/loading-spinner/loading-spinner.component";
 
 export type CustomButtonCallBackPayload = {
   form: FormGroup,
@@ -19,7 +20,8 @@ export type CustomButtonCallBackPayload = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
     ReactiveFormsModule,
-    FormElementHostDirective
+    FormElementHostDirective,
+    LoadingSpinnerComponent
 ],
     templateUrl: './dynamic-form.component.html',
     styleUrl: './dynamic-form.component.scss'

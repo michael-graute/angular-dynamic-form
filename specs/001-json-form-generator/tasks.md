@@ -146,13 +146,13 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 **Tasks**:
 
-- [ ] T037 [US2] Implement asyncUrl input handling in DynamicFormComponent
-- [ ] T038 [US2] Add HTTP client injection and form config fetching in DynamicFormComponent
-- [ ] T039 [P] [US2] Add caching for remote form configs in DynamicFormService (use existing cache infrastructure from T021)
-- [ ] T040 [P] [US2] Implement error handling for failed HTTP requests with user-friendly messages
-- [ ] T041 [US2] Add loading spinner component in src/app/dynamic-form/components/loading-spinner/loading-spinner.component.ts
-- [ ] T042 [P] [US2] Create simple-ajax-form example in src/app/examples/simple-ajax-form/ using asyncUrl
-- [ ] T043 [US2] Add mock API endpoint in public/mock-api/user-registration-form.json
+- [X] T037 [US2] Implement asyncUrl input handling in DynamicFormComponent (already implemented)
+- [X] T038 [US2] Add HTTP client injection and form config fetching in DynamicFormComponent (already implemented)
+- [X] T039 [P] [US2] Add caching for remote form configs in DynamicFormService (already implemented in Phase 2)
+- [X] T040 [P] [US2] Implement error handling for failed HTTP requests with user-friendly messages (already implemented in Phase 2)
+- [X] T041 [US2] Add loading spinner component in src/app/dynamic-form/components/loading-spinner/loading-spinner.component.ts
+- [X] T042 [P] [US2] Create simple-ajax-form example in src/app/examples/simple-ajax-form/ using asyncUrl
+- [X] T043 [US2] Add mock API endpoint in public/mock-api/user-registration-form.json
 
 ---
 

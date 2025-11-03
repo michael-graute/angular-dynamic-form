@@ -1,9 +1,22 @@
-<h3>Simple Form with Remote Configuration and Data</h3>
-<p>This form loads it's configuration from a JSON response of an AJAX call, additionally fom values can be populated with a request</p>
-<p>The form's configuration and values are served over a mocked api call to local JSON files</p>
-<p>It uses the built-in formSubmit event to log the form's values to the console, as well as some basic validation</p>
-<p>An additional Button is configured which uses the customCallBack event to load and populate some data from a remote resource</p>
-<p>The form inputs are wrapped in "card", "row" and "col" layout elements to provide a simple layout</p>
-<fg-dynamic-form id="simpleForm" asyncUrl="/get-simple-form" (onFormSubmit)="formSubmit($event)" (onCustomCallBack)="loadFormData($event)" (onFormConfigLoaded)="formConfigLoaded($event)"/>
+<h3>User Registration Form (Loaded via AJAX)</h3>
+<p>This form demonstrates loading configuration from a remote API endpoint using the <code>asyncUrl</code> input.</p>
+<p>The form configuration is loaded from <code>/mock-api/user-registration-form.json</code> with automatic caching, retry logic, and error handling.</p>
+<p>Features demonstrated:</p>
+<ul>
+  <li>Async form configuration loading with loading spinner</li>
+  <li>5-minute cache for form configurations (subsequent loads are instant)</li>
+  <li>Automatic retry with exponential backoff on network failures</li>
+  <li>Form validation (required fields, email format, min length)</li>
+  <li>Custom error messages on validators</li>
+  <li>Submit button disabled until form is valid</li>
+</ul>
+
+<fg-dynamic-form
+  id="userRegistration"
+  [asyncUrl]="asyncUrl"
+  (onFormSubmit)="formSubmit($event)"
+  (onFormCancel)="formCancel($event)"
+  (onFormConfigLoaded)="formConfigLoaded($event)"
+/>
 
 <fg-config-display [formConfig]="formConfig"></fg-config-display>

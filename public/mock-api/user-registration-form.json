@@ -1,0 +1,115 @@
+{
+  "elements": [
+    {
+      "key": "username",
+      "label": "Username",
+      "type": "input",
+      "controlType": "text",
+      "settings": {
+        "floatingLabel": true
+      },
+      "validators": [
+        {
+          "name": "required"
+        },
+        {
+          "name": "minLength",
+          "value": 3
+        },
+        {
+          "name": "maxLength",
+          "value": 20
+        }
+      ],
+      "helpText": "Choose a unique username (3-20 characters)"
+    },
+    {
+      "key": "email",
+      "label": "Email Address",
+      "type": "input",
+      "controlType": "email",
+      "settings": {
+        "floatingLabel": true
+      },
+      "validators": [
+        {
+          "name": "required"
+        },
+        {
+          "name": "email"
+        }
+      ],
+      "helpText": "We'll send confirmation to this email"
+    },
+    {
+      "key": "password",
+      "label": "Password",
+      "type": "input",
+      "controlType": "password",
+      "settings": {
+        "floatingLabel": true
+      },
+      "validators": [
+        {
+          "name": "required"
+        },
+        {
+          "name": "minLength",
+          "value": 8
+        }
+      ],
+      "helpText": "Minimum 8 characters"
+    },
+    {
+      "key": "confirmPassword",
+      "label": "Confirm Password",
+      "type": "input",
+      "controlType": "password",
+      "settings": {
+        "floatingLabel": true
+      },
+      "validators": [
+        {
+          "name": "required"
+        }
+      ]
+    },
+    {
+      "key": "acceptTerms",
+      "label": "I accept the Terms and Conditions",
+      "type": "checkbox",
+      "value": false,
+      "validators": [
+        {
+          "name": "required",
+          "errorMessage": "You must accept the terms and conditions to register"
+        }
+      ]
+    }
+  ],
+  "buttons": [
+    {
+      "key": "submit",
+      "type": "submit",
+      "label": "Register",
+      "icon": "bi-person-plus",
+      "class": "btn-primary",
+      "settings": {
+        "disableIfFormInvalid": true
+      },
+      "callback": {
+        "function": "formSubmit"
+      }
+    },
+    {
+      "key": "cancel",
+      "type": "button",
+      "label": "Cancel",
+      "icon": "bi-x-circle",
+      "class": "btn-secondary",
+      "callback": {
+        "function": "formCancel"
+      }
+    }
+  ]
+}
