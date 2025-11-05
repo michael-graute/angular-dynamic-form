@@ -1,0 +1,148 @@
+<h3>Custom Button Callbacks Example</h3>
+<p>This example demonstrates how to use custom button callbacks with parameters and the <code>disableIfFormInvalid</code> setting.</p>
+
+<div class="alert alert-info mb-4">
+  <h5>Features Demonstrated:</h5>
+  <ul class="mb-0">
+    <li><strong>Custom Callbacks:</strong> The "Save Draft" button uses a custom callback function (<code>saveDraft</code>) with parameters</li>
+    <li><strong>Callback Parameters:</strong> Parameters are passed from the button configuration (<code>status: "draft", autoSave: false</code>)</li>
+    <li><strong>Conditional Disabling:</strong> The "Preview" and "Publish" buttons are disabled when the form is invalid using <code>disableIfFormInvalid: true</code></li>
+    <li><strong>Multiple Button Types:</strong> Submit, reset, and custom button types all working together</li>
+    <li><strong>Event Handling:</strong> Custom callbacks receive the form and callback configuration via the <code>onCustomCallBack</code> event</li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Article Editor</h5>
+      </div>
+      <div class="card-body">
+        <fg-dynamic-form
+          id="customCallbacksForm"
+          [formConfig]="formConfig"
+          (onFormSubmit)="formSubmit($event)"
+          (onFormReset)="formReset($event)"
+          (onCustomCallBack)="$any(this)[$event.callBack.function]($event)"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header bg-secondary text-white">
+        <h6 class="mb-0">Implementation Notes</h6>
+      </div>
+      <div class="card-body">
+        <h6>Button Types:</h6>
+        <ul>
+          <li><strong>Save Draft:</strong> Custom button with parameters</li>
+          <li><strong>Preview:</strong> Custom button (disabled if invalid)</li>
+          <li><strong>Reset:</strong> Standard reset button</li>
+          <li><strong>Publish:</strong> Submit button (disabled if invalid)</li>
+        </ul>
+
+        <h6 class="mt-3">Event Binding:</h6>
+        <pre class="bg-light p-2 small"><code>(onCustomCallBack)="
+  $any(this)[$event.callBack.function]($event)"</code></pre>
+
+        <p class="small text-muted mb-0">
+          This binding dynamically calls the function specified in the button's callback configuration.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-4">
+  <h4>Button Configuration Examples</h4>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="card">
+        <div class="card-header">
+          <strong>Save Draft Button (with parameters)</strong>
+        </div>
+        <div class="card-body">
+          <fg-prism>
+            <code class="language-typescript">{{'{'}}{{'
+  key: "save-draft",
+  type: "button",
+  label: "Save Draft",
+  icon: "bi-file-earmark",
+  class: "btn-secondary",
+  callback: {
+    function: "saveDraft",
+    params: [
+      {
+        status: "draft",
+        autoSave: false
+      }
+    ]
+  }
+'}}{{'}'}}
+</code>
+          </fg-prism>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="card">
+        <div class="card-header">
+          <strong>Preview Button (disabled when invalid)</strong>
+        </div>
+        <div class="card-body">
+          <fg-prism>
+            <code class="language-typescript">{{'{'}}{{'
+  key: "preview",
+  type: "button",
+  label: "Preview",
+  icon: "bi-eye",
+  class: "btn-info",
+  settings: {
+    disableIfFormInvalid: true
+  },
+  callback: {
+    function: "previewArticle"
+  }
+'}}{{'}'}}
+</code>
+          </fg-prism>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <strong>Component Implementation</strong>
+    </div>
+    <div class="card-body">
+      <fg-prism>
+        <code class="language-typescript">{{'{'}}{{'saveDraft(payload: CustomButtonCallBackPayload): void {
+  const formData = payload.form.getRawValue();
+  const params = payload.callBack.params?.[0] || {};
+
+  // Access custom parameters (params is an array)
+  console.log(params.status);    // "draft"
+  console.log(params.autoSave);  // false
+
+  // Access form data
+  console.log(formData);
+
+  // Perform custom action (e.g., save to API)
+  this.apiService.saveDraft(formData, params);
+}
+'}}{{'}'}}
+</code>
+      </fg-prism>
+    </div>
+  </div>
+</div>
+
+<div class="mt-4">
+  <h4>Full Form Configuration</h4>
+  <fg-config-display [formConfig]="formConfig"></fg-config-display>
+</div>

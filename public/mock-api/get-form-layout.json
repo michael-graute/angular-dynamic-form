@@ -118,7 +118,7 @@
                   "key": "phone",
                   "label": "Telephone",
                   "type": "input",
-                  "controlType": "phone",
+                  "controlType": "tel",
                   "settings": {
                     "floatingLabel": true
                   }
@@ -144,7 +144,7 @@
                 {
                   "key": "tabOneText",
                   "type": "form-text",
-                  "value": "<p>The following inputs are grouped inside a \"formGroup\" container, which will add a nested object into the forms values (submit and see the consoles log)</p>"
+                  "value": "<h6>Single-Level Nested FormGroup</h6><p>The following inputs are grouped inside a \"formGroup\" container, which will add a nested object into the forms values (submit and see the form values). The form value will have a structure like: <code>{ tabOneFormGroup: { foo: 'value', bar: 'value', baz: 'value' } }</code></p>"
                 },
                 {
                   "key": "tabOneFormGroup",
@@ -178,7 +178,123 @@
                       "controlType": "text",
                       "settings": {
                         "floatingLabel": true
-                      }
+                      },
+                      "validators": [
+                        {
+                          "name": "required",
+                          "errorMessage": "Baz is required to test validation propagation"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "key": "multiLevelText",
+                  "type": "form-text",
+                  "value": "<h6>Multi-Level Nested FormGroups (2-3 Levels Deep)</h6><p>This demonstrates nested formGroups within formGroups. The form value will have a deeply nested structure like: <code>{ userProfile: { personalInfo: { name: '...', age: ... }, contactInfo: { email: '...', address: { street: '...', city: '...', country: '...' } } } }</code></p>"
+                },
+                {
+                  "key": "userProfile",
+                  "type": "formGroup",
+                  "children": [
+                    {
+                      "key": "personalInfo",
+                      "type": "formGroup",
+                      "children": [
+                        {
+                          "key": "name",
+                          "label": "Full Name",
+                          "type": "input",
+                          "controlType": "text",
+                          "value": "John Doe",
+                          "settings": {
+                            "floatingLabel": true
+                          },
+                          "validators": [
+                            {
+                              "name": "required",
+                              "errorMessage": "Name is required (tests validation propagation to parent formGroups)"
+                            }
+                          ]
+                        },
+                        {
+                          "key": "age",
+                          "label": "Age",
+                          "type": "input",
+                          "controlType": "number",
+                          "value": 30,
+                          "settings": {
+                            "floatingLabel": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "key": "contactInfo",
+                      "type": "formGroup",
+                      "children": [
+                        {
+                          "key": "email",
+                          "label": "Email Address",
+                          "type": "input",
+                          "controlType": "email",
+                          "value": "john.doe@example.com",
+                          "settings": {
+                            "floatingLabel": true
+                          },
+                          "validators": [
+                            {
+                              "name": "required"
+                            },
+                            {
+                              "name": "email",
+                              "errorMessage": "Please enter a valid email (tests validation propagation)"
+                            }
+                          ]
+                        },
+                        {
+                          "key": "address",
+                          "type": "formGroup",
+                          "children": [
+                            {
+                              "key": "street",
+                              "label": "Street Address",
+                              "type": "input",
+                              "controlType": "text",
+                              "value": "123 Main St",
+                              "settings": {
+                                "floatingLabel": true
+                              }
+                            },
+                            {
+                              "key": "city",
+                              "label": "City",
+                              "type": "input",
+                              "controlType": "text",
+                              "value": "Springfield",
+                              "settings": {
+                                "floatingLabel": true
+                              },
+                              "validators": [
+                                {
+                                  "name": "required",
+                                  "errorMessage": "City is required (3 levels deep - tests deep validation propagation)"
+                                }
+                              ]
+                            },
+                            {
+                              "key": "country",
+                              "label": "Country",
+                              "type": "input",
+                              "controlType": "text",
+                              "value": "USA",
+                              "settings": {
+                                "floatingLabel": true
+                              }
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
                 }
@@ -187,7 +303,7 @@
             {
               "key": "tabTwo",
               "type": "tabPane",
-              "label": "Tab No. 2",
+              "label": "Tab No. 2 - Key-Value",
               "children": [
                 {
                   "key": "tabTwoKeyValue",
@@ -227,6 +343,251 @@
                       "foo": null,
                       "bar": null,
                       "baz": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "tabThree",
+              "type": "tabPane",
+              "label": "Tab No. 3 - Responsive Grid",
+              "children": [
+                {
+                  "key": "tabThreeText",
+                  "type": "form-text",
+                  "value": "<h6>Responsive Grid Demonstration</h6><p>The following fields demonstrate responsive column sizing using Bootstrap's grid classes. Resize your browser to see the layout adapt.</p>"
+                },
+                {
+                  "key": "grid-row-1",
+                  "type": "row",
+                  "children": [
+                    {
+                      "key": "col-12-md-6",
+                      "type": "col",
+                      "class": "col-12 col-md-6",
+                      "children": [
+                        {
+                          "key": "company",
+                          "label": "Company Name",
+                          "type": "input",
+                          "controlType": "text",
+                          "helpText": "Full width on mobile, half width on tablets and up",
+                          "settings": {
+                            "floatingLabel": true
+                          },
+                          "validators": [
+                            {
+                              "name": "required"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "col-12-md-6-2",
+                      "type": "col",
+                      "class": "col-12 col-md-6",
+                      "children": [
+                        {
+                          "key": "industry",
+                          "label": "Industry",
+                          "type": "select",
+                          "helpText": "Full width on mobile, half width on tablets and up",
+                          "settings": {
+                            "floatingLabel": true
+                          },
+                          "options": [
+                            {
+                              "label": "Technology",
+                              "value": "tech"
+                            },
+                            {
+                              "label": "Finance",
+                              "value": "finance"
+                            },
+                            {
+                              "label": "Healthcare",
+                              "value": "healthcare"
+                            },
+                            {
+                              "label": "Retail",
+                              "value": "retail"
+                            }
+                          ],
+                          "validators": [
+                            {
+                              "name": "required"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "key": "grid-row-2",
+                  "type": "row",
+                  "children": [
+                    {
+                      "key": "col-12-md-4",
+                      "type": "col",
+                      "class": "col-12 col-md-4",
+                      "children": [
+                        {
+                          "key": "city",
+                          "label": "City",
+                          "type": "input",
+                          "controlType": "text",
+                          "helpText": "Full width on mobile, 1/3 width on tablets and up",
+                          "settings": {
+                            "floatingLabel": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "key": "col-12-md-4-2",
+                      "type": "col",
+                      "class": "col-12 col-md-4",
+                      "children": [
+                        {
+                          "key": "state",
+                          "label": "State/Province",
+                          "type": "input",
+                          "controlType": "text",
+                          "helpText": "Full width on mobile, 1/3 width on tablets and up",
+                          "settings": {
+                            "floatingLabel": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "key": "col-12-md-4-3",
+                      "type": "col",
+                      "class": "col-12 col-md-4",
+                      "children": [
+                        {
+                          "key": "zipCode",
+                          "label": "Zip/Postal Code",
+                          "type": "input",
+                          "controlType": "text",
+                          "helpText": "Full width on mobile, 1/3 width on tablets and up",
+                          "settings": {
+                            "floatingLabel": true
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "key": "nestedCardText",
+                  "type": "form-text",
+                  "value": "<h6>Nested Card Inside Tab</h6><p>Cards can be nested inside tabs for additional organization.</p>"
+                },
+                {
+                  "key": "nested-card",
+                  "type": "card",
+                  "label": "Additional Information",
+                  "children": [
+                    {
+                      "key": "grid-row-3",
+                      "type": "row",
+                      "children": [
+                        {
+                          "key": "col-12",
+                          "type": "col",
+                          "class": "col-12",
+                          "children": [
+                            {
+                              "key": "description",
+                              "label": "Description",
+                              "type": "input",
+                              "controlType": "text",
+                              "helpText": "Always full width regardless of screen size",
+                              "settings": {
+                                "floatingLabel": true
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "grid-row-4",
+                      "type": "row",
+                      "children": [
+                        {
+                          "key": "col-6-md-3",
+                          "type": "col",
+                          "class": "col-6 col-md-3",
+                          "children": [
+                            {
+                              "key": "employees",
+                              "label": "Employees",
+                              "type": "input",
+                              "controlType": "number",
+                              "helpText": "Half width on mobile, 1/4 on tablets+",
+                              "settings": {
+                                "floatingLabel": true
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "key": "col-6-md-3-2",
+                          "type": "col",
+                          "class": "col-6 col-md-3",
+                          "children": [
+                            {
+                              "key": "founded",
+                              "label": "Founded Year",
+                              "type": "input",
+                              "controlType": "number",
+                              "helpText": "Half width on mobile, 1/4 on tablets+",
+                              "settings": {
+                                "floatingLabel": true
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "key": "col-6-md-3-3",
+                          "type": "col",
+                          "class": "col-6 col-md-3",
+                          "children": [
+                            {
+                              "key": "revenue",
+                              "label": "Annual Revenue",
+                              "type": "input",
+                              "controlType": "number",
+                              "helpText": "Half width on mobile, 1/4 on tablets+",
+                              "settings": {
+                                "floatingLabel": true
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "key": "col-6-md-3-4",
+                          "type": "col",
+                          "class": "col-6 col-md-3",
+                          "children": [
+                            {
+                              "key": "rating",
+                              "label": "Rating (1-5)",
+                              "type": "input",
+                              "controlType": "number",
+                              "helpText": "Half width on mobile, 1/4 on tablets+",
+                              "settings": {
+                                "floatingLabel": true
+                              }
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
                 }

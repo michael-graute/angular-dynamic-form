@@ -1,9 +1,14 @@
-<h3>Simple Form with Remote Configuration and Data</h3>
-<p>This form loads it's configuration from a JSON response of an AJAX call, additionally fom values can be populated with a request</p>
-<p>The form's configuration and values are served over a mocked api call to local JSON files</p>
-<p>It uses the built-in formSubmit event to log the form's values to the console, as well as some basic validation</p>
-<p>An additional Button is configured which uses the customCallBack event to load and populate some data from a remote resource</p>
-<p>The form inputs are wrapped in "card", "row" and "col" layout elements to provide a simple layout</p>
+<h3>Complex Form Layouts - Tabs, Cards, and Responsive Grid</h3>
+<p>This example demonstrates the power of layout containers for organizing complex forms.</p>
+<p><strong>Features demonstrated:</strong></p>
+<ul>
+  <li><strong>Tab Container:</strong> Organize form sections into switchable tabs for better UX</li>
+  <li><strong>Cards:</strong> Visual grouping of related fields with styled containers</li>
+  <li><strong>Responsive Grid:</strong> Bootstrap grid system (row/col) that adapts to screen sizes</li>
+  <li><strong>Nested Containers:</strong> Cards inside tabs, rows inside cards for complex layouts</li>
+  <li><strong>Form Groups:</strong> Create nested object structures in form values</li>
+</ul>
+<p>The form configuration and values are loaded from mock API endpoints. Try resizing your browser to see the responsive grid adapt!</p>
 <div class="form" style="height: 300px" [hidden]="formConfig">
   <div class="form-loading-indicator">
     <div class="form-loading-indicator__icon"></div>

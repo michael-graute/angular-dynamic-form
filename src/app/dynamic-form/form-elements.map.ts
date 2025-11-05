@@ -1,3 +1,4 @@
+import {Type} from "@angular/core";
 import {InputComponent} from "./form-elements/inputs/input/input.component";
 import {FieldsetComponent} from "./form-elements/containers/fieldset/fieldset.component";
 import {TabContainerComponent} from "./form-elements/containers/tab-container/tab-container.component";
@@ -15,7 +16,13 @@ import {CheckboxComponent} from "./form-elements/inputs/checkbox/checkbox.compon
 import {RadioGroupComponent} from "./form-elements/inputs/radio-group/radio-group.component";
 import {DataSelectComponent} from "./form-elements/inputs/data-select/data-select.component";
 
-export const FormElementMap = {
+/**
+ * Map of form element type strings to their corresponding component classes.
+ * Used with Angular 20's ViewContainerRef.createComponent() API for dynamic component instantiation.
+ *
+ * @see https://angular.dev/api/core/ViewContainerRef#createComponent
+ */
+export const FormElementMap: Record<string, Type<any>> = {
   'fieldset': FieldsetComponent,
   'tabContainer': TabContainerComponent,
   'tabPane': TabPaneComponent,

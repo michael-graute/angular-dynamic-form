@@ -1,27 +1,53 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import {AbstractInputComponent} from "../abstract-input.component";
 import {FormArray, FormGroup, ReactiveFormsModule, ValidatorFn} from "@angular/forms";
 import {FormConfig} from "../../../dynamic-form.types";
 import {DynamicFormValidators} from "../../../dynamic-form-validators";
 import {DataRelationElementComponent} from "../data-relation/data-relation-element/data-relation-element.component";
+import {CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf} from '@angular/cdk/scrolling';
 
 
 
 @Component({
   selector: 'fg-repeater',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
-    DataRelationElementComponent
+    DataRelationElementComponent,
+    CdkVirtualScrollViewport,
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf
 ],
   templateUrl: './repeater.component.html',
   styleUrl: './repeater.component.scss'
 })
-export class RepeaterComponent extends AbstractInputComponent {
+export class RepeaterComponent extends AbstractInputComponent implements OnDestroy {
 
   formConfig: FormConfig = {
     elements: [],
     buttons: []
   }
+
+  private minItems: number | null = null;
+  private maxItems: number | null = null;
+
+  /**
+   * Threshold for enabling virtual scrolling (>50 items)
+   */
+  readonly VIRTUAL_SCROLL_THRESHOLD = 50;
+
+  /**
+   * Item height in pixels for virtual scrolling
+   * Calculated based on Bootstrap row height + margins
+   */
+  readonly ITEM_HEIGHT = 120; // Adjust based on actual rendered height
+
+  /**
+   * Viewport height in pixels (number of visible items * item height)
+   * Shows approximately 10 items at a time
+   */
+  readonly VIEWPORT_HEIGHT = this.ITEM_HEIGHT * 10;
 
   override get formArray(): FormArray<FormGroup> {
     return this.form.get(this.key) as FormArray;
@@ -36,6 +62,13 @@ export class RepeaterComponent extends AbstractInputComponent {
       validators.push(DynamicFormValidators[validator.name](validator.value))
       if(validator.errorMessage) {
         this.errorMessages[validator.name] = validator.errorMessage;
+      }
+      // Capture min/max items for button disable logic
+      if (validator.name === 'minItems') {
+        this.minItems = validator.value;
+      }
+      if (validator.name === 'maxItems') {
+        this.maxItems = validator.value;
       }
     });
     this.control = new FormArray([], validators);
@@ -52,10 +85,101 @@ export class RepeaterComponent extends AbstractInputComponent {
         })
       },50)
     }
+
+    // Subscribe to dynamic data population events
+    this.populateDataSubscription = this.dynamicFormService.onPopulateFormData.subscribe((data: any) => {
+      if (data && data[this.key] && Array.isArray(data[this.key])) {
+        this.populateArrayData(data[this.key]);
+      }
+    });
+  }
+
+  /**
+   * Populates the FormArray with data, adjusting the array size as needed
+   * @param data - Array of data to populate
+   */
+  private populateArrayData(data: any[]): void {
+    const currentLength = this.formArray.length;
+    const targetLength = data.length;
+
+    // Add or remove FormGroups to match the data length
+    if (targetLength > currentLength) {
+      // Add missing FormGroups
+      for (let i = currentLength; i < targetLength; i++) {
+        this.formArray.push(new FormGroup({}));
+      }
+    } else if (targetLength < currentLength) {
+      // Remove extra FormGroups
+      for (let i = currentLength - 1; i >= targetLength; i--) {
+        this.formArray.removeAt(i);
+      }
+    }
+
+    // Populate the data after a brief delay to ensure child components are initialized
+    setTimeout(() => {
+      data.forEach((value: any, index: number) => {
+        this.formArray.at(index)?.patchValue(value);
+      });
+    }, 50);
   }
 
   override addItem() {
     this.formArray.push(new FormGroup({}))
+  }
+
+  /**
+   * TrackBy function for repeater items optimization
+   * Helps Angular identify unique items in the list to minimize DOM updates
+   *
+   * @param index - The index of the item in the array
+   * @param item - The FormGroup item
+   * @returns The index as the unique identifier
+   */
+  trackByIndex(index: number, item: FormGroup): number {
+    return index;
+  }
+
+  /**
+   * Determines if the add button should be disabled
+   * Returns true if maxItems limit has been reached
+   */
+  isAddDisabled(): boolean {
+    if (this.maxItems === null) {
+      return false;
+    }
+    return this.formArray.length >= this.maxItems;
+  }
+
+  /**
+   * Determines if the remove button should be disabled
+   * Returns true if minItems limit has been reached
+   */
+  isRemoveDisabled(): boolean {
+    if (this.minItems === null) {
+      return false;
+    }
+    return this.formArray.length <= this.minItems;
+  }
+
+  /**
+   * Determines if virtual scrolling should be enabled
+   * Returns true if the number of items exceeds the threshold
+   */
+  shouldUseVirtualScroll(): boolean {
+    return this.formArray.length > this.VIRTUAL_SCROLL_THRESHOLD;
+  }
+
+  /**
+   * Gets the viewport height for virtual scrolling
+   * Adjusts based on actual item count if less than full viewport
+   */
+  getViewportHeight(): number {
+    const itemCount = Math.min(this.formArray.length, 10);
+    return this.ITEM_HEIGHT * itemCount;
+  }
+
+  override ngOnDestroy() {
+    super.ngOnDestroy();
   }
 
 }

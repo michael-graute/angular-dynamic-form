@@ -1,0 +1,40 @@
+<h3>Validation Examples - All 8 Validator Types</h3>
+<p>This form demonstrates all available validators with custom error messages and placeholder interpolation.</p>
+
+<div class="alert alert-info">
+  <h5>Validators Demonstrated:</h5>
+  <ul>
+    <li><strong>required</strong>: Username, Email, Country, Checkbox, Tags</li>
+    <li><strong>email</strong>: Email field with custom message</li>
+    <li><strong>minLength</strong>: Username (min 3 chars) with {{ '{' }}expected{{ '}' }}/{{ '{' }}given{{ '}' }} interpolation</li>
+    <li><strong>maxLength</strong>: Username (max 20 chars) with {{ '{' }}expected{{ '}' }}/{{ '{' }}given{{ '}' }} interpolation</li>
+    <li><strong>pattern</strong>: Phone number (###-###-####)</li>
+    <li><strong>minItems</strong>: Tags array (min 2 items) with {{ '{' }}expected{{ '}' }}/{{ '{' }}given{{ '}' }} interpolation</li>
+    <li><strong>maxItems</strong>: Tags array (max 5 items) with {{ '{' }}expected{{ '}' }}/{{ '{' }}given{{ '}' }} interpolation</li>
+    <li><strong>inArray</strong>: Country selection (only USA, Canada, Mexico allowed)</li>
+  </ul>
+</div>
+
+<div class="alert alert-warning">
+  <h5>Testing Tips:</h5>
+  <ul>
+    <li>Try submitting with empty fields to see "required" errors</li>
+    <li>Enter username with 1-2 chars to see minLength error</li>
+    <li>Enter username with 21+ chars to see maxLength error</li>
+    <li>Enter invalid email to see email validation</li>
+    <li>Enter phone number without dashes to see pattern error</li>
+    <li>Select "Brazil" to see inArray error</li>
+    <li>Add 0-1 tags to see minItems error</li>
+    <li>Add 6+ tags to see maxItems error</li>
+    <li>Try to submit without checking the agreement box</li>
+  </ul>
+</div>
+
+<fg-dynamic-form
+  id="validationExample"
+  [formConfig]="formConfig"
+  (onFormSubmit)="formSubmit($event)"
+  (onFormReset)="formReset($event)"
+/>
+
+<fg-config-display [formConfig]="formConfig"></fg-config-display>

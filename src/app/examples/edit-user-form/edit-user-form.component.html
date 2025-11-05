@@ -1,0 +1,25 @@
+<h3>Edit User Form - Data Pre-population Demo</h3>
+<p>This example demonstrates how to pre-populate form data for editing existing records.</p>
+<p><strong>Features demonstrated:</strong></p>
+<ul>
+  <li>Nested FormGroups (address fields)</li>
+  <li>FormArray with repeaters (emergency contacts)</li>
+  <li>Multiple input values (additional emails)</li>
+  <li>Dynamic data loading via <code>loadFormData()</code> method</li>
+  <li>Complex layout with cards, rows, and columns</li>
+</ul>
+
+<div class="alert alert-info">
+  <i class="bi bi-info-circle"></i>
+  <strong>Try it:</strong> Click the "Load User Data" button to populate the form with sample user data from the mock API.
+</div>
+
+<fg-dynamic-form
+  id="editUserForm"
+  [formConfig]="formConfig"
+  (onFormSubmit)="formSubmit($event)"
+  (onFormCancel)="formCancel($event)"
+  (onCustomCallBack)="loadUserData()"
+/>
+
+<fg-config-display [formConfig]="formConfig"></fg-config-display>

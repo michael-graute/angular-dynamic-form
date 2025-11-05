@@ -1,0 +1,12 @@
+<div class="loading-spinner" [class.loading-spinner--overlay]="overlay" [attr.data-size]="size">
+  <div class="loading-spinner__content">
+    <div class="loading-spinner__icon">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">{{message}}</span>
+      </div>
+    </div>
+    @if (message) {
+      <div class="loading-spinner__message">{{message}}</div>
+    }
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {AbstractFormElementHostComponent} from "../abstract-form-element-host.component";
 import {DynamicFormElementInterface} from "../../../dynamic-form-element.interface";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
@@ -11,7 +11,8 @@ import {FormElementHostDirective} from "../../form-element-host.directive";
     FormElementHostDirective
   ],
   templateUrl: './form-group.component.html',
-  styleUrl: './form-group.component.scss'
+  styleUrl: './form-group.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormGroupComponent extends AbstractFormElementHostComponent<FormGroupComponent> implements DynamicFormElementInterface {
 

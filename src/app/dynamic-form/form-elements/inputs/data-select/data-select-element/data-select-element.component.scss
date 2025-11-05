@@ -19,3 +19,33 @@
 .list-group-item {
   cursor: pointer;
 }
+
+// Virtual scrolling viewport styles
+.data-select-viewport {
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  overflow-y: auto;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+  .list-group {
+    margin-bottom: 0;
+
+    .list-group-item {
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background-color: #f8f9fa;
+      }
+    }
+  }
+}

@@ -1,11 +1,18 @@
-import {Component, HostBinding, Input, OnDestroy, OnInit} from "@angular/core";
-import {FormArray, FormControl, FormGroup, ValidatorFn} from "@angular/forms";
+import {Component, HostBinding, inject, Input, OnDestroy, OnInit} from "@angular/core";
+import {FormArray, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn} from "@angular/forms";
+import {CommonModule} from "@angular/common";
 import {FormElement} from "../../dynamic-form.types";
 import {DynamicFormElementInterface} from "../../dynamic-form-element.interface";
 import {DynamicFormValidators} from "../../dynamic-form-validators";
 import {defaultErrorMessages} from "../../default-error-messages";
+import {DynamicFormService} from "../../dynamic-form.service";
+import {Subscription} from "rxjs";
 
-@Component({template: ``})
+@Component({
+  template: ``,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule]
+})
 export abstract class AbstractInputComponent implements DynamicFormElementInterface, OnInit, OnDestroy {
   id: string = '';
   key: string = '';
@@ -16,6 +23,9 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
   debug = false;
   validators: ValidatorFn[] = []
   @Input() errorMessages: {[key: string]: string} = {};
+
+  protected dynamicFormService = inject(DynamicFormService);
+  protected populateDataSubscription?: Subscription;
 
   @HostBinding('class') className = '';
 
@@ -38,6 +48,10 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
         for (let replaceKey in this.control?.errors?.[key]) {
           message = message.replace('{' + replaceKey + '}', this.control?.errors?.[key][replaceKey]);
         }
+        // Support {actual} as alias for {given}
+        if(this.control?.errors?.[key].hasOwnProperty('given')) {
+          message = message.replace('{actual}', this.control?.errors?.[key]['given']);
+        }
       }
       messages.push(message);
     }
@@ -56,8 +70,12 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
         message = key;
       }
       if(typeof foo.errors?.[key] === 'object') {
-        for (let replaceKey in this.control?.errors?.[key]) {
-          message = message.replace('{' + replaceKey + '}', this.control?.errors?.[key][replaceKey]);
+        for (let replaceKey in foo.errors?.[key]) {
+          message = message.replace('{' + replaceKey + '}', foo.errors?.[key][replaceKey]);
+        }
+        // Support {actual} as alias for {given}
+        if(foo.errors?.[key].hasOwnProperty('given')) {
+          message = message.replace('{actual}', foo.errors?.[key]['given']);
         }
       }
       messages.push(message);
@@ -87,6 +105,13 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
           this.formArray.push(new FormControl(value, this.validators));
         })
       }
+
+      // Subscribe to dynamic data population for multiple inputs
+      this.populateDataSubscription = this.dynamicFormService.onPopulateFormData.subscribe((data: any) => {
+        if (data && data[this.key] && Array.isArray(data[this.key])) {
+          this.populateMultipleData(data[this.key]);
+        }
+      });
     } else {
       this.control = new FormControl(this.config?.value, this.validators);
       this.form.addControl(this.key, this.control);
@@ -98,8 +123,38 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
     }
   }
 
+  /**
+   * Populates multiple input data (FormArray of FormControls), adjusting array size as needed
+   * @param data - Array of values to populate
+   */
+  protected populateMultipleData(data: any[]): void {
+    const currentLength = this.formArray.length;
+    const targetLength = data.length;
+
+    // Add or remove FormControls to match the data length
+    if (targetLength > currentLength) {
+      // Add missing FormControls
+      for (let i = currentLength; i < targetLength; i++) {
+        this.formArray.push(new FormControl(null, this.validators));
+      }
+    } else if (targetLength < currentLength) {
+      // Remove extra FormControls
+      for (let i = currentLength - 1; i >= targetLength; i--) {
+        this.formArray.removeAt(i);
+      }
+    }
+
+    // Populate the values
+    data.forEach((value: any, index: number) => {
+      this.formArray.at(index)?.setValue(value);
+    });
+  }
+
   ngOnDestroy() {
     this.form.removeControl(this.key);
+    if (this.populateDataSubscription) {
+      this.populateDataSubscription.unsubscribe();
+    }
   }
 
   addItem() {

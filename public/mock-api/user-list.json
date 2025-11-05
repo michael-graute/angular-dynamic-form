@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "role": "Administrator",
+    "department": "IT"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "role": "Manager",
+    "department": "Sales"
+  },
+  {
+    "id": 3,
+    "name": "Bob Johnson",
+    "email": "bob.johnson@example.com",
+    "role": "Developer",
+    "department": "Engineering"
+  },
+  {
+    "id": 4,
+    "name": "Alice Williams",
+    "email": "alice.williams@example.com",
+    "role": "Designer",
+    "department": "Marketing"
+  },
+  {
+    "id": 5,
+    "name": "Charlie Brown",
+    "email": "charlie.brown@example.com",
+    "role": "Analyst",
+    "department": "Finance"
+  },
+  {
+    "id": 6,
+    "name": "Diana Prince",
+    "email": "diana.prince@example.com",
+    "role": "HR Specialist",
+    "department": "Human Resources"
+  },
+  {
+    "id": 7,
+    "name": "Ethan Hunt",
+    "email": "ethan.hunt@example.com",
+    "role": "Security Officer",
+    "department": "Security"
+  },
+  {
+    "id": 8,
+    "name": "Fiona Green",
+    "email": "fiona.green@example.com",
+    "role": "Product Manager",
+    "department": "Product"
+  },
+  {
+    "id": 9,
+    "name": "George Wilson",
+    "email": "george.wilson@example.com",
+    "role": "QA Engineer",
+    "department": "Quality Assurance"
+  },
+  {
+    "id": 10,
+    "name": "Hannah Montana",
+    "email": "hannah.montana@example.com",
+    "role": "Support Specialist",
+    "department": "Customer Support"
+  }
+]

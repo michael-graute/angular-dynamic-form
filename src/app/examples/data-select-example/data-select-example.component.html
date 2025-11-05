@@ -1,0 +1,25 @@
+<h3>Asynchronous Dropdown Options - Data Select Example</h3>
+<p>This example demonstrates how to create dropdowns that load options from API endpoints.</p>
+<p><strong>Features demonstrated:</strong></p>
+<ul>
+  <li><strong>Async data loading</strong> - User dropdown loads from <code>/user-list</code> API endpoint</li>
+  <li><strong>Caching with TTL</strong> - Options cached for 10 minutes (reload page to see cache hit)</li>
+  <li><strong>Retry logic</strong> - Automatic retry with exponential backoff on failure</li>
+  <li><strong>Value extraction</strong> - Uses <code>valueKey: "id"</code> to extract just the ID instead of full object</li>
+  <li><strong>Loading states</strong> - Shows loading indicator while fetching data</li>
+  <li><strong>Error handling</strong> - Displays user-friendly error messages on failure</li>
+</ul>
+
+<div class="alert alert-info">
+  <i class="bi bi-info-circle"></i>
+  <strong>How it works:</strong> The "Assign to User" dropdown uses <code>asyncURL: "/user-list"</code> to load user options dynamically.
+  When you select a user, only their ID is stored in the form value (thanks to <code>valueKey: "id"</code>).
+</div>
+
+<fg-dynamic-form
+  id="dataSelectForm"
+  [formConfig]="formConfig"
+  (onFormSubmit)="formSubmit($event)"
+/>
+
+<fg-config-display [formConfig]="formConfig"></fg-config-display>

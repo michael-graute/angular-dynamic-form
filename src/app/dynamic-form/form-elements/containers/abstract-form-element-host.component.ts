@@ -1,12 +1,17 @@
 import {Component, ComponentRef, HostBinding, Input, OnInit, ViewChild} from '@angular/core';
+import {CommonModule} from "@angular/common";
+import {ReactiveFormsModule, FormGroup} from "@angular/forms";
 import {DynamicFormElementInterface} from "../../dynamic-form-element.interface";
 import {FormElement} from "../../dynamic-form.types";
 import {FormElementHostDirective} from "../form-element-host.directive";
 import {FormElementMap} from "../../form-elements.map";
-import {FormGroup} from "@angular/forms";
 import {DynamicFormService, ElementAddedPayload} from "../../dynamic-form.service";
 
-@Component({template: ``})
+@Component({
+  template: ``,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, FormElementHostDirective]
+})
 export abstract class AbstractFormElementHostComponent<T> implements OnInit {
   @Input() form = new FormGroup({})
   @Input() debug = false;

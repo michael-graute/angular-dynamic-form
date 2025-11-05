@@ -43,6 +43,11 @@ export class SimpleFormComponent {
             label: "Diverse",
             value: "diverse"
           }
+        ],
+        validators: [
+          {
+            name: "required"
+          }
         ]
       },
       {
@@ -52,7 +57,16 @@ export class SimpleFormComponent {
         controlType: "text",
         settings: {
           floatingLabel: true
-        }
+        },
+        validators: [
+          {
+            name: "required"
+          },
+          {
+            name: "minLength",
+            value: 2
+          }
+        ]
       },
       {
         key: "lastname",
@@ -61,7 +75,16 @@ export class SimpleFormComponent {
         controlType: "text",
         settings: {
           floatingLabel: true
-        }
+        },
+        validators: [
+          {
+            name: "required"
+          },
+          {
+            name: "minLength",
+            value: 2
+          }
+        ]
       },
       {
         key: "email",
@@ -70,7 +93,15 @@ export class SimpleFormComponent {
         controlType: "email",
         settings: {
           floatingLabel: true
-        }
+        },
+        validators: [
+          {
+            name: "required"
+          },
+          {
+            name: "email"
+          }
+        ]
       }
     ],
     buttons: [
@@ -80,6 +111,9 @@ export class SimpleFormComponent {
         label: "Submit",
         icon: "bi-check",
         class: "btn-success",
+        settings: {
+          disableIfFormInvalid: true
+        },
         callback: {
           function: "formSubmit"
         }

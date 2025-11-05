@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {AbstractFormElementHostComponent} from "../abstract-form-element-host.component";
 import {DynamicFormElementInterface} from "../../../dynamic-form-element.interface";
 import {FormElement} from "../../../dynamic-form.types";
@@ -13,6 +13,7 @@ import {FormElementHostDirective} from "../../form-element-host.directive";
     styleUrl: './row.component.scss',
     host: {
         'class': 'row'
-    }
+    },
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RowComponent extends AbstractFormElementHostComponent<RowComponent> implements DynamicFormElementInterface, OnInit {}
