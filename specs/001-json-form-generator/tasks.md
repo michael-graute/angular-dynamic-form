@@ -396,17 +396,17 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 ### Documentation
 
-- [ ] T095 [P] Update main README.md with Angular 20 and Zod validation
-- [ ] T096 [P] Add JSDoc comments to all public methods in DynamicFormComponent
-- [ ] T097 [P] Add JSDoc comments to all public methods in DynamicFormService
-- [ ] T098 [P] Add JSDoc comments to DynamicFormValidators class methods
-- [ ] T099 [P] Create MIGRATION.md guide for upgrading from NgModule to standalone components
-- [ ] T100 [P] Add performance guidelines to README (field limits, repeater limits, optimization tips)
+- [X] T095 [P] Update main README.md with Angular 20 and Zod validation
+- [X] T096 [P] Add JSDoc comments to all public methods in DynamicFormComponent
+- [X] T097 [P] Add JSDoc comments to all public methods in DynamicFormService
+- [X] T098 [P] Add JSDoc comments to DynamicFormValidators class methods
+- [X] T099 [P] Create MIGRATION.md guide for upgrading from NgModule to standalone components
+- [X] T100 [P] Add performance guidelines to README (field limits, repeater limits, optimization tips)
 
 ### Examples Polish
 
-- [ ] T101 [P] Add code comments to all examples explaining JSON configuration patterns
-- [ ] T102 [P] Create comprehensive-form example combining all features (tabs, repeaters, validation, async loading)
+- [X] T101 [P] Add code comments to all examples explaining JSON configuration patterns
+- [X] T102 [P] Create comprehensive-form example combining all features (tabs, repeaters, validation, async loading)
 
 ---
 
