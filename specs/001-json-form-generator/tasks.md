@@ -371,16 +371,16 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 ### Virtual Scrolling
 
-- [ ] T088 [P] Integrate CDK VirtualScrollViewport into RepeaterComponent for >50 items
-- [ ] T089 [P] Integrate CDK VirtualScrollViewport into DataSelectComponent for >100 options
-- [ ] T090 [P] Add viewport size calculation based on item height in RepeaterComponent
+- [X] T088 [P] Integrate CDK VirtualScrollViewport into RepeaterComponent for >50 items
+- [X] T089 [P] Integrate CDK VirtualScrollViewport into DataSelectComponent for >100 options
+- [X] T090 [P] Add viewport size calculation based on item height in RepeaterComponent
 
 ### Performance Testing
 
-- [ ] T091 [P] Create performance benchmark tests for 10, 50, 100 field forms in src/app/dynamic-form/performance/form-performance.spec.ts
-- [ ] T092 [P] Create performance benchmark tests for repeaters with 50, 100, 200 items
-- [ ] T093 [P] Add performance monitoring to form rendering (measure time from config → render complete)
-- [ ] T094 Add warning logs for forms exceeding performance budgets (>100 fields, >100 repeater items)
+- [X] T091 [P] Create performance benchmark tests for 10, 50, 100 field forms in src/app/dynamic-form/performance/form-performance.spec.ts
+- [X] T092 [P] Create performance benchmark tests for repeaters with 50, 100, 200 items
+- [X] T093 [P] Add performance monitoring to form rendering (measure time from config → render complete)
+- [X] T094 Add warning logs for forms exceeding performance budgets (>100 fields, >100 repeater items)
 
 ---
 

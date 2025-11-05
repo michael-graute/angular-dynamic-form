@@ -4,6 +4,7 @@ import {FormArray, FormGroup, ReactiveFormsModule, ValidatorFn} from "@angular/f
 import {FormConfig} from "../../../dynamic-form.types";
 import {DynamicFormValidators} from "../../../dynamic-form-validators";
 import {DataRelationElementComponent} from "../data-relation/data-relation-element/data-relation-element.component";
+import {CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf} from '@angular/cdk/scrolling';
 
 
 
@@ -13,7 +14,10 @@ import {DataRelationElementComponent} from "../data-relation/data-relation-eleme
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
-    DataRelationElementComponent
+    DataRelationElementComponent,
+    CdkVirtualScrollViewport,
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf
 ],
   templateUrl: './repeater.component.html',
   styleUrl: './repeater.component.scss'
@@ -27,6 +31,23 @@ export class RepeaterComponent extends AbstractInputComponent implements OnDestr
 
   private minItems: number | null = null;
   private maxItems: number | null = null;
+
+  /**
+   * Threshold for enabling virtual scrolling (>50 items)
+   */
+  readonly VIRTUAL_SCROLL_THRESHOLD = 50;
+
+  /**
+   * Item height in pixels for virtual scrolling
+   * Calculated based on Bootstrap row height + margins
+   */
+  readonly ITEM_HEIGHT = 120; // Adjust based on actual rendered height
+
+  /**
+   * Viewport height in pixels (number of visible items * item height)
+   * Shows approximately 10 items at a time
+   */
+  readonly VIEWPORT_HEIGHT = this.ITEM_HEIGHT * 10;
 
   override get formArray(): FormArray<FormGroup> {
     return this.form.get(this.key) as FormArray;
@@ -138,6 +159,23 @@ export class RepeaterComponent extends AbstractInputComponent implements OnDestr
       return false;
     }
     return this.formArray.length <= this.minItems;
+  }
+
+  /**
+   * Determines if virtual scrolling should be enabled
+   * Returns true if the number of items exceeds the threshold
+   */
+  shouldUseVirtualScroll(): boolean {
+    return this.formArray.length > this.VIRTUAL_SCROLL_THRESHOLD;
+  }
+
+  /**
+   * Gets the viewport height for virtual scrolling
+   * Adjusts based on actual item count if less than full viewport
+   */
+  getViewportHeight(): number {
+    const itemCount = Math.min(this.formArray.length, 10);
+    return this.ITEM_HEIGHT * itemCount;
   }
 
   override ngOnDestroy() {

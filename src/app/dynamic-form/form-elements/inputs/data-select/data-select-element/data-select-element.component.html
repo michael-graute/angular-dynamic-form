@@ -16,14 +16,32 @@
 </div>
 @if (showDataList && !loading && !error) {
   <div class="data-display">
-    <ul class="list-group">
-      @for (dataset of options; track dataset) {
-        <li class="list-group-item" (click)="optionClicked(dataset)">{{getOptionLabel(dataset)}}</li>
-      }
-      @empty {
-        <li class="list-group-item text-muted">No options available</li>
-      }
-    </ul>
+    @if (shouldUseVirtualScroll()) {
+      <!-- Virtual scrolling for >100 options -->
+      <cdk-virtual-scroll-viewport
+        [itemSize]="ITEM_HEIGHT"
+        [style.height.px]="VIEWPORT_HEIGHT"
+        class="data-select-viewport">
+        <ul class="list-group">
+          <li
+            *cdkVirtualFor="let dataset of options; trackBy: trackByOption"
+            class="list-group-item"
+            (click)="optionClicked(dataset)">
+            {{getOptionLabel(dataset)}}
+          </li>
+        </ul>
+      </cdk-virtual-scroll-viewport>
+    } @else {
+      <!-- Standard rendering for <=100 options -->
+      <ul class="list-group">
+        @for (dataset of options; track trackByOption($index, dataset)) {
+          <li class="list-group-item" (click)="optionClicked(dataset)">{{getOptionLabel(dataset)}}</li>
+        }
+        @empty {
+          <li class="list-group-item text-muted">No options available</li>
+        }
+      </ul>
+    }
   </div>
 }
 @if (error) {

@@ -1,0 +1,24 @@
+// Repeater component styles
+
+.repeater-viewport {
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+
+  // Ensure proper spacing within viewport
+  .cdk-virtual-scroll-content-wrapper {
+    padding: 0.5rem;
+  }
+}
+
+// Performance indicator for large lists
+.repeater-viewport::before {
+  content: "Virtual scrolling enabled for performance";
+  display: block;
+  padding: 0.5rem;
+  background-color: #e7f3ff;
+  border-bottom: 1px solid #b8daff;
+  font-size: 0.875rem;
+  color: #004085;
+}

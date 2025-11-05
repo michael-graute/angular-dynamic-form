@@ -3,22 +3,47 @@
 }
 <div [formGroup]="form">
   <div [formArrayName]="key">
-    @for (item of formArray.controls; track trackByIndex($index, item); let i = $index) {
-      <div class="row mb-4">
-        <div class="col-11">
-          <fg-data-relation-element [id]="id + 'Dataset' + i" [form]="item" [formConfig]="formConfig" />
+    @if (shouldUseVirtualScroll()) {
+      <!-- Virtual scrolling for >50 items -->
+      <cdk-virtual-scroll-viewport
+        [itemSize]="ITEM_HEIGHT"
+        [style.height.px]="getViewportHeight()"
+        class="repeater-viewport">
+        <div *cdkVirtualFor="let item of formArray.controls; trackBy: trackByIndex; let i = index" class="row mb-4">
+          <div class="col-11">
+            <fg-data-relation-element [id]="id + 'Dataset' + i" [form]="item" [formConfig]="formConfig" />
+          </div>
+          <div class="col-1">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="removeItem(i)"
+              [disabled]="isRemoveDisabled()">
+              <i [class]="config?.settings?.removeButton?.icon ?? 'bi-dash-circle'"></i>
+              {{config?.settings?.removeButton?.label ?? 'Delete'}}
+            </button>
+          </div>
         </div>
-        <div class="col-1">
-          <button
-            type="button"
-            class="btn btn-danger"
-            (click)="removeItem(i)"
-            [disabled]="isRemoveDisabled()">
-            <i [class]="config?.settings?.removeButton?.icon ?? 'bi-dash-circle'"></i>
-            {{config?.settings?.removeButton?.label ?? 'Delete'}}
-          </button>
+      </cdk-virtual-scroll-viewport>
+    } @else {
+      <!-- Standard rendering for <=50 items -->
+      @for (item of formArray.controls; track trackByIndex($index, item); let i = $index) {
+        <div class="row mb-4">
+          <div class="col-11">
+            <fg-data-relation-element [id]="id + 'Dataset' + i" [form]="item" [formConfig]="formConfig" />
+          </div>
+          <div class="col-1">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="removeItem(i)"
+              [disabled]="isRemoveDisabled()">
+              <i [class]="config?.settings?.removeButton?.icon ?? 'bi-dash-circle'"></i>
+              {{config?.settings?.removeButton?.label ?? 'Delete'}}
+            </button>
+          </div>
         </div>
-      </div>
+      }
     }
   </div>
   <div class="d-flex gap-1 justify-content-end">

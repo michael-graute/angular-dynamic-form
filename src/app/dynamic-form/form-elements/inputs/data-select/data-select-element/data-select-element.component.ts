@@ -7,12 +7,17 @@ import {
   ValidationErrors,
   Validator
 } from "@angular/forms";
+import {CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf} from '@angular/cdk/scrolling';
 
 import {DynamicFormService} from "../../../../dynamic-form.service";
 
 @Component({
   selector: 'fg-data-select-element',
-  imports: [],
+  imports: [
+    CdkVirtualScrollViewport,
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf
+  ],
   templateUrl: './data-select-element.component.html',
   styleUrl: './data-select-element.component.scss',
   providers: [
@@ -39,6 +44,21 @@ export class DataSelectElementComponent implements OnInit, ControlValueAccessor,
 
   value: any = null;
   selectedOption: any = null;
+
+  /**
+   * Threshold for enabling virtual scrolling (>100 options)
+   */
+  readonly VIRTUAL_SCROLL_THRESHOLD = 100;
+
+  /**
+   * Item height in pixels for virtual scrolling
+   */
+  readonly ITEM_HEIGHT = 40;
+
+  /**
+   * Viewport height in pixels (shows ~10 items at once)
+   */
+  readonly VIEWPORT_HEIGHT = this.ITEM_HEIGHT * 10;
 
   constructor(
     private dynamicFormService: DynamicFormService,
@@ -135,5 +155,20 @@ export class DataSelectElementComponent implements OnInit, ControlValueAccessor,
   }
 
   writeValue(obj: any): void {
+  }
+
+  /**
+   * Determines if virtual scrolling should be enabled
+   * Returns true if the number of options exceeds the threshold
+   */
+  shouldUseVirtualScroll(): boolean {
+    return this.options.length > this.VIRTUAL_SCROLL_THRESHOLD;
+  }
+
+  /**
+   * TrackBy function for option list optimization
+   */
+  trackByOption(index: number, option: any): any {
+    return option[this.settings.valueKey] ?? option ?? index;
   }
 }
