@@ -306,9 +306,9 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 **Tasks**:
 
 - [X] T075 [P] [US6] Convert FormGroupComponent to standalone in src/app/dynamic-form/form-elements/containers/form-group/form-group.component.ts (Angular 20 default)
-- [ ] T076 [US6] Add OnPush change detection to FormGroupComponent
-- [ ] T077 [P] [US6] Add nested formGroup examples to form-layouts example in src/app/examples/form-layouts/
-- [ ] T078 [US6] Verify formGroup validation propagation (child invalid → parent invalid)
+- [X] T076 [US6] Add OnPush change detection to FormGroupComponent
+- [X] T077 [P] [US6] Add nested formGroup examples to form-layouts example in src/app/examples/form-layouts/
+- [X] T078 [US6] Verify formGroup validation propagation (child invalid → parent invalid)
 
 ---
 

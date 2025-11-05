@@ -144,7 +144,7 @@
                 {
                   "key": "tabOneText",
                   "type": "form-text",
-                  "value": "<p>The following inputs are grouped inside a \"formGroup\" container, which will add a nested object into the forms values (submit and see the consoles log)</p>"
+                  "value": "<h6>Single-Level Nested FormGroup</h6><p>The following inputs are grouped inside a \"formGroup\" container, which will add a nested object into the forms values (submit and see the form values). The form value will have a structure like: <code>{ tabOneFormGroup: { foo: 'value', bar: 'value', baz: 'value' } }</code></p>"
                 },
                 {
                   "key": "tabOneFormGroup",
@@ -178,7 +178,123 @@
                       "controlType": "text",
                       "settings": {
                         "floatingLabel": true
-                      }
+                      },
+                      "validators": [
+                        {
+                          "name": "required",
+                          "errorMessage": "Baz is required to test validation propagation"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "key": "multiLevelText",
+                  "type": "form-text",
+                  "value": "<h6>Multi-Level Nested FormGroups (2-3 Levels Deep)</h6><p>This demonstrates nested formGroups within formGroups. The form value will have a deeply nested structure like: <code>{ userProfile: { personalInfo: { name: '...', age: ... }, contactInfo: { email: '...', address: { street: '...', city: '...', country: '...' } } } }</code></p>"
+                },
+                {
+                  "key": "userProfile",
+                  "type": "formGroup",
+                  "children": [
+                    {
+                      "key": "personalInfo",
+                      "type": "formGroup",
+                      "children": [
+                        {
+                          "key": "name",
+                          "label": "Full Name",
+                          "type": "input",
+                          "controlType": "text",
+                          "value": "John Doe",
+                          "settings": {
+                            "floatingLabel": true
+                          },
+                          "validators": [
+                            {
+                              "name": "required",
+                              "errorMessage": "Name is required (tests validation propagation to parent formGroups)"
+                            }
+                          ]
+                        },
+                        {
+                          "key": "age",
+                          "label": "Age",
+                          "type": "input",
+                          "controlType": "number",
+                          "value": 30,
+                          "settings": {
+                            "floatingLabel": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "key": "contactInfo",
+                      "type": "formGroup",
+                      "children": [
+                        {
+                          "key": "email",
+                          "label": "Email Address",
+                          "type": "input",
+                          "controlType": "email",
+                          "value": "john.doe@example.com",
+                          "settings": {
+                            "floatingLabel": true
+                          },
+                          "validators": [
+                            {
+                              "name": "required"
+                            },
+                            {
+                              "name": "email",
+                              "errorMessage": "Please enter a valid email (tests validation propagation)"
+                            }
+                          ]
+                        },
+                        {
+                          "key": "address",
+                          "type": "formGroup",
+                          "children": [
+                            {
+                              "key": "street",
+                              "label": "Street Address",
+                              "type": "input",
+                              "controlType": "text",
+                              "value": "123 Main St",
+                              "settings": {
+                                "floatingLabel": true
+                              }
+                            },
+                            {
+                              "key": "city",
+                              "label": "City",
+                              "type": "input",
+                              "controlType": "text",
+                              "value": "Springfield",
+                              "settings": {
+                                "floatingLabel": true
+                              },
+                              "validators": [
+                                {
+                                  "name": "required",
+                                  "errorMessage": "City is required (3 levels deep - tests deep validation propagation)"
+                                }
+                              ]
+                            },
+                            {
+                              "key": "country",
+                              "label": "Country",
+                              "type": "input",
+                              "controlType": "text",
+                              "value": "USA",
+                              "settings": {
+                                "floatingLabel": true
+                              }
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
                 }
