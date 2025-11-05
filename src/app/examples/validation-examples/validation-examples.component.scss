@@ -1,0 +1,24 @@
+// Validation examples styles
+.alert {
+  margin-bottom: 1.5rem;
+
+  h5 {
+    margin-top: 0;
+    font-weight: 600;
+  }
+
+  ul {
+    margin-bottom: 0;
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  strong {
+    font-family: 'Courier New', monospace;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+  }
+}

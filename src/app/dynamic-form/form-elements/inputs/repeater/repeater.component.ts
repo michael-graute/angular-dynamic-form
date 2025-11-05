@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {AbstractInputComponent} from "../abstract-input.component";
 import {FormArray, FormGroup, ReactiveFormsModule, ValidatorFn} from "@angular/forms";
 import {FormConfig} from "../../../dynamic-form.types";
@@ -16,7 +16,7 @@ import {DataRelationElementComponent} from "../data-relation/data-relation-eleme
   templateUrl: './repeater.component.html',
   styleUrl: './repeater.component.scss'
 })
-export class RepeaterComponent extends AbstractInputComponent {
+export class RepeaterComponent extends AbstractInputComponent implements OnDestroy {
 
   formConfig: FormConfig = {
     elements: [],
@@ -52,10 +52,50 @@ export class RepeaterComponent extends AbstractInputComponent {
         })
       },50)
     }
+
+    // Subscribe to dynamic data population events
+    this.populateDataSubscription = this.dynamicFormService.onPopulateFormData.subscribe((data: any) => {
+      if (data && data[this.key] && Array.isArray(data[this.key])) {
+        this.populateArrayData(data[this.key]);
+      }
+    });
+  }
+
+  /**
+   * Populates the FormArray with data, adjusting the array size as needed
+   * @param data - Array of data to populate
+   */
+  private populateArrayData(data: any[]): void {
+    const currentLength = this.formArray.length;
+    const targetLength = data.length;
+
+    // Add or remove FormGroups to match the data length
+    if (targetLength > currentLength) {
+      // Add missing FormGroups
+      for (let i = currentLength; i < targetLength; i++) {
+        this.formArray.push(new FormGroup({}));
+      }
+    } else if (targetLength < currentLength) {
+      // Remove extra FormGroups
+      for (let i = currentLength - 1; i >= targetLength; i--) {
+        this.formArray.removeAt(i);
+      }
+    }
+
+    // Populate the data after a brief delay to ensure child components are initialized
+    setTimeout(() => {
+      data.forEach((value: any, index: number) => {
+        this.formArray.at(index)?.patchValue(value);
+      });
+    }, 50);
   }
 
   override addItem() {
     this.formArray.push(new FormGroup({}))
+  }
+
+  override ngOnDestroy() {
+    super.ngOnDestroy();
   }
 
 }

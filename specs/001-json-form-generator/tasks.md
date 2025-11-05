@@ -173,12 +173,12 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 **Tasks**:
 
-- [ ] T044 [P] [US7] Enhance minItems validator in DynamicFormValidators to support custom messages
-- [ ] T045 [P] [US7] Enhance maxItems validator in DynamicFormValidators to support custom messages
-- [ ] T046 [P] [US7] Enhance inArray validator in DynamicFormValidators with value interpolation
-- [ ] T047 [P] [US7] Update error message templates in default-error-messages.ts with {expected} {actual} placeholders
-- [ ] T048 [P] [US7] Add error message override logic to all input components via AbstractInputComponent
-- [ ] T049 [US7] Create validation-examples component in src/app/examples/validation-examples/ demonstrating all validators
+- [X] T044 [P] [US7] Enhance minItems validator in DynamicFormValidators to support custom messages (already implemented)
+- [X] T045 [P] [US7] Enhance maxItems validator in DynamicFormValidators to support custom messages (already implemented)
+- [X] T046 [P] [US7] Enhance inArray validator in DynamicFormValidators with value interpolation (already implemented)
+- [X] T047 [P] [US7] Update error message templates in default-error-messages.ts with {expected} {actual} placeholders (already implemented in Phase 3)
+- [X] T048 [P] [US7] Add error message override logic to all input components via AbstractInputComponent (already implemented in Phase 3)
+- [X] T049 [US7] Create validation-examples component in src/app/examples/validation-examples/ demonstrating all validators
 
 ---
 
@@ -200,11 +200,11 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 **Tasks**:
 
-- [ ] T050 [P] [US8] Implement loadFormData() method in DynamicFormService (HTTP GET + populate)
-- [ ] T051 [P] [US8] Implement populateFormData() method in DynamicFormService (direct object → form values)
-- [ ] T052 [P] [US8] Add form data population handling for nested FormGroups
-- [ ] T053 [US8] Add form data population handling for FormArray (repeaters)
-- [ ] T054 [US8] Create edit-user-form example in src/app/examples/edit-user-form/ demonstrating data pre-population
+- [X] T050 [P] [US8] Implement loadFormData() method in DynamicFormService (HTTP GET + populate)
+- [X] T051 [P] [US8] Implement populateFormData() method in DynamicFormService (direct object → form values)
+- [X] T052 [P] [US8] Add form data population handling for nested FormGroups
+- [X] T053 [US8] Add form data population handling for FormArray (repeaters)
+- [X] T054 [US8] Create edit-user-form example in src/app/examples/edit-user-form/ demonstrating data pre-population
 
 ---
 

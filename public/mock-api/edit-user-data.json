@@ -1,0 +1,28 @@
+{
+  "gender": "female",
+  "firstname": "Jane",
+  "lastname": "Doe",
+  "email": "jane.doe@example.com",
+  "phone": "+1 (555) 123-4567",
+  "address": {
+    "street": "123 Main Street",
+    "city": "San Francisco",
+    "zip": "94105"
+  },
+  "contacts": [
+    {
+      "name": "John Doe",
+      "relationship": "spouse",
+      "contactPhone": "+1 (555) 987-6543"
+    },
+    {
+      "name": "Mary Smith",
+      "relationship": "parent",
+      "contactPhone": "+1 (555) 246-8135"
+    }
+  ],
+  "additionalEmails": [
+    "jane.personal@gmail.com",
+    "j.doe@work-email.com"
+  ]
+}
