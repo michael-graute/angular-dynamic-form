@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import {AbstractInputComponent} from "../abstract-input.component";
 import {FormArray, FormGroup, ReactiveFormsModule, ValidatorFn} from "@angular/forms";
 import {FormConfig} from "../../../dynamic-form.types";
@@ -9,6 +9,8 @@ import {DataRelationElementComponent} from "../data-relation/data-relation-eleme
 
 @Component({
   selector: 'fg-repeater',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ReactiveFormsModule,
     DataRelationElementComponent
@@ -23,6 +25,9 @@ export class RepeaterComponent extends AbstractInputComponent implements OnDestr
     buttons: []
   }
 
+  private minItems: number | null = null;
+  private maxItems: number | null = null;
+
   override get formArray(): FormArray<FormGroup> {
     return this.form.get(this.key) as FormArray;
   }
@@ -36,6 +41,13 @@ export class RepeaterComponent extends AbstractInputComponent implements OnDestr
       validators.push(DynamicFormValidators[validator.name](validator.value))
       if(validator.errorMessage) {
         this.errorMessages[validator.name] = validator.errorMessage;
+      }
+      // Capture min/max items for button disable logic
+      if (validator.name === 'minItems') {
+        this.minItems = validator.value;
+      }
+      if (validator.name === 'maxItems') {
+        this.maxItems = validator.value;
       }
     });
     this.control = new FormArray([], validators);
@@ -92,6 +104,40 @@ export class RepeaterComponent extends AbstractInputComponent implements OnDestr
 
   override addItem() {
     this.formArray.push(new FormGroup({}))
+  }
+
+  /**
+   * TrackBy function for repeater items optimization
+   * Helps Angular identify unique items in the list to minimize DOM updates
+   *
+   * @param index - The index of the item in the array
+   * @param item - The FormGroup item
+   * @returns The index as the unique identifier
+   */
+  trackByIndex(index: number, item: FormGroup): number {
+    return index;
+  }
+
+  /**
+   * Determines if the add button should be disabled
+   * Returns true if maxItems limit has been reached
+   */
+  isAddDisabled(): boolean {
+    if (this.maxItems === null) {
+      return false;
+    }
+    return this.formArray.length >= this.maxItems;
+  }
+
+  /**
+   * Determines if the remove button should be disabled
+   * Returns true if minItems limit has been reached
+   */
+  isRemoveDisabled(): boolean {
+    if (this.minItems === null) {
+      return false;
+    }
+    return this.formArray.length <= this.minItems;
   }
 
   override ngOnDestroy() {

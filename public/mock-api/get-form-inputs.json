@@ -198,7 +198,86 @@
           "key": "tabAdvancedInputs",
           "type": "tabPane",
           "label": "Advanced Inputs",
-          "children": []
+          "children": [
+            {
+              "key": "contacts",
+              "type": "repeater",
+              "label": "Contact List (Repeater with Min/Max Validation)",
+              "helpText": "This repeater demonstrates add/remove functionality with min/max items validation. Try adding and removing items to see the buttons disable at limits.",
+              "children": [
+                {
+                  "key": "contactName",
+                  "type": "input",
+                  "label": "Contact Name",
+                  "controlType": "text",
+                  "settings": {
+                    "floatingLabel": true
+                  },
+                  "validators": [
+                    {
+                      "name": "required",
+                      "errorMessage": "Contact name is required"
+                    }
+                  ]
+                },
+                {
+                  "key": "contactEmail",
+                  "type": "input",
+                  "label": "Email Address",
+                  "controlType": "email",
+                  "settings": {
+                    "floatingLabel": true
+                  },
+                  "validators": [
+                    {
+                      "name": "required"
+                    },
+                    {
+                      "name": "email"
+                    }
+                  ]
+                },
+                {
+                  "key": "contactPhone",
+                  "type": "input",
+                  "label": "Phone Number",
+                  "controlType": "tel",
+                  "settings": {
+                    "floatingLabel": true
+                  }
+                }
+              ],
+              "validators": [
+                {
+                  "name": "minItems",
+                  "value": 1,
+                  "errorMessage": "At least one contact is required"
+                },
+                {
+                  "name": "maxItems",
+                  "value": 5,
+                  "errorMessage": "Maximum of 5 contacts allowed"
+                }
+              ],
+              "value": [
+                {
+                  "contactName": "John Doe",
+                  "contactEmail": "john.doe@example.com",
+                  "contactPhone": "+1 (555) 123-4567"
+                }
+              ],
+              "settings": {
+                "addButton": {
+                  "label": "Add Contact",
+                  "icon": "bi-plus-circle"
+                },
+                "removeButton": {
+                  "label": "Remove",
+                  "icon": "bi-dash-circle"
+                }
+              }
+            }
+          ]
         },
         {
           "key": "tabCustomInputs",

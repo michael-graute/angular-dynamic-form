@@ -227,11 +227,11 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 **Tasks**:
 
 - [X] T055 [P] [US3] Convert RepeaterComponent to standalone in src/app/dynamic-form/form-elements/inputs/repeater/repeater.component.ts (Angular 20 default)
-- [ ] T056 [US3] Add OnPush change detection to RepeaterComponent
-- [ ] T057 [P] [US3] Implement add/remove button logic in RepeaterComponent
-- [ ] T058 [US3] Add trackBy function for repeater items (track by index or unique ID)
-- [ ] T059 [P] [US3] Update form-inputs example to include repeater with add/remove in src/app/examples/form-inputs/
-- [ ] T060 [US3] Add minItems/maxItems validation enforcement (disable add/remove buttons at limits)
+- [X] T056 [US3] Add OnPush change detection to RepeaterComponent
+- [X] T057 [P] [US3] Implement add/remove button logic in RepeaterComponent
+- [X] T058 [US3] Add trackBy function for repeater items (track by index or unique ID)
+- [X] T059 [P] [US3] Update form-inputs example to include repeater with add/remove in src/app/examples/form-inputs/
+- [X] T060 [US3] Add minItems/maxItems validation enforcement (disable add/remove buttons at limits)
 
 ---
 
@@ -253,11 +253,11 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 **Tasks**:
 
 - [X] T061 [P] [US4] Convert DataSelectComponent to standalone in src/app/dynamic-form/form-elements/inputs/data-select/data-select.component.ts (Angular 20 default)
-- [ ] T062 [US4] Implement asyncURL option loading in DataSelectComponent (HTTP GET on init)
-- [ ] T063 [P] [US4] Add caching for dropdown options in DynamicFormService (10-min TTL)
-- [ ] T064 [US4] Add valueKey extraction logic to use correct property as form value
-- [ ] T065 [P] [US4] Create data-select-example in src/app/examples/data-select-example/ with mock API
-- [ ] T066 [US4] Add mock API endpoint for dropdown options in public/mock-api/user-list.json
+- [X] T062 [US4] Implement asyncURL option loading in DataSelectComponent (HTTP GET on init)
+- [X] T063 [P] [US4] Add caching for dropdown options in DynamicFormService (10-min TTL)
+- [X] T064 [US4] Add valueKey extraction logic to use correct property as form value
+- [X] T065 [P] [US4] Create data-select-example in src/app/examples/data-select-example/ with mock API
+- [X] T066 [US4] Add mock API endpoint for dropdown options in public/mock-api/user-list.json
 
 ---
 
@@ -396,7 +396,7 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 ### Documentation
 
-- [ ] T095 [P] Update main README.md with Angular 19, standalone components, Zod validation
+- [ ] T095 [P] Update main README.md with Angular 20 and Zod validation
 - [ ] T096 [P] Add JSDoc comments to all public methods in DynamicFormComponent
 - [ ] T097 [P] Add JSDoc comments to all public methods in DynamicFormService
 - [ ] T098 [P] Add JSDoc comments to DynamicFormValidators class methods

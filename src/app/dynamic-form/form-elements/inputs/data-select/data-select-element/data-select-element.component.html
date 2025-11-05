@@ -1,19 +1,33 @@
 <div class="form-control">
   <div class="selection-display-wrapper" (click)="toggleDataList()">
     <span class="current-selection">
-      @if (value) {
-        {{value[settings.valueKey] ?? ''}}
+      @if (loading) {
+        <i class="bi-hourglass-split"></i> Loading...
+      } @else if (error) {
+        <i class="bi-exclamation-triangle text-danger"></i> Error loading options
+      } @else if (selectedOption) {
+        {{getDisplayLabel()}}
+      } @else {
+        <span class="text-muted">Select an option...</span>
       }
     </span>
     <i class="bi-chevron-down"></i>
   </div>
 </div>
-@if (showDataList) {
+@if (showDataList && !loading && !error) {
   <div class="data-display">
     <ul class="list-group">
       @for (dataset of options; track dataset) {
-        <li class="list-group-item" (click)="optionClicked(dataset)">{{dataset[settings.valueKey]}}</li>
+        <li class="list-group-item" (click)="optionClicked(dataset)">{{getOptionLabel(dataset)}}</li>
+      }
+      @empty {
+        <li class="list-group-item text-muted">No options available</li>
       }
     </ul>
+  </div>
+}
+@if (error) {
+  <div class="text-danger small mt-1">
+    <i class="bi-exclamation-circle"></i> {{error}}
   </div>
 }

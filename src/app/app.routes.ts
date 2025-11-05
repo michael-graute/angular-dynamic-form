@@ -5,6 +5,7 @@ import {FormLayoutsComponent} from "./examples/form-layouts/form-layouts.compone
 import {FormInputsComponent} from "./examples/form-inputs/form-inputs.component";
 import {ValidationExamplesComponent} from "./examples/validation-examples/validation-examples.component";
 import {EditUserFormComponent} from "./examples/edit-user-form/edit-user-form.component";
+import {DataSelectExampleComponent} from "./examples/data-select-example/data-select-example.component";
 import {HomeComponent} from "./examples/home/home.component";
 
 export const routes: Routes = [
@@ -35,5 +36,9 @@ export const routes: Routes = [
   {
     path: 'edit-user-form',
     component: EditUserFormComponent
+  },
+  {
+    path: 'data-select-example',
+    component: DataSelectExampleComponent
   }
 ];

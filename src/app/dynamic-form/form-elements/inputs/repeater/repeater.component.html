@@ -3,19 +3,33 @@
 }
 <div [formGroup]="form">
   <div [formArrayName]="key">
-    @for (item of formArray.controls; track item; let i = $index) {
+    @for (item of formArray.controls; track trackByIndex($index, item); let i = $index) {
       <div class="row mb-4">
         <div class="col-11">
           <fg-data-relation-element [id]="id + 'Dataset' + i" [form]="item" [formConfig]="formConfig" />
         </div>
         <div class="col-1">
-          <button type="button" class="btn btn-danger" (click)="removeItem(i)"><i [class]="config?.settings?.removeButton.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.removeButton.label ?? 'Delete'}}</button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="removeItem(i)"
+            [disabled]="isRemoveDisabled()">
+            <i [class]="config?.settings?.removeButton?.icon ?? 'bi-dash-circle'"></i>
+            {{config?.settings?.removeButton?.label ?? 'Delete'}}
+          </button>
         </div>
       </div>
     }
   </div>
   <div class="d-flex gap-1 justify-content-end">
-    <button type="button" class="btn btn-success" (click)="addItem()"><i [class]="config?.settings?.addButton.icon ?? 'bi-pus-circle'"></i> {{config?.settings?.addButton.label ?? 'Add'}}</button>
+    <button
+      type="button"
+      class="btn btn-success"
+      (click)="addItem()"
+      [disabled]="isAddDisabled()">
+      <i [class]="config?.settings?.addButton?.icon ?? 'bi-plus-circle'"></i>
+      {{config?.settings?.addButton?.label ?? 'Add'}}
+    </button>
   </div>
   @if (config?.helpText) {
     <div class="form-text">{{config?.helpText}}</div>
