@@ -282,8 +282,142 @@
         {
           "key": "tabCustomInputs",
           "type": "tabPane",
-          "label": "Custom Inputs",
-          "children": []
+          "label": "Multiple Value Inputs",
+          "children": [
+            {
+              "key": "multipleInputsGroup",
+              "type": "formGroup",
+              "children": [
+                {
+                  "key": "emailAddresses",
+                  "type": "input",
+                  "controlType": "email",
+                  "label": "Email Address",
+                  "multipleLabel": "Email Addresses (Multiple Values)",
+                  "helpText": "Add multiple email addresses. Each email will be validated individually.",
+                  "multiple": true,
+                  "value": ["john.doe@example.com"],
+                  "settings": {
+                    "floatingLabel": true,
+                    "addButton": {
+                      "label": "Add Email",
+                      "icon": "bi-plus-circle"
+                    },
+                    "removeButton": {
+                      "label": "Remove",
+                      "icon": "bi-dash-circle"
+                    }
+                  },
+                  "validators": [
+                    {
+                      "name": "required",
+                      "errorMessage": "Email is required"
+                    },
+                    {
+                      "name": "email",
+                      "errorMessage": "Please enter a valid email address"
+                    }
+                  ]
+                },
+                {
+                  "key": "phoneNumbers",
+                  "type": "input",
+                  "controlType": "tel",
+                  "label": "Phone Number",
+                  "multipleLabel": "Phone Numbers (Multiple Values)",
+                  "helpText": "Add multiple phone numbers. You can add as many as you need.",
+                  "multiple": true,
+                  "value": ["+1 (555) 123-4567"],
+                  "settings": {
+                    "floatingLabel": true,
+                    "addButton": {
+                      "label": "Add Phone",
+                      "icon": "bi-plus-circle"
+                    },
+                    "removeButton": {
+                      "label": "Remove",
+                      "icon": "bi-dash-circle"
+                    }
+                  },
+                  "validators": [
+                    {
+                      "name": "required",
+                      "errorMessage": "Phone number is required"
+                    },
+                    {
+                      "name": "pattern",
+                      "value": "^[+]?[(]?[0-9]{1,4}[)]?[-\\s.]?[(]?[0-9]{1,4}[)]?[-\\s.]?[0-9]{1,9}$",
+                      "errorMessage": "Please enter a valid phone number"
+                    }
+                  ]
+                },
+                {
+                  "key": "urls",
+                  "type": "input",
+                  "controlType": "url",
+                  "label": "Website URL",
+                  "multipleLabel": "Website URLs (Multiple Values)",
+                  "helpText": "Add multiple website URLs. Each URL will be validated to ensure proper format.",
+                  "multiple": true,
+                  "value": ["https://example.com"],
+                  "settings": {
+                    "floatingLabel": true,
+                    "addButton": {
+                      "label": "Add URL",
+                      "icon": "bi-plus-circle"
+                    },
+                    "removeButton": {
+                      "label": "Remove",
+                      "icon": "bi-dash-circle"
+                    }
+                  },
+                  "validators": [
+                    {
+                      "name": "required",
+                      "errorMessage": "URL is required"
+                    }
+                  ]
+                },
+                {
+                  "key": "tags",
+                  "type": "input",
+                  "controlType": "text",
+                  "label": "Tag",
+                  "multipleLabel": "Tags (Multiple Values with Validation)",
+                  "helpText": "Add multiple tags. Tags must be between 2-20 characters.",
+                  "multiple": true,
+                  "value": ["angular", "forms"],
+                  "settings": {
+                    "floatingLabel": true,
+                    "addButton": {
+                      "label": "Add Tag",
+                      "icon": "bi-plus-circle"
+                    },
+                    "removeButton": {
+                      "label": "Remove",
+                      "icon": "bi-dash-circle"
+                    }
+                  },
+                  "validators": [
+                    {
+                      "name": "required",
+                      "errorMessage": "Tag is required"
+                    },
+                    {
+                      "name": "minLength",
+                      "value": 2,
+                      "errorMessage": "Tag must be at least {expected} characters (current: {actual})"
+                    },
+                    {
+                      "name": "maxLength",
+                      "value": 20,
+                      "errorMessage": "Tag must not exceed {expected} characters (current: {actual})"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }

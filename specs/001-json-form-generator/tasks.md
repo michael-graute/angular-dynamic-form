@@ -328,11 +328,11 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 **Tasks**:
 
-- [ ] T079 [P] [US9] Add multiple-value support to InputComponent (check `multiple` config, render FormArray)
-- [ ] T080 [US9] Add add/remove buttons for multiple-value inputs in InputComponent template
-- [ ] T081 [P] [US9] Implement per-value validation for multiple-value fields
-- [ ] T082 [US9] Add multipleLabel display for multiple-value groups
-- [ ] T083 [US9] Add example of multiple-value input to form-inputs example in src/app/examples/form-inputs/
+- [X] T079 [P] [US9] Add multiple-value support to InputComponent (check `multiple` config, render FormArray)
+- [X] T080 [US9] Add add/remove buttons for multiple-value inputs in InputComponent template
+- [X] T081 [P] [US9] Implement per-value validation for multiple-value fields
+- [X] T082 [US9] Add multipleLabel display for multiple-value groups
+- [X] T083 [US9] Add example of multiple-value input to form-inputs example in src/app/examples/form-inputs/
 
 ---
 
@@ -352,10 +352,10 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 
 **Tasks**:
 
-- [ ] T084 [P] [US10] Implement custom button callback logic in DynamicFormComponent (emit onCustomCallBack event)
-- [ ] T085 [P] [US10] Add disableIfFormInvalid logic to button rendering in DynamicFormComponent
-- [ ] T086 [P] [US10] Create custom-callbacks example in src/app/examples/custom-callbacks/ demonstrating save-draft button
-- [ ] T087 [US10] Update FormButton handling to support callback parameter passing
+- [X] T084 [P] [US10] Implement custom button callback logic in DynamicFormComponent (emit onCustomCallBack event)
+- [X] T085 [P] [US10] Add disableIfFormInvalid logic to button rendering in DynamicFormComponent
+- [X] T086 [P] [US10] Create custom-callbacks example in src/app/examples/custom-callbacks/ demonstrating save-draft button
+- [X] T087 [US10] Update FormButton handling to support callback parameter passing
 
 ---
 
