@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {AbstractFormElementHostComponent} from "../abstract-form-element-host.component";
 import {DynamicFormElementInterface} from "../../../dynamic-form-element.interface";
 
@@ -12,7 +12,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule
 ],
     templateUrl: './card.component.html',
-    styleUrl: './card.component.scss'
+    styleUrl: './card.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent extends AbstractFormElementHostComponent<CardComponent> implements DynamicFormElementInterface {
 

@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input, OnInit} from '@angular/core';
+import {Component, forwardRef, Input, OnInit, ChangeDetectorRef} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -40,7 +40,10 @@ export class DataSelectElementComponent implements OnInit, ControlValueAccessor,
   value: any = null;
   selectedOption: any = null;
 
-  constructor(private dynamicFormService: DynamicFormService) {}
+  constructor(
+    private dynamicFormService: DynamicFormService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   toggleDataList(): void {
     this.showDataList = !this.showDataList;
@@ -103,11 +106,13 @@ export class DataSelectElementComponent implements OnInit, ControlValueAccessor,
         next: (data: any) => {
           this.options = data;
           this.loading = false;
+          this.cdr.markForCheck();
         },
         error: (err: any) => {
           console.error('Failed to load dropdown options:', err);
           this.error = 'Failed to load options. Please try again.';
           this.loading = false;
+          this.cdr.markForCheck();
         }
       });
     }

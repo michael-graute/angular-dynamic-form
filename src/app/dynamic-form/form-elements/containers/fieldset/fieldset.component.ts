@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {DynamicFormElementInterface} from "../../../dynamic-form-element.interface";
 import {FormElementHostDirective} from "../../form-element-host.directive";
 import {AbstractFormElementHostComponent} from "../abstract-form-element-host.component";
@@ -9,7 +9,8 @@ import {AbstractFormElementHostComponent} from "../abstract-form-element-host.co
     FormElementHostDirective
 ],
     templateUrl: './fieldset.component.html',
-    styleUrl: './fieldset.component.scss'
+    styleUrl: './fieldset.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FieldsetComponent extends AbstractFormElementHostComponent<FieldsetComponent> implements DynamicFormElementInterface {
 

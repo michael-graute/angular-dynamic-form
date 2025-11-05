@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {AbstractFormElementHostComponent} from "../abstract-form-element-host.component";
 import {DynamicFormElementInterface} from "../../../dynamic-form-element.interface";
 import {FormElement} from "../../../dynamic-form.types";
@@ -13,12 +13,17 @@ import {DynamicFormService, ElementAddedPayload, ElementRemovedPayload} from "..
     FormElementHostDirective
 ],
     templateUrl: './tab-container.component.html',
-    styleUrl: './tab-container.component.scss'
+    styleUrl: './tab-container.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TabContainerComponent extends AbstractFormElementHostComponent<TabContainerComponent> implements DynamicFormElementInterface, OnInit {
   activeTab: number = 0;
 
-  constructor(protected override dynamicFormService: DynamicFormService, private tabService: TabService) {
+  constructor(
+    protected override dynamicFormService: DynamicFormService,
+    private tabService: TabService,
+    private cdr: ChangeDetectorRef
+  ) {
     super(dynamicFormService);
   }
   override ngOnInit(): void {
@@ -53,6 +58,7 @@ export class TabContainerComponent extends AbstractFormElementHostComponent<TabC
   tabClicked(tabId: string | undefined, index: number, evt: MouseEvent | null = null): void {
     evt?.preventDefault();
     this.tabService.clickTab(tabId ?? '');
-    this.activeTab = index
+    this.activeTab = index;
+    this.cdr.markForCheck();
   }
 }

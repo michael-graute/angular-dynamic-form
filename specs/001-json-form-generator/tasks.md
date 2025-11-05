@@ -284,8 +284,8 @@ This document contains all implementation tasks for the Angular Dynamic Form Gen
 - [X] T070 [P] [US5] Convert ColComponent to standalone in src/app/dynamic-form/form-elements/containers/col/col.component.ts (Angular 20 default)
 - [X] T071 [P] [US5] Convert TabContainerComponent to standalone in src/app/dynamic-form/form-elements/containers/tab-container/tab-container.component.ts (Angular 20 default)
 - [X] T072 [P] [US5] Convert TabPaneComponent to standalone in src/app/dynamic-form/form-elements/containers/tab-pane/tab-pane.component.ts (Angular 20 default)
-- [ ] T073 [US5] Add OnPush change detection to all container components
-- [ ] T074 [US5] Update form-layouts example with tabs, cards, grid in src/app/examples/form-layouts/
+- [X] T073 [US5] Add OnPush change detection to all container components
+- [X] T074 [US5] Update form-layouts example with tabs, cards, grid in src/app/examples/form-layouts/
 
 ---
 
