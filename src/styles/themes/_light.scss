@@ -1,0 +1,67 @@
+/**
+ * Light Theme Colors
+ * Optimized for bright environments (light backgrounds, dark text)
+ * WCAG AA compliant - minimum 4.5:1 contrast ratio for normal text, 3:1 for large text
+ */
+
+:root {
+  // Primary colors - light theme defaults to Bootstrap's standard color scheme
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #212529;
+  --bs-body-color-rgb: 33, 37, 41;
+
+  // Text colors
+  --bs-text-muted: #6c757d;
+  --bs-text-emphasis: #000000;
+
+  // Link colors
+  --bs-link-color: #0d6efd;
+  --bs-link-hover-color: #0a58ca;
+
+  // Border and divider colors
+  --bs-border-color: #dee2e6;
+  --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+
+  // Form control colors
+  --bs-form-control-bg: #ffffff;
+  --bs-form-control-color: #212529;
+  --bs-form-control-border: #dee2e6;
+  --bs-form-control-focus-border: #86b7fe;
+  --bs-form-control-disabled-bg: #e9ecef;
+
+  // Button colors
+  --bs-btn-bg: #ffffff;
+  --bs-btn-border-color: #dee2e6;
+  --bs-btn-hover-bg: #f8f9fa;
+  --bs-btn-active-bg: #e9ecef;
+
+  // Card colors
+  --bs-card-bg: #ffffff;
+  --bs-card-border-color: rgba(0, 0, 0, 0.125);
+  --bs-card-cap-bg: rgba(0, 0, 0, 0.03);
+
+  // Modal colors
+  --bs-modal-bg: #ffffff;
+  --bs-modal-border-color: #dee2e6;
+
+  // Dropdown colors
+  --bs-dropdown-bg: #ffffff;
+  --bs-dropdown-border-color: rgba(0, 0, 0, 0.175);
+  --bs-dropdown-link-color: #212529;
+  --bs-dropdown-link-hover-bg: #f8f9fa;
+
+  // Table colors
+  --bs-table-bg: transparent;
+  --bs-table-border-color: #dee2e6;
+  --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+
+  // Navigation colors
+  --bs-nav-link-color: #212529;
+  --bs-nav-link-hover-color: #0d6efd;
+
+  // Alert colors (maintain sufficient contrast)
+  --bs-alert-bg-scale: 10%;
+  --bs-alert-border-scale: 20%;
+  --bs-alert-color-scale: -60%;
+}

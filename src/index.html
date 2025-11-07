@@ -6,6 +6,23 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- T014: FOUC Prevention - Load theme before CSS renders -->
+  <!-- This script runs synchronously before Angular bootstraps to apply saved theme preference -->
+  <script>
+    (function() {
+      try {
+        const theme = localStorage.getItem('theme-preference') || 'dark';
+        // Sanitize to prevent XSS (only allow 'dark' or 'light')
+        if (theme === 'dark' || theme === 'light') {
+          document.documentElement.setAttribute('data-bs-theme', theme);
+        }
+      } catch (e) {
+        // LocalStorage unavailable - default theme (dark) already set in HTML
+        console.warn('Unable to load theme preference:', e);
+      }
+    })();
+  </script>
 </head>
 <body>
   <fg-root></fg-root>

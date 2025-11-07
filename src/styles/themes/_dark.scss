@@ -1,0 +1,76 @@
+/**
+ * Dark Theme Colors
+ * Optimized for low-light environments (dark backgrounds, light text)
+ * WCAG AA compliant - minimum 4.5:1 contrast ratio for normal text, 3:1 for large text
+ * Based on Bootstrap 5.3 dark mode color scheme
+ */
+
+[data-bs-theme="dark"] {
+  // Primary colors - dark theme
+  --bs-body-bg: #212529;
+  --bs-body-color: #dee2e6;
+  --bs-body-color-rgb: 222, 226, 230;
+
+  // Text colors
+  --bs-text-muted: #adb5bd;
+  --bs-text-emphasis: #ffffff;
+
+  // Link colors (slightly brighter for better visibility on dark background)
+  --bs-link-color: #6ea8fe;
+  --bs-link-hover-color: #8bb9fe;
+
+  // Border and divider colors
+  --bs-border-color: #495057;
+  --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
+
+  // Form control colors
+  --bs-form-control-bg: #2b3035;
+  --bs-form-control-color: #dee2e6;
+  --bs-form-control-border: #495057;
+  --bs-form-control-focus-border: #6ea8fe;
+  --bs-form-control-disabled-bg: #343a40;
+
+  // Button colors
+  --bs-btn-bg: #495057;
+  --bs-btn-border-color: #495057;
+  --bs-btn-hover-bg: #5c636a;
+  --bs-btn-active-bg: #6c757d;
+
+  // Card colors
+  --bs-card-bg: #2b3035;
+  --bs-card-border-color: rgba(255, 255, 255, 0.125);
+  --bs-card-cap-bg: rgba(255, 255, 255, 0.03);
+
+  // Modal colors
+  --bs-modal-bg: #2b3035;
+  --bs-modal-border-color: #495057;
+
+  // Dropdown colors
+  --bs-dropdown-bg: #2b3035;
+  --bs-dropdown-border-color: rgba(255, 255, 255, 0.15);
+  --bs-dropdown-link-color: #dee2e6;
+  --bs-dropdown-link-hover-bg: #343a40;
+
+  // Table colors
+  --bs-table-bg: transparent;
+  --bs-table-border-color: #495057;
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.05);
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.075);
+
+  // Navigation colors
+  --bs-nav-link-color: #dee2e6;
+  --bs-nav-link-hover-color: #6ea8fe;
+
+  // Alert colors (adjusted for dark theme contrast)
+  --bs-alert-bg-scale: -80%;
+  --bs-alert-border-scale: -70%;
+  --bs-alert-color-scale: 40%;
+
+  // Emphasis colors (used for highlighted text)
+  --bs-emphasis-color: #ffffff;
+  --bs-emphasis-color-rgb: 255, 255, 255;
+
+  // Secondary background colors
+  --bs-secondary-bg: #343a40;
+  --bs-tertiary-bg: #2b3035;
+}

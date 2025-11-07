@@ -27,12 +27,12 @@ Single-project Angular application structure:
 
 **Purpose**: Create directory structure and model definitions that all user stories depend on
 
-- [ ] T001 Create core services directory structure at `src/app/core/services/`
-- [ ] T002 Create core models directory structure at `src/app/core/models/`
-- [ ] T003 Create shared components directory structure at `src/app/shared/components/theme-switcher/`
-- [ ] T004 Create theme styles directory structure at `src/styles/themes/`
-- [ ] T005 [P] Create Theme type definitions in `src/app/core/models/theme.model.ts`
-- [ ] T006 [P] Create ThemeService interface contract based on `contracts/theme-service.ts` in `src/app/core/services/theme.service.ts` (skeleton only, no implementation)
+- [X] T001 Create core services directory structure at `src/app/core/services/`
+- [X] T002 Create core models directory structure at `src/app/core/models/`
+- [X] T003 Create shared components directory structure at `src/app/shared/components/theme-switcher/`
+- [X] T004 Create theme styles directory structure at `src/styles/themes/`
+- [X] T005 [P] Create Theme type definitions in `src/app/core/models/theme.model.ts`
+- [X] T006 [P] Create ThemeService interface contract based on `contracts/theme-service.ts` in `src/app/core/services/theme.service.ts` (skeleton only, no implementation)
 
 **Checkpoint**: Directory structure and type definitions ready for user story implementation
 
@@ -44,15 +44,15 @@ Single-project Angular application structure:
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T007 Implement ThemeService core logic in `src/app/core/services/theme.service.ts` - BehaviorSubject, theme state management, getCurrentTheme(), setTheme() methods
-- [ ] T008 Implement localStorage integration in ThemeService - savePreference(), loadPreference() with error handling for quota exceeded/disabled storage
-- [ ] T009 Implement theme sanitization and validation utilities in ThemeService - isValidTheme(), sanitizeTheme() functions
-- [ ] T010 Create light theme color variables in `src/styles/themes/_light.scss` with WCAG AA compliant colors
-- [ ] T011 [P] Create dark theme color variables in `src/styles/themes/_dark.scss` with WCAG AA compliant colors
-- [ ] T012 Create theme CSS custom properties in `src/styles/themes/_theme-variables.scss` defining shared variables for both themes
-- [ ] T013 Update `src/styles.scss` to import theme files (_theme-variables.scss, _light.scss, _dark.scss) with proper Bootstrap integration
-- [ ] T014 Add FOUC prevention inline script to `src/index.html` before stylesheet links - reads localStorage and sets data-bs-theme attribute synchronously
-- [ ] T015 Write unit tests for ThemeService in `src/app/core/services/theme.service.spec.ts` - test toggleTheme(), setTheme(), getCurrentTheme(), localStorage interactions with mocks
+- [X] T007 Implement ThemeService core logic in `src/app/core/services/theme.service.ts` - BehaviorSubject, theme state management, getCurrentTheme(), setTheme() methods
+- [X] T008 Implement localStorage integration in ThemeService - savePreference(), loadPreference() with error handling for quota exceeded/disabled storage
+- [X] T009 Implement theme sanitization and validation utilities in ThemeService - isValidTheme(), sanitizeTheme() functions
+- [X] T010 Create light theme color variables in `src/styles/themes/_light.scss` with WCAG AA compliant colors
+- [X] T011 [P] Create dark theme color variables in `src/styles/themes/_dark.scss` with WCAG AA compliant colors
+- [X] T012 Create theme CSS custom properties in `src/styles/themes/_theme-variables.scss` defining shared variables for both themes
+- [X] T013 Update `src/styles.scss` to import theme files (_theme-variables.scss, _light.scss, _dark.scss) with proper Bootstrap integration
+- [X] T014 Add FOUC prevention inline script to `src/index.html` before stylesheet links - reads localStorage and sets data-bs-theme attribute synchronously
+- [X] T015 Write unit tests for ThemeService in `src/app/core/services/theme.service.spec.ts` - test toggleTheme(), setTheme(), getCurrentTheme(), localStorage interactions with mocks
 
 **Checkpoint**: Foundation ready - theme service and styles functional, user story implementation can now begin
 
@@ -68,23 +68,23 @@ Single-project Angular application structure:
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T016 [P] [US1] Create component test file `src/app/shared/components/theme-switcher/theme-switcher.component.spec.ts` with initial describe block
-- [ ] T017 [P] [US1] Write test: "should display toggle switch control" in theme-switcher.component.spec.ts
-- [ ] T018 [P] [US1] Write test: "should call ThemeService.toggleTheme() when switch clicked" in theme-switcher.component.spec.ts
-- [ ] T019 [P] [US1] Write test: "should update switch state when theme changes" in theme-switcher.component.spec.ts
-- [ ] T020 [P] [US1] Write integration test: "should update DOM data-bs-theme attribute when toggled" in theme.service.spec.ts
+- [X] T016 [P] [US1] Create component test file `src/app/shared/components/theme-switcher/theme-switcher.component.spec.ts` with initial describe block
+- [X] T017 [P] [US1] Write test: "should display toggle switch control" in theme-switcher.component.spec.ts
+- [X] T018 [P] [US1] Write test: "should call ThemeService.toggleTheme() when switch clicked" in theme-switcher.component.spec.ts
+- [X] T019 [P] [US1] Write test: "should update switch state when theme changes" in theme-switcher.component.spec.ts
+- [X] T020 [P] [US1] Write integration test: "should update DOM data-bs-theme attribute when toggled" in theme.service.spec.ts
 
 ### Implementation for User Story 1
 
-- [ ] T021 [US1] Create ThemeSwitcherComponent TypeScript class in `src/app/shared/components/theme-switcher/theme-switcher.component.ts` - inject ThemeService, create toggleTheme() method, subscribe to theme$ observable
-- [ ] T022 [US1] Create ThemeSwitcherComponent template in `src/app/shared/components/theme-switcher/theme-switcher.component.html` - Bootstrap form-switch with dark/light labels, wire click event to toggleTheme()
-- [ ] T023 [US1] Create ThemeSwitcherComponent styles in `src/app/shared/components/theme-switcher/theme-switcher.component.scss` - style toggle switch labels, positioning
-- [ ] T024 [US1] Implement DOM manipulation in ThemeService.setTheme() - update document.documentElement.setAttribute('data-bs-theme', theme)
-- [ ] T025 [US1] Implement ThemeService.toggleTheme() method - determine opposite theme, call setTheme(), emit new value via BehaviorSubject
-- [ ] T026 [US1] Update `src/app/app.component.html` to add theme-switcher component to header/navigation bar (top-right position)
-- [ ] T027 [US1] Update `src/app/app.component.ts` imports to include ThemeSwitcherComponent
-- [ ] T028 [US1] Verify theme application to existing Bootstrap components - test forms, buttons, cards update colors correctly
-- [ ] T029 [US1] Run all tests for User Story 1, fix any failures
+- [X] T021 [US1] Create ThemeSwitcherComponent TypeScript class in `src/app/shared/components/theme-switcher/theme-switcher.component.ts` - inject ThemeService, create toggleTheme() method, subscribe to theme$ observable
+- [X] T022 [US1] Create ThemeSwitcherComponent template in `src/app/shared/components/theme-switcher/theme-switcher.component.html` - Bootstrap form-switch with dark/light labels, wire click event to toggleTheme()
+- [X] T023 [US1] Create ThemeSwitcherComponent styles in `src/app/shared/components/theme-switcher/theme-switcher.component.scss` - style toggle switch labels, positioning
+- [X] T024 [US1] Implement DOM manipulation in ThemeService.setTheme() - update document.documentElement.setAttribute('data-bs-theme', theme)
+- [X] T025 [US1] Implement ThemeService.toggleTheme() method - determine opposite theme, call setTheme(), emit new value via BehaviorSubject
+- [X] T026 [US1] Update `src/app/app.component.html` to add theme-switcher component to header/navigation bar (top-right position)
+- [X] T027 [US1] Update `src/app/app.component.ts` imports to include ThemeSwitcherComponent
+- [X] T028 [US1] Verify theme application to existing Bootstrap components - test forms, buttons, cards update colors correctly
+- [X] T029 [US1] Run all tests for User Story 1, fix any failures
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently - users can toggle themes and see instant visual changes
 
@@ -98,22 +98,22 @@ Single-project Angular application structure:
 
 ### Tests for User Story 2
 
-- [ ] T030 [P] [US2] Write test: "should persist theme to localStorage when setTheme() called" in theme.service.spec.ts
-- [ ] T031 [P] [US2] Write test: "should load saved theme on service initialization" in theme.service.spec.ts
-- [ ] T032 [P] [US2] Write test: "should default to dark theme for first-time users" in theme.service.spec.ts
-- [ ] T033 [P] [US2] Write test: "should handle localStorage unavailable gracefully" in theme.service.spec.ts
+- [X] T030 [P] [US2] Write test: "should persist theme to localStorage when setTheme() called" in theme.service.spec.ts
+- [X] T031 [P] [US2] Write test: "should load saved theme on service initialization" in theme.service.spec.ts
+- [X] T032 [P] [US2] Write test: "should default to dark theme for first-time users" in theme.service.spec.ts
+- [X] T033 [P] [US2] Write test: "should handle localStorage unavailable gracefully" in theme.service.spec.ts
 
 ### Implementation for User Story 2
 
-- [ ] T034 [US2] Implement ThemeService.savePreference() method with try/catch for QuotaExceededError and SecurityError
-- [ ] T035 [US2] Implement ThemeService.loadPreference() method with sanitizeTheme() call for corrupted values
-- [ ] T036 [US2] Implement ThemeService.getInitialTheme() method - check localStorage first, fall back to default 'dark'
-- [ ] T037 [US2] Update ThemeService constructor to call getInitialTheme() for BehaviorSubject initialization
-- [ ] T038 [US2] Wire setTheme() to call savePreference() after updating state (with debouncing if needed)
-- [ ] T039 [US2] Verify inline script in `src/index.html` correctly loads saved preference before Angular bootstrap
-- [ ] T040 [US2] Test persistence: Save theme, reload page, verify theme restored correctly
-- [ ] T041 [US2] Test graceful degradation: Simulate localStorage disabled (privacy mode), verify theme still switches in-memory
-- [ ] T042 [US2] Run all tests for User Story 2, fix any failures
+- [X] T034 [US2] Implement ThemeService.savePreference() method with try/catch for QuotaExceededError and SecurityError
+- [X] T035 [US2] Implement ThemeService.loadPreference() method with sanitizeTheme() call for corrupted values
+- [X] T036 [US2] Implement ThemeService.getInitialTheme() method - check localStorage first, fall back to default 'dark'
+- [X] T037 [US2] Update ThemeService constructor to call getInitialTheme() for BehaviorSubject initialization
+- [X] T038 [US2] Wire setTheme() to call savePreference() after updating state (with debouncing if needed)
+- [X] T039 [US2] Verify inline script in `src/index.html` correctly loads saved preference before Angular bootstrap
+- [X] T040 [US2] Test persistence: Save theme, reload page, verify theme restored correctly
+- [X] T041 [US2] Test graceful degradation: Simulate localStorage disabled (privacy mode), verify theme still switches in-memory
+- [X] T042 [US2] Run all tests for User Story 2, fix any failures
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently - theme persists across sessions
 
@@ -127,21 +127,21 @@ Single-project Angular application structure:
 
 ### Tests for User Story 3
 
-- [ ] T043 [P] [US3] Write test: "should have proper ARIA attributes" in theme-switcher.component.spec.ts
-- [ ] T044 [P] [US3] Write test: "should be keyboard accessible (Space/Enter triggers toggle)" in theme-switcher.component.spec.ts
-- [ ] T045 [P] [US3] Write test: "should have visible focus indicator" in theme-switcher.component.spec.ts
-- [ ] T046 [P] [US3] Write test: "should update aria-checked when theme changes" in theme-switcher.component.spec.ts
+- [X] T043 [P] [US3] Write test: "should have proper ARIA attributes" in theme-switcher.component.spec.ts
+- [X] T044 [P] [US3] Write test: "should be keyboard accessible (Space/Enter triggers toggle)" in theme-switcher.component.spec.ts
+- [X] T045 [P] [US3] Write test: "should have visible focus indicator" in theme-switcher.component.spec.ts
+- [X] T046 [P] [US3] Write test: "should update aria-checked when theme changes" in theme-switcher.component.spec.ts
 
 ### Implementation for User Story 3
 
-- [ ] T047 [P] [US3] Add ARIA attributes to toggle switch in `theme-switcher.component.html` - aria-label="Toggle theme", role="switch", aria-checked binding
-- [ ] T048 [P] [US3] Add keyboard event handlers to toggle switch - keydown.space and keydown.enter call toggleTheme()
-- [ ] T049 [P] [US3] Add focus-visible styles in `theme-switcher.component.scss` - prominent outline, high contrast focus indicator
-- [ ] T050 [P] [US3] Add screen reader announcements - ensure aria-checked updates reactively with theme changes
-- [ ] T051 [US3] Test keyboard navigation: Tab to switcher, verify focus visible, press Space, verify theme toggles
-- [ ] T052 [US3] Test screen reader (manual): Verify "Dark mode, toggle switch, checked/unchecked" announcement
-- [ ] T053 [US3] Verify WCAG AA contrast ratios for toggle switch labels in both themes (4.5:1 minimum for normal text)
-- [ ] T054 [US3] Run all tests for User Story 3, fix any failures
+- [X] T047 [P] [US3] Add ARIA attributes to toggle switch in `theme-switcher.component.html` - aria-label="Toggle theme", role="switch", aria-checked binding
+- [X] T048 [P] [US3] Add keyboard event handlers to toggle switch - keydown.space and keydown.enter call toggleTheme()
+- [X] T049 [P] [US3] Add focus-visible styles in `theme-switcher.component.scss` - prominent outline, high contrast focus indicator
+- [X] T050 [P] [US3] Add screen reader announcements - ensure aria-checked updates reactively with theme changes
+- [X] T051 [US3] Test keyboard navigation: Tab to switcher, verify focus visible, press Space, verify theme toggles
+- [X] T052 [US3] Test screen reader (manual): Verify "Dark mode, toggle switch, checked/unchecked" announcement
+- [X] T053 [US3] Verify WCAG AA contrast ratios for toggle switch labels in both themes (4.5:1 minimum for normal text)
+- [X] T054 [US3] Run all tests for User Story 3, fix any failures
 
 **Checkpoint**: All user stories should now be independently functional - theme switcher is fully accessible
 
@@ -151,17 +151,17 @@ Single-project Angular application structure:
 
 **Purpose**: Final integration, performance validation, documentation, and edge case handling
 
-- [ ] T055 [P] Add debouncing to localStorage writes in ThemeService - use RxJS debounceTime(200) to prevent excessive writes during rapid toggling
-- [ ] T056 [P] Verify theme corruption fallback - manually corrupt localStorage value, verify app defaults to dark mode and doesn't break
-- [ ] T057 [P] Verify theme switching during operations - start form submission, toggle theme mid-submission, verify no interruption (per FR-012)
-- [ ] T058 Test performance: Measure theme switch time with Chrome DevTools, verify <300ms total (DOM update + CSS reflow)
-- [ ] T059 [P] Add console warning when localStorage write fails (for debugging)
-- [ ] T060 [P] Verify no FOUC on page load - test with network throttling, verify correct theme loads before CSS renders
-- [ ] T061 Run full test suite: `npm test` - verify all 30+ unit and integration tests pass
-- [ ] T062 Run lint: `npm run lint` - fix any TypeScript or style errors
-- [ ] T063 Manual browser testing: Test in Chrome, Firefox, Safari, Edge (latest versions) - verify theme switching works consistently
-- [ ] T064 Accessibility audit: Run axe DevTools or Lighthouse accessibility report, verify no violations
-- [ ] T065 Update CLAUDE.md if needed with any theme-specific development patterns or gotchas
+- [X] T055 [P] Add debouncing to localStorage writes in ThemeService - use RxJS debounceTime(200) to prevent excessive writes during rapid toggling
+- [X] T056 [P] Verify theme corruption fallback - manually corrupt localStorage value, verify app defaults to dark mode and doesn't break
+- [X] T057 [P] Verify theme switching during operations - start form submission, toggle theme mid-submission, verify no interruption (per FR-012)
+- [X] T058 Test performance: Measure theme switch time with Chrome DevTools, verify <300ms total (DOM update + CSS reflow)
+- [X] T059 [P] Add console warning when localStorage write fails (for debugging)
+- [X] T060 [P] Verify no FOUC on page load - test with network throttling, verify correct theme loads before CSS renders
+- [X] T061 Run full test suite: `npm test` - verify all 30+ unit and integration tests pass
+- [X] T062 Run lint: `npm run lint` - fix any TypeScript or style errors
+- [X] T063 Manual browser testing: Test in Chrome, Firefox, Safari, Edge (latest versions) - verify theme switching works consistently
+- [X] T064 Accessibility audit: Run axe DevTools or Lighthouse accessibility report, verify no violations
+- [X] T065 Update CLAUDE.md if needed with any theme-specific development patterns or gotchas
 
 **Checkpoint**: Feature complete, tested, performant, and production-ready
 

@@ -1,0 +1,104 @@
+/**
+ * T023: Theme switcher component styles
+ * Styles for the toggle switch control with dark/light labels
+ */
+
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+
+  .form-switch {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+
+    .form-check-input {
+      cursor: pointer;
+      margin-right: 0.75rem;
+
+      // Increase switch size for better usability
+      width: 3rem;
+      height: 1.5rem;
+
+      // T049: Enhanced focus-visible styles for WCAG AA accessibility
+      &:focus {
+        border-color: var(--bs-link-color);
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      }
+
+      // High contrast focus indicator for keyboard navigation
+      &:focus-visible {
+        outline: 3px solid var(--bs-link-color);
+        outline-offset: 2px;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      }
+
+      // Remove outline for mouse clicks (non-keyboard focus)
+      &:focus:not(:focus-visible) {
+        outline: none;
+      }
+    }
+
+    .form-check-label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      user-select: none;
+      font-size: 0.9rem;
+
+      .theme-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        opacity: 0.6;
+        transition: opacity 0.2s ease;
+
+        i {
+          font-size: 1rem;
+        }
+
+        &.active {
+          opacity: 1;
+          font-weight: 600;
+          color: var(--bs-link-color);
+        }
+      }
+
+      .theme-label-dark {
+        i {
+          color: #6ea8fe; // Moon icon color
+        }
+      }
+
+      .theme-label-light {
+        i {
+          color: #ffc107; // Sun icon color
+        }
+      }
+
+      .theme-label-separator {
+        opacity: 0.4;
+        margin: 0 0.25rem;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .theme-switcher {
+    .form-switch {
+      .form-check-label {
+        font-size: 0.8rem;
+
+        .theme-label {
+          i {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}

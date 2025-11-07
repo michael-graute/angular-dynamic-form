@@ -1,0 +1,25 @@
+<!-- T022: Bootstrap form-switch with dark/light labels -->
+<div class="theme-switcher">
+  <div class="form-check form-switch">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="themeSwitcher"
+      [checked]="isLightTheme"
+      (change)="onToggleTheme()"
+      aria-label="Toggle theme"
+    >
+    <label class="form-check-label" for="themeSwitcher">
+      <span class="theme-label theme-label-dark" [class.active]="!isLightTheme">
+        <i class="bi bi-moon-fill"></i>
+        Dark
+      </span>
+      <span class="theme-label-separator">/</span>
+      <span class="theme-label theme-label-light" [class.active]="isLightTheme">
+        <i class="bi bi-sun-fill"></i>
+        Light
+      </span>
+    </label>
+  </div>
+</div>

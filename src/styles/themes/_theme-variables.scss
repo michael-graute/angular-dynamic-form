@@ -1,0 +1,55 @@
+/**
+ * Theme CSS Custom Properties
+ * Shared variables used by both light and dark themes
+ * These provide a consistent theming API across the application
+ */
+
+:root {
+  // Spacing and sizing (theme-independent)
+  --theme-spacing-unit: 1rem;
+  --theme-border-radius: 0.375rem;
+  --theme-border-width: 1px;
+
+  // Transition durations (per FR-004: instant switching, no animations)
+  --theme-transition-duration: 0ms;
+
+  // Focus indicators (accessibility - WCAG AA compliant)
+  --theme-focus-ring-width: 3px;
+  --theme-focus-ring-offset: 2px;
+
+  // Z-index layers (theme-independent)
+  --theme-z-dropdown: 1000;
+  --theme-z-modal: 1050;
+  --theme-z-tooltip: 1070;
+
+  // Typography scale (theme-independent sizes)
+  --theme-font-size-base: 1rem;
+  --theme-font-size-sm: 0.875rem;
+  --theme-font-size-lg: 1.125rem;
+  --theme-line-height-base: 1.5;
+
+  // Component-specific spacing
+  --theme-card-spacer-y: 1rem;
+  --theme-card-spacer-x: 1rem;
+  --theme-form-group-margin-bottom: 1rem;
+}
+
+/**
+ * Focus visible styles (keyboard navigation accessibility)
+ * Ensures high contrast focus indicators in both themes
+ */
+:focus-visible {
+  outline: var(--theme-focus-ring-width) solid var(--bs-link-color);
+  outline-offset: var(--theme-focus-ring-offset);
+}
+
+/**
+ * Utility class for theme-aware transitions
+ * Use this class on elements that should transition smoothly when theme changes
+ * Note: Currently disabled per spec (instant switching)
+ */
+.theme-transition {
+  transition: background-color var(--theme-transition-duration) ease,
+              color var(--theme-transition-duration) ease,
+              border-color var(--theme-transition-duration) ease;
+}

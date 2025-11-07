@@ -1,5 +1,11 @@
+// Bootstrap and icons (@use must come before @import)
 @use "bootstrap/scss/bootstrap";
 @use "bootstrap-icons/font/bootstrap-icons";
+
+// Theme system imports (T013)
+@import "styles/themes/theme-variables";
+@import "styles/themes/light";
+@import "styles/themes/dark";
 
 .form-control, .form-select {
   &:active, &:focus {
