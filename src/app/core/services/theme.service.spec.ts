@@ -1,4 +1,6 @@
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ThemeService } from './theme.service';
 import { Theme, ThemeConstants } from '../models/theme.model';
 
@@ -22,7 +24,12 @@ describe('ThemeService', () => {
       delete mockLocalStorage[key];
     });
 
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
+    });
     service = TestBed.inject(ThemeService);
   });
 

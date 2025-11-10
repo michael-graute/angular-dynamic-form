@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import {CustomButtonCallBackPayload, DynamicFormComponent} from "../../dynamic-form/dynamic-form.component";
-
-import {DynamicFormService} from "../../dynamic-form/dynamic-form.service";
+import {CustomButtonCallBackPayload, DynamicFormComponent, DynamicFormService, FormConfig} from "dynamic-form";
 import {FormGroup} from "@angular/forms";
 import {prettyPrintJson} from "pretty-print-json";
 import {ModalService} from "../../helpers/modal/modal.service";
 import {ConfigDisplayComponent} from "../../helpers/config-display/config-display.component";
-import {FormConfig} from "../../dynamic-form/dynamic-form.types";
 
 @Component({
   selector: 'fg-home',

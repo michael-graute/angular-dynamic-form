@@ -5,8 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:lib": "ng build dynamic-form",
+    "build:all": "ng build dynamic-form && ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "watch:lib": "ng build dynamic-form --watch",
+    "test": "ng test",
+    "test:lib": "ng test dynamic-form"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +44,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^20.3.0",
     "typescript": "~5.9.3"
   },
   "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"

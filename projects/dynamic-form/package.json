@@ -1,0 +1,20 @@
+{
+  "name": "@angular-dynamic-form/core",
+  "version": "1.0.0",
+  "description": "A powerful Angular library for building dynamic forms from JSON configuration",
+  "keywords": ["angular", "forms", "dynamic-forms", "json-forms", "reactive-forms"],
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "@angular/forms": "^20.3.0",
+    "@angular/cdk": "^20.0.0",
+    "rxjs": "^7.8.0",
+    "zod": "^4.1.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

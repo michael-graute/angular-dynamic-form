@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
-import {DynamicFormComponent} from "../../dynamic-form/dynamic-form.component";
+import {DynamicFormComponent, FormConfig} from "dynamic-form";
 import {FormGroup} from "@angular/forms";
 import {ConfigDisplayComponent} from "../../helpers/config-display/config-display.component";
 import {prettyPrintJson} from "pretty-print-json";
 import {ModalService} from "../../helpers/modal/modal.service";
-import {FormConfig} from "../../dynamic-form/dynamic-form.types";
 
 @Component({
   selector: 'fg-data-select-example',

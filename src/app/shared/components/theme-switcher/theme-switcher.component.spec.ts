@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ThemeSwitcherComponent } from './theme-switcher.component';
 import { ThemeService } from '../../../core/services/theme.service';
 import { BehaviorSubject } from 'rxjs';

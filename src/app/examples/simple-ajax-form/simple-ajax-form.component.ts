@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
-import {DynamicFormComponent} from "../../dynamic-form/dynamic-form.component";
+import {DynamicFormComponent, DynamicFormService, FormConfig} from "dynamic-form";
 import {FormGroup} from "@angular/forms";
-import {DynamicFormService} from "../../dynamic-form/dynamic-form.service";
-import {FormConfig} from "../../dynamic-form/dynamic-form.types";
 import {ConfigDisplayComponent} from "../../helpers/config-display/config-display.component";
 import {prettyPrintJson} from "pretty-print-json";
 import {ModalService} from "../../helpers/modal/modal.service";

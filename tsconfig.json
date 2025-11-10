@@ -4,6 +4,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "dynamic-form": [
+        "./dist/dynamic-form"
+      ]
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -28,5 +33,13 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "references": [
+    {
+      "path": "./projects/dynamic-form/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/dynamic-form/tsconfig.spec.json"
+    }
+  ]
 }

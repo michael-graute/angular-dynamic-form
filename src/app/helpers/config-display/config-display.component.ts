@@ -1,6 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {FormConfig} from "../../dynamic-form/dynamic-form.types";
-
+import {FormConfig} from "dynamic-form";
 import {prettyPrintJson} from "pretty-print-json";
 
 @Component({
