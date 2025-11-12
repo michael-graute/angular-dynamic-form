@@ -189,6 +189,12 @@
                   "settings": {
                     "floatingLabel": true
                   }
+                },
+                {
+                  "key": "textarea",
+                  "type": "textarea",
+                  "label": "Textarea",
+                  "helpText": "Foo"
                 }
               ]
             }

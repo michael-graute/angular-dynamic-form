@@ -15,6 +15,7 @@ import {RepeaterComponent} from "./form-elements/inputs/repeater/repeater.compon
 import {CheckboxComponent} from "./form-elements/inputs/checkbox/checkbox.component";
 import {RadioGroupComponent} from "./form-elements/inputs/radio-group/radio-group.component";
 import {DataSelectComponent} from "./form-elements/inputs/data-select/data-select.component";
+import {TextareaComponent} from "./form-elements/inputs/textarea/textarea.component";
 
 /**
  * Map of form element type strings to their corresponding component classes.
@@ -34,6 +35,7 @@ export const FormElementMap: Record<string, Type<any>> = {
   'form-text': FormTextComponent,
 
   'input': InputComponent,
+  'textarea': TextareaComponent,
   'select': SelectComponent,
   'checkbox': CheckboxComponent,
   'radio-group': RadioGroupComponent,

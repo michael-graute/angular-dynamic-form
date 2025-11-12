@@ -6,6 +6,8 @@ export const defaultErrorMessages: {[key: string]: string} = {
   'maxItems': 'The maximum amount of {expected} items is not matched by the current amount of {given}',
   'minLength': 'The expected length of {expected} is not reached by the current length of {given}',
   'maxLength': 'The maximum length of {expected} is exceeded by the current length of {given}',
+  'minNumber': 'The expected minimum value of {expected} is not reached by the current value of {given}',
+  'maxNumber': 'The maximum value of {expected} is exceeded by the current value of {given}',
   'pattern': 'The current value does not match the expected regular expression "{expected}"',
   'inArray': 'The current value is not one of "{expected}"',
 }

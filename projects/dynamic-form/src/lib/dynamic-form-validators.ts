@@ -32,6 +32,18 @@ export class DynamicFormValidators {
     };
   }
 
+  static minNumber(min: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      return (control.value < min) ? {minNumber: {expected: min, given: control.value}} : null;
+    };
+  }
+
+  static maxNumber(max: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      return (control.value > max) ? {maxNumber: {expected: max, given: control.value}} : null;
+    };
+  }
+
   static required(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if(control.value && Array.isArray(control.value)) {

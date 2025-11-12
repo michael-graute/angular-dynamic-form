@@ -1,0 +1,21 @@
+<div [formGroup]="form" [class]="{'hidden': hidden, 'form-floating': config?.settings?.floatingLabel}" class="mb-2">
+  @if (config?.label && !config?.settings?.floatingLabel) {
+    <label [for]="id" [class]="{'required': config?.required}">{{config?.label}}</label>
+  }
+  @if (!config?.multiple) {
+    <textarea class="form-control" [class]="{'required': config?.required}" [id]="id" [formControlName]="key" [required]="config?.required || false" [placeholder]="config?.floatingLabel ?? ''"></textarea>
+    @if (config?.label && config?.settings?.floatingLabel) {
+      <label [for]="id" [class]="{'required': config?.required}">{{config?.label}}</label>
+    }
+    @if (config?.helpText) {
+      <div class="form-text">{{config?.helpText}}</div>
+    }
+    @if (control?.errors) {
+      <ul class="error-messages form-text text-danger">
+        @for (message of getErrorMessages(); track $index) {
+          <li>{{message}}</li>
+        }
+      </ul>
+    }
+  }
+</div>

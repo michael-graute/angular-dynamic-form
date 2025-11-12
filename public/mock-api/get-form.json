@@ -6,7 +6,8 @@
       "type": "data-select",
       "settings": {
         "floatingLabel": true,
-        "valueKey": "name",
+        "valueKey": "ID",
+        "labelKey": "name",
         "asyncURL": "/get-select-options"
       }
     },
@@ -451,6 +452,20 @@
       "settings": {
         "asyncUrl": "/get-related-form"
       }
+    },
+    {
+      "key": "textarea",
+      "type": "textarea",
+      "label": "Textarea",
+      "value": "1. One\n2. Two\n3. Three",
+      "settings": {
+        "floatingLabel": true
+      },
+      "validators": [
+        {
+          "name": "required"
+        }
+      ]
     }
   ],
   "buttons": [

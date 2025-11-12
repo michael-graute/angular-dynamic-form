@@ -1,4 +1,4 @@
-<h3>Validation Examples - All 8 Validator Types</h3>
+<h3>Validation Examples - All 10 Validator Types</h3>
 <p>This form demonstrates all available validators with custom error messages and placeholder interpolation.</p>
 
 <div class="alert alert-info">
@@ -9,6 +9,8 @@
     <li><strong>minLength</strong>: Username (min 3 chars) with {{ '{' }}expected{{ '}' }}/{{ '{' }}given{{ '}' }} interpolation</li>
     <li><strong>maxLength</strong>: Username (max 20 chars) with {{ '{' }}expected{{ '}' }}/{{ '{' }}given{{ '}' }} interpolation</li>
     <li><strong>pattern</strong>: Phone number (###-###-####)</li>
+    <li><strong>minNumber</strong>: Age (min 18) with {{ '{' }}expected{{ '}' }}/{{ '{' }}given{{ '}' }} interpolation</li>
+    <li><strong>maxNumber</strong>: Age (max 30) with {{ '{' }}expected{{ '}' }}/{{ '{' }}given{{ '}' }} interpolation</li>
     <li><strong>minItems</strong>: Tags array (min 2 items) with {{ '{' }}expected{{ '}' }}/{{ '{' }}given{{ '}' }} interpolation</li>
     <li><strong>maxItems</strong>: Tags array (max 5 items) with {{ '{' }}expected{{ '}' }}/{{ '{' }}given{{ '}' }} interpolation</li>
     <li><strong>inArray</strong>: Country selection (only USA, Canada, Mexico allowed)</li>
@@ -24,6 +26,8 @@
     <li>Enter invalid email to see email validation</li>
     <li>Enter phone number without dashes to see pattern error</li>
     <li>Select "Brazil" to see inArray error</li>
+    <li>Enter 15 to Age to see minNumber error</li>
+    <li>Enter 43 to Age to see maxNumber error</li>
     <li>Add 0-1 tags to see minItems error</li>
     <li>Add 6+ tags to see maxItems error</li>
     <li>Try to submit without checking the agreement box</li>

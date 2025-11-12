@@ -108,6 +108,24 @@ export class ValidationExamplesComponent {
         helpText: "Select USA, Canada, or Mexico (Brazil will show error)"
       },
       {
+        key: "age",
+        label: "Age (min: 18, max: 30)",
+        type: 'input',
+        controlType: "number",
+        validators: [
+          {
+            name: "minNumber",
+            value: 18,
+            errorMessage: "You must be at least {expected} years old (currently: {given})"
+          },
+          {
+            name: "maxNumber",
+            value: 30,
+            errorMessage: "Maximum age of {expected} extended, (you are: {given} years old)"
+          }
+        ]
+      },
+      {
         key: "tags",
         label: "Tags (minItems: 2, maxItems: 5)",
         type: "input",
