@@ -1,5 +1,5 @@
 import {Component, HostBinding, inject, Input, OnDestroy, OnInit} from "@angular/core";
-import {FormArray, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, AsyncValidatorFn} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {FormElement} from "../../dynamic-form.types";
 import {DynamicFormElementInterface} from "../../dynamic-form-element.interface";
@@ -7,6 +7,7 @@ import {DynamicFormValidators} from "../../dynamic-form-validators";
 import {defaultErrorMessages} from "../../default-error-messages";
 import {DynamicFormService} from "../../dynamic-form.service";
 import {Subscription} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   template: ``,
@@ -22,9 +23,11 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
   hidden = false
   debug = false;
   validators: ValidatorFn[] = []
+  asyncValidators: AsyncValidatorFn[] = []
   @Input() errorMessages: {[key: string]: string} = {};
 
   protected dynamicFormService = inject(DynamicFormService);
+  protected http = inject(HttpClient);
   protected populateDataSubscription?: Subscription;
 
   @HostBinding('class') className = '';
@@ -86,11 +89,24 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
   ngOnInit(): void {
     if(this.config?.class) this.className = this.className + ' ' + this.config?.class
 
+    // Process validators (both sync and async)
     this.config?.validators?.forEach((validator: any) => {
-      //@ts-ignore
-      this.validators.push(DynamicFormValidators[validator.name](validator.value))
-      if(validator.errorMessage) {
-        this.errorMessages[validator.name] = validator.errorMessage;
+      // Check if this is an async validator
+      if(validator.name === 'asyncBackend' && validator.asyncUrl) {
+        const debounceTime = validator.asyncDebounceTime || 500;
+        this.asyncValidators.push(
+          DynamicFormValidators.asyncBackend(this.http, validator.asyncUrl, debounceTime)
+        );
+        if(validator.errorMessage) {
+          this.errorMessages['asyncBackend'] = validator.errorMessage;
+        }
+      } else {
+        // Regular synchronous validator
+        //@ts-ignore
+        this.validators.push(DynamicFormValidators[validator.name](validator.value))
+        if(validator.errorMessage) {
+          this.errorMessages[validator.name] = validator.errorMessage;
+        }
       }
     });
 
@@ -98,11 +114,28 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
       if(this.config?.type != 'input' && this.config?.type != 'select') {
         throw new Error('The "multiple" config parameter is only suitable for the primitive types "input" and "select"')
       }
+
+      // Determine updateOn option for multiple inputs
+      let updateOn: 'change' | 'blur' = 'change';
+      if(this.asyncValidators.length > 0) {
+        const asyncTrigger = this.config?.validators?.find((v: any) => v.name === 'asyncBackend')?.asyncTrigger || 'debounce';
+        if(asyncTrigger === 'blur') {
+          updateOn = 'blur';
+        }
+      }
+
       this.control = new FormArray([]);
       this.form.addControl(this.key, this.control);
       if(this.config?.value) {
         this.config?.value.forEach((value: any) => {
-          this.formArray.push(new FormControl(value, this.validators));
+          this.formArray.push(new FormControl(
+            value,
+            {
+              validators: this.validators,
+              asyncValidators: this.asyncValidators,
+              updateOn: updateOn
+            }
+          ));
         })
       }
 
@@ -113,8 +146,26 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
         }
       });
     } else {
-      this.control = new FormControl(this.config?.value, this.validators);
+      // Handle updateOn option for async validators
+      let updateOn: 'change' | 'blur' = 'change';
+      if(this.asyncValidators.length > 0) {
+        const asyncTrigger = this.config?.validators?.find((v: any) => v.name === 'asyncBackend')?.asyncTrigger || 'debounce';
+        if(asyncTrigger === 'blur') {
+          updateOn = 'blur';
+        }
+      }
+
+      // Create FormControl with both sync and async validators
+      this.control = new FormControl(
+        this.config?.value,
+        {
+          validators: this.validators,
+          asyncValidators: this.asyncValidators,
+          updateOn: updateOn
+        }
+      );
       this.form.addControl(this.key, this.control);
+
       if(this.config?.onChange) {
         this.control.valueChanges.subscribe((value: string) => {
           console.log(this.key, this.config?.onChange, value)
@@ -131,11 +182,27 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
     const currentLength = this.formArray.length;
     const targetLength = data.length;
 
+    // Determine updateOn option
+    let updateOn: 'change' | 'blur' = 'change';
+    if(this.asyncValidators.length > 0) {
+      const asyncTrigger = this.config?.validators?.find((v: any) => v.name === 'asyncBackend')?.asyncTrigger || 'debounce';
+      if(asyncTrigger === 'blur') {
+        updateOn = 'blur';
+      }
+    }
+
     // Add or remove FormControls to match the data length
     if (targetLength > currentLength) {
       // Add missing FormControls
       for (let i = currentLength; i < targetLength; i++) {
-        this.formArray.push(new FormControl(null, this.validators));
+        this.formArray.push(new FormControl(
+          null,
+          {
+            validators: this.validators,
+            asyncValidators: this.asyncValidators,
+            updateOn: updateOn
+          }
+        ));
       }
     } else if (targetLength < currentLength) {
       // Remove extra FormControls
@@ -158,7 +225,23 @@ export abstract class AbstractInputComponent implements DynamicFormElementInterf
   }
 
   addItem() {
-    this.formArray.push(new FormControl(null, this.validators))
+    // Determine updateOn option
+    let updateOn: 'change' | 'blur' = 'change';
+    if(this.asyncValidators.length > 0) {
+      const asyncTrigger = this.config?.validators?.find((v: any) => v.name === 'asyncBackend')?.asyncTrigger || 'debounce';
+      if(asyncTrigger === 'blur') {
+        updateOn = 'blur';
+      }
+    }
+
+    this.formArray.push(new FormControl(
+      null,
+      {
+        validators: this.validators,
+        asyncValidators: this.asyncValidators,
+        updateOn: updateOn
+      }
+    ))
   }
 
   removeItem(index: number) {

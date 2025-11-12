@@ -1,4 +1,7 @@
-import {AbstractControl, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
+import {AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {Observable, of, timer} from "rxjs";
+import {catchError, map, switchMap} from "rxjs/operators";
 
 export class DynamicFormValidators {
 
@@ -69,6 +72,60 @@ export class DynamicFormValidators {
     return (control: AbstractControl): ValidationErrors | null => {
      return (regex.test(control.value) ? null : {pattern: {expected: regex.toString(), given: control.value}})
     }
+  }
+
+  /**
+   * Creates an async validator that sends the value to a backend endpoint for validation
+   * @param http - HttpClient instance for making HTTP requests
+   * @param url - Backend endpoint URL for validation
+   * @param debounceTime - Debounce time in milliseconds (default: 500ms)
+   * @returns AsyncValidatorFn that validates against backend
+   *
+   * Expected backend response format:
+   * - Success: { valid: true }
+   * - Failure: { valid: false, error: "Error message" }
+   */
+  static asyncBackend(http: HttpClient, url: string, debounceTime: number = 500): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      // Don't validate empty values
+      if (!control.value) {
+        return of(null);
+      }
+
+      // Debounce the validation request
+      return timer(debounceTime).pipe(
+        switchMap(() => {
+          // Send the value to the backend for validation
+          return http.post<{ valid: boolean; error?: string }>(url, {
+            value: control.value
+          }).pipe(
+            map(response => {
+              // If valid=true, return null (no error)
+              if (response.valid) {
+                return null;
+              }
+              // If valid=false, return error object
+              return {
+                asyncBackend: {
+                  message: response.error || 'Validation failed',
+                  value: control.value
+                }
+              };
+            }),
+            catchError((error) => {
+              // On HTTP error, return validation error
+              console.error('Async validation error:', error);
+              return of({
+                asyncBackend: {
+                  message: 'Validation request failed. Please try again.',
+                  value: control.value
+                }
+              });
+            })
+          );
+        })
+      );
+    };
   }
 
 }

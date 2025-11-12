@@ -22,7 +22,11 @@ export type FormElement = {
 export type ElementValidator = {
   name: string;
   value?: any;
-  errorMessage?: string
+  errorMessage?: string;
+  async?: boolean;  // Whether this is an async validator
+  asyncUrl?: string;  // URL endpoint for async validation
+  asyncTrigger?: 'blur' | 'debounce';  // When to trigger async validation
+  asyncDebounceTime?: number;  // Debounce time in ms (default: 500)
 }
 
 export type FormButtonCallback = {

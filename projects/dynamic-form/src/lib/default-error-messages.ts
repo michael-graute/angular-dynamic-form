@@ -10,4 +10,5 @@ export const defaultErrorMessages: {[key: string]: string} = {
   'maxNumber': 'The maximum value of {expected} is exceeded by the current value of {given}',
   'pattern': 'The current value does not match the expected regular expression "{expected}"',
   'inArray': 'The current value is not one of "{expected}"',
+  'asyncBackend': '{message}',
 }

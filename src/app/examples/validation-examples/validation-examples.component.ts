@@ -158,6 +158,53 @@ export class ValidationExamplesComponent {
         helpText: "Add between 2-5 tags using the Add button"
       },
       {
+        key: "asyncUsername",
+        label: "Username (Async Backend Validation - Debounce)",
+        type: "input",
+        controlType: "text",
+        settings: {
+          floatingLabel: true
+        },
+        validators: [
+          {
+            name: "required",
+            errorMessage: "Please enter a username"
+          },
+          {
+            name: "asyncBackend",
+            asyncUrl: "/validate-username",
+            asyncTrigger: "debounce",
+            asyncDebounceTime: 800,
+            errorMessage: "Username validation failed: {message}"
+          }
+        ],
+        helpText: "Type 'admin' to see async validation error (validates after 800ms of inactivity). Mock API always returns 'admin is taken'."
+      },
+      {
+        key: "asyncEmail",
+        label: "Email (Async Backend Validation - On Blur)",
+        type: "input",
+        controlType: "email",
+        settings: {
+          floatingLabel: true
+        },
+        validators: [
+          {
+            name: "required"
+          },
+          {
+            name: "email"
+          },
+          {
+            name: "asyncBackend",
+            asyncUrl: "/validate-email",
+            asyncTrigger: "blur",
+            errorMessage: "Email validation failed: {message}"
+          }
+        ],
+        helpText: "Validates when field loses focus (blur). Mock API always returns valid."
+      },
+      {
         key: "agreem",
         label: "I agree to the terms and conditions",
         type: "checkbox",
