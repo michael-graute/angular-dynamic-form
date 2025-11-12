@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A powerful Angular library for building dynamic forms from JSON configuration",
   "keywords": ["angular", "forms", "dynamic-forms", "json-forms", "reactive-forms"],
-  "author": "Your Name",
+  "author": "Michael Graute",
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^20.3.0",

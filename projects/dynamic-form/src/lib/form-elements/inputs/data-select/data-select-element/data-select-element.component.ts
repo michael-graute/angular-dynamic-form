@@ -8,6 +8,7 @@ import {
   Validator
 } from "@angular/forms";
 import {CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf} from '@angular/cdk/scrolling';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 import {DynamicFormService} from "../../../../dynamic-form.service";
 
@@ -62,7 +63,8 @@ export class DataSelectElementComponent implements OnInit, ControlValueAccessor,
 
   constructor(
     private dynamicFormService: DynamicFormService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private sanitizer: DomSanitizer
   ) {}
 
   toggleDataList(): void {
@@ -88,9 +90,14 @@ export class DataSelectElementComponent implements OnInit, ControlValueAccessor,
   /**
    * Gets the display label for the currently selected option
    */
-  getDisplayLabel(): string {
+  getDisplayLabel(): string | SafeHtml {
     if (!this.selectedOption) {
       return '';
+    }
+
+    // If selectedTemplate is provided, use it
+    if (this.settings.selectedTemplate) {
+      return this.parseTemplate(this.settings.selectedTemplate, this.selectedOption);
     }
 
     // Use labelKey if specified, otherwise use valueKey, otherwise stringify
@@ -106,7 +113,12 @@ export class DataSelectElementComponent implements OnInit, ControlValueAccessor,
   /**
    * Gets the display label for an option in the dropdown list
    */
-  getOptionLabel(dataset: any): string {
+  getOptionLabel(dataset: any): string | SafeHtml {
+    // If itemTemplate is provided, use it
+    if (this.settings.itemTemplate) {
+      return this.parseTemplate(this.settings.itemTemplate, dataset);
+    }
+
     if (this.settings.labelKey) {
       return dataset[this.settings.labelKey] ?? '';
     } else if (this.settings.valueKey) {
@@ -170,5 +182,45 @@ export class DataSelectElementComponent implements OnInit, ControlValueAccessor,
    */
   trackByOption(index: number, option: any): any {
     return option[this.settings.valueKey] ?? option ?? index;
+  }
+
+  /**
+   * Parses a template string with {{property}} placeholders and replaces them with actual values
+   * Supports nested property access using dot notation (e.g., {{user.address.city}})
+   * @param template - Template string with {{property}} placeholders
+   * @param data - Data object containing the values
+   * @returns SafeHtml string with placeholders replaced
+   */
+  parseTemplate(template: string, data: any): SafeHtml {
+    if (!template || !data) {
+      return '';
+    }
+
+    // Replace all {{property}} placeholders with actual values
+    const parsed = template.replace(/\{\{([^}]+)\}\}/g, (match, propertyPath) => {
+      // Trim whitespace from property path
+      const path = propertyPath.trim();
+
+      // Support nested property access (e.g., user.address.city)
+      const value = this.getNestedProperty(data, path);
+
+      // Return the value or empty string if not found
+      return value !== undefined && value !== null ? String(value) : '';
+    });
+
+    // Sanitize the HTML to prevent XSS attacks
+    return this.sanitizer.sanitize(1, parsed) || '';
+  }
+
+  /**
+   * Gets a nested property value from an object using dot notation
+   * @param obj - The object to traverse
+   * @param path - Dot-separated path (e.g., 'user.address.city')
+   * @returns The value at the path or undefined if not found
+   */
+  private getNestedProperty(obj: any, path: string): any {
+    return path.split('.').reduce((current, prop) => {
+      return current?.[prop];
+    }, obj);
   }
 }

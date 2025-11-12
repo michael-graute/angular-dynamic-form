@@ -6,7 +6,11 @@
       } @else if (error) {
         <i class="bi-exclamation-triangle text-danger"></i> Error loading options
       } @else if (selectedOption) {
-        {{getDisplayLabel()}}
+        @if (settings.selectedTemplate) {
+          <span [innerHTML]="getDisplayLabel()"></span>
+        } @else {
+          {{getDisplayLabel()}}
+        }
       } @else {
         <span class="text-muted">Select an option...</span>
       }
@@ -27,7 +31,11 @@
             *cdkVirtualFor="let dataset of options; trackBy: trackByOption"
             class="list-group-item"
             (click)="optionClicked(dataset)">
-            {{getOptionLabel(dataset)}}
+            @if (settings.itemTemplate) {
+              <span [innerHTML]="getOptionLabel(dataset)"></span>
+            } @else {
+              {{getOptionLabel(dataset)}}
+            }
           </li>
         </ul>
       </cdk-virtual-scroll-viewport>
@@ -35,7 +43,13 @@
       <!-- Standard rendering for <=100 options -->
       <ul class="list-group">
         @for (dataset of options; track trackByOption($index, dataset)) {
-          <li class="list-group-item" (click)="optionClicked(dataset)">{{getOptionLabel(dataset)}}</li>
+          <li class="list-group-item" (click)="optionClicked(dataset)">
+            @if (settings.itemTemplate) {
+              <span [innerHTML]="getOptionLabel(dataset)"></span>
+            } @else {
+              {{getOptionLabel(dataset)}}
+            }
+          </li>
         }
         @empty {
           <li class="list-group-item text-muted">No options available</li>

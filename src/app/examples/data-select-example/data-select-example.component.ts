@@ -43,6 +43,19 @@ export class DataSelectExampleComponent {
             ]
           },
           {
+            key: "assignedUserWithTemplate",
+            label: "Assign to User (Custom Template)",
+            type: "data-select",
+            helpText: "This example demonstrates custom templates for complex data structures. The template shows user name, email, and role with custom HTML formatting.",
+            settings: {
+              floatingLabel: true,
+              asyncURL: "/user-list",
+              valueKey: "id",
+              itemTemplate: '<div><strong>{{name}}</strong> <span class="text-muted">({{email}})</span><br/><small class="badge bg-primary">{{role}}</small></div>',
+              selectedTemplate: '<strong>{{name}}</strong> <span class="text-muted">({{role}})</span>'
+            }
+          },
+          {
             key: "department",
             label: "Department",
             type: "select",
